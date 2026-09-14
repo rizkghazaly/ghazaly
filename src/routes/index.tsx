@@ -172,12 +172,12 @@ function Index() {
           <div className="hero-visual relative mx-auto w-full max-w-[520px] lg:mx-0">
             <div className="prism absolute -inset-1.5 rounded-[28px] opacity-80" aria-hidden="true" />
             <div className="glass relative rounded-[26px] p-2.5">
-              <img src={senegalTower} alt="Contemporary glass and limestone tower framed by palms" width={1088} height={1360} fetchPriority="high" className="aspect-[4/5] w-full rounded-[20px] object-cover" />
+              <img src={petalTower.url} alt="Tower clad in thousands of overlapping bronze and silver petals on a city corner" width={1088} height={1360} fetchPriority="high" className="aspect-[4/5] w-full rounded-[20px] object-cover" />
             </div>
             <div className="glass absolute -bottom-6 -left-5 hidden rounded-2xl px-5 py-4 sm:block">
               <span className="stat-label mt-0">Featured</span>
-              <p className="mt-1 font-serif text-lg font-medium">Senegal Tower</p>
-              <p className="text-xs text-muted-foreground">Architectural visualization</p>
+              <p className="mt-1 font-serif text-lg font-medium">Petal Facade Tower</p>
+              <p className="text-xs text-muted-foreground">Parametric facade study</p>
             </div>
           </div>
         </div>
