@@ -1,10 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
-import auroraGallery from "@/assets/aurora-gallery.jpg";
-import cryptoCenter from "@/assets/crypto-center.jpg";
-import desertZone from "@/assets/desert-zone.jpg";
-import senegalTower from "@/assets/senegal-tower.jpg";
+import petalTower from "@/assets/petal-tower.jpg.asset.json";
+import desertCanopy from "@/assets/desert-canopy.jpg.asset.json";
+import desertCanopyAerial from "@/assets/desert-canopy-aerial.jpg.asset.json";
+import cubeMatrix from "@/assets/cube-matrix.jpg.asset.json";
+import cubeMatrixTwo from "@/assets/cube-matrix-two.jpg.asset.json";
+import hexMasterplan from "@/assets/hex-masterplan.jpg.asset.json";
+import cafeRender from "@/assets/cafe-render.jpg.asset.json";
+import cafeCounter from "@/assets/cafe-counter.jpg.asset.json";
+import cafeBuiltLounge from "@/assets/cafe-built-lounge.jpg.asset.json";
+import cafeBuiltWide from "@/assets/cafe-built-wide.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,22 +35,94 @@ export const Route = createFileRoute("/")({
 
 const projects = [
   {
-    title: "Desert Architecture Zone",
-    meta: "Sustainable architecture · Saudi Arabia",
-    image: desertZone,
-    alt: "Sandstone colonnades and drought-tolerant planting in a desert architecture campus",
+    title: "Petal Facade Tower",
+    meta: "Parametric facade · Urban infill",
+    location: "European city block — competition study",
+    description:
+      "A residential tower wrapped in thousands of rotating metal petals. The layered skin shades the glass core through the day and dissolves the building's mass against the sky.",
+    image: petalTower.url,
+    alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
   },
   {
-    title: "Crypto Business Center",
-    meta: "Commercial architecture · Visualization",
-    image: cryptoCenter,
-    alt: "Sculpted glass business tower illuminated at dusk",
+    title: "Desert Shade Canopy",
+    meta: "Tensile structure · Public space",
+    location: "Rock desert site, Middle East",
+    description:
+      "A doubly curved shell lifted on four points to create a shaded gathering plaza. The opening at the centre keeps existing palms and pulls cool air through the space.",
+    image: desertCanopy.url,
+    alt: "White curved tensile canopy shading a desert plaza with palms and red rock cliffs behind",
   },
   {
-    title: "Rizk Gallery",
-    meta: "Immersive environment · Virtual",
-    image: auroraGallery,
-    alt: "Curved white virtual gallery with translucent artworks and soft daylight",
+    title: "Desert Shade Canopy — Aerial",
+    meta: "Tensile structure · Site study",
+    location: "Rock desert site, Middle East",
+    description:
+      "The aerial study shows how the shell's geometry casts a deep shadow field across the podium while keeping the plaza open to the surrounding landscape.",
+    image: desertCanopyAerial.url,
+    alt: "Aerial view of a white curved canopy over a paved desert plaza",
+  },
+  {
+    title: "Cube Matrix Pavilion",
+    meta: "Modular architecture · Concept",
+    location: "Desert valley, Middle East",
+    description:
+      "A stacked lattice of glazed modules that grows in any direction. Green-tinted glass and concrete frames give shaded interiors and open sky terraces on every level.",
+    image: cubeMatrix.url,
+    alt: "Stacked glass and concrete cube structure standing in a desert valley",
+  },
+  {
+    title: "Cube Matrix — Second Cluster",
+    meta: "Modular architecture · Concept",
+    location: "Desert valley, Middle East",
+    description:
+      "A second arrangement of the same module system, testing how far the cantilevered volumes can reach before the structure needs a new core.",
+    image: cubeMatrixTwo.url,
+    alt: "Alternative arrangement of the stacked glass cube structure with cantilevered volumes",
+  },
+  {
+    title: "Hexagon Oasis Masterplan",
+    meta: "Masterplan · Sustainable landscape",
+    location: "Sand desert region",
+    description:
+      "A settlement built from hexagonal plates of planting, shade and housing. The green discs hold irrigation and cooling, turning bare dune terrain into a liveable oasis grid.",
+    image: hexMasterplan.url,
+    alt: "Aerial masterplan of hexagonal green plates and dark pavilions laid over red desert sand",
+  },
+  {
+    title: "Joffrey's Coffee — Design Render",
+    meta: "Commercial interior · Visualization",
+    location: "Retail unit, Gulf region",
+    description:
+      "The proposal render: full-height timber shelving, layered panel walls and a warm pendant field over the service counter.",
+    image: cafeRender.url,
+    alt: "Coffee shop interior render with tall timber shelving and pendant lighting",
+  },
+  {
+    title: "Joffrey's Coffee — Counter Study",
+    meta: "Commercial interior · Visualization",
+    location: "Retail unit, Gulf region",
+    description:
+      "Detail view of the bar: exposed brick, a planted white screen, marble counter and a menu wall built from mixed timber panels.",
+    image: cafeCounter.url,
+    alt: "Coffee bar render with brick wall, planted white screen and marble counter",
+  },
+  {
+    title: "Joffrey's Coffee — Built Lounge",
+    meta: "Commercial interior · Completed",
+    location: "Retail unit, Gulf region",
+    description:
+      "The finished seating area, photographed after handover. Linear lights run the full double height and match the render almost line for line.",
+    image: cafeBuiltLounge.url,
+    alt: "Completed café lounge with blue armchairs, concrete wall and vertical linear lighting",
+  },
+  {
+    title: "Joffrey's Coffee — After Finish",
+    meta: "Commercial interior · Completed",
+    location: "Retail unit, Gulf region",
+    description:
+      "Wide view of the delivered space, showing the timber shelf wall, pendant cluster and counter in use.",
+    image: cafeBuiltWide.url,
+    alt: "Wide photo of the finished café with timber shelving wall and pendant lights",
   },
 ];
 
@@ -94,12 +172,12 @@ function Index() {
           <div className="hero-visual relative mx-auto w-full max-w-[520px] lg:mx-0">
             <div className="prism absolute -inset-1.5 rounded-[28px] opacity-80" aria-hidden="true" />
             <div className="glass relative rounded-[26px] p-2.5">
-              <img src={senegalTower} alt="Contemporary glass and limestone tower framed by palms" width={1088} height={1360} fetchPriority="high" className="aspect-[4/5] w-full rounded-[20px] object-cover" />
+              <img src={petalTower.url} alt="Tower clad in thousands of overlapping bronze and silver petals on a city corner" width={1088} height={1360} fetchPriority="high" className="aspect-[4/5] w-full rounded-[20px] object-cover" />
             </div>
             <div className="glass absolute -bottom-6 -left-5 hidden rounded-2xl px-5 py-4 sm:block">
               <span className="stat-label mt-0">Featured</span>
-              <p className="mt-1 font-serif text-lg font-medium">Senegal Tower</p>
-              <p className="text-xs text-muted-foreground">Architectural visualization</p>
+              <p className="mt-1 font-serif text-lg font-medium">Petal Facade Tower</p>
+              <p className="text-xs text-muted-foreground">Parametric facade study</p>
             </div>
           </div>
         </div>
@@ -115,19 +193,24 @@ function Index() {
 
       <section id="work" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 py-20 sm:py-28">
         <div className="mb-10 flex items-end justify-between">
-          <div><p className="section-index">01 — Selected work</p><h2 className="mt-3 font-serif text-4xl font-light">A curated few</h2></div>
-          <span className="hidden text-sm text-muted-foreground sm:inline">Architecture · visualization · virtual space</span>
+          <div><p className="section-index">01 — Selected work</p><h2 className="mt-3 font-serif text-4xl font-light">Selected projects</h2></div>
+          <span className="hidden text-sm text-muted-foreground sm:inline">Architecture · visualization · interiors</span>
         </div>
-        <div className="grid gap-9 md:grid-cols-3 md:gap-6">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-8">
           {projects.map((project, index) => (
             <article className="project group" key={project.title}>
               <div className="relative overflow-hidden rounded-3xl p-[2px]">
                 <div className="prism absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
-                <img src={project.image} alt={project.alt} width={1024} height={1280} loading="lazy" className="relative aspect-[4/5] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
               </div>
               <div className="mt-5 flex items-start justify-between gap-4">
-                <div><h3 className="font-serif text-xl font-medium">{project.title}</h3><p className="mt-1 text-sm text-muted-foreground">{project.meta}</p></div>
-                <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
+                <div>
+                  <h3 className="font-serif text-xl font-medium">{project.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{project.meta}</p>
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{project.location}</p>
+                  <p className="mt-3 max-w-prose text-sm leading-6 text-muted-foreground">{project.description}</p>
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
               </div>
             </article>
           ))}
