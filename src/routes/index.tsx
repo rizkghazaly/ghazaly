@@ -193,19 +193,24 @@ function Index() {
 
       <section id="work" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 py-20 sm:py-28">
         <div className="mb-10 flex items-end justify-between">
-          <div><p className="section-index">01 — Selected work</p><h2 className="mt-3 font-serif text-4xl font-light">A curated few</h2></div>
-          <span className="hidden text-sm text-muted-foreground sm:inline">Architecture · visualization · virtual space</span>
+          <div><p className="section-index">01 — Selected work</p><h2 className="mt-3 font-serif text-4xl font-light">Selected projects</h2></div>
+          <span className="hidden text-sm text-muted-foreground sm:inline">Architecture · visualization · interiors</span>
         </div>
-        <div className="grid gap-9 md:grid-cols-3 md:gap-6">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-8">
           {projects.map((project, index) => (
             <article className="project group" key={project.title}>
               <div className="relative overflow-hidden rounded-3xl p-[2px]">
                 <div className="prism absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
-                <img src={project.image} alt={project.alt} width={1024} height={1280} loading="lazy" className="relative aspect-[4/5] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
               </div>
               <div className="mt-5 flex items-start justify-between gap-4">
-                <div><h3 className="font-serif text-xl font-medium">{project.title}</h3><p className="mt-1 text-sm text-muted-foreground">{project.meta}</p></div>
-                <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
+                <div>
+                  <h3 className="font-serif text-xl font-medium">{project.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{project.meta}</p>
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{project.location}</p>
+                  <p className="mt-3 max-w-prose text-sm leading-6 text-muted-foreground">{project.description}</p>
+                </div>
+                <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
               </div>
             </article>
           ))}
