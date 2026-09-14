@@ -1,10 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
-import auroraGallery from "@/assets/aurora-gallery.jpg";
-import cryptoCenter from "@/assets/crypto-center.jpg";
-import desertZone from "@/assets/desert-zone.jpg";
-import senegalTower from "@/assets/senegal-tower.jpg";
+import petalTower from "@/assets/petal-tower.jpg.asset.json";
+import desertCanopy from "@/assets/desert-canopy.jpg.asset.json";
+import desertCanopyAerial from "@/assets/desert-canopy-aerial.jpg.asset.json";
+import cubeMatrix from "@/assets/cube-matrix.jpg.asset.json";
+import cubeMatrixTwo from "@/assets/cube-matrix-two.jpg.asset.json";
+import hexMasterplan from "@/assets/hex-masterplan.jpg.asset.json";
+import cafeRender from "@/assets/cafe-render.jpg.asset.json";
+import cafeCounter from "@/assets/cafe-counter.jpg.asset.json";
+import cafeBuiltLounge from "@/assets/cafe-built-lounge.jpg.asset.json";
+import cafeBuiltWide from "@/assets/cafe-built-wide.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
