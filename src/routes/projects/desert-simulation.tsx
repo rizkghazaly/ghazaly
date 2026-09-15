@@ -77,6 +77,9 @@ const facts = [
 ];
 
 function DesertSimulation() {
+  const [hero, ...rest] = gallery;
+  if (!hero) return null;
+
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
       <div className="ambient ambient-one" aria-hidden="true" />
