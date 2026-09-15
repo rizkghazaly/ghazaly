@@ -122,13 +122,13 @@ function DesertSimulation() {
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-10">
         <div className="glass relative overflow-hidden rounded-[26px] p-2.5">
           <img
-            src={gallery[0].image}
-            alt={gallery[0].alt}
+            src={hero.image}
+            alt={hero.alt}
             fetchPriority="high"
             className="aspect-[16/9] w-full rounded-[18px] object-cover"
           />
         </div>
-        <p className="mt-4 text-sm text-muted-foreground">{gallery[0].caption}</p>
+        <p className="mt-4 text-sm text-muted-foreground">{hero.caption}</p>
       </section>
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-16">
