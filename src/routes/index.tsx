@@ -202,7 +202,13 @@ function Index() {
             <article className="project group" key={project.title}>
               <div className="relative overflow-hidden rounded-3xl p-[2px]">
                 <div className="prism absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
-                <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                {"href" in project && project.href ? (
+                  <Link to={project.href} aria-label={`View ${project.title} project`}>
+                    <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                  </Link>
+                ) : (
+                  <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                )}
               </div>
               <div className="mt-5 flex items-start justify-between gap-4">
                 <div>
