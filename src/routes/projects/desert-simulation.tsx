@@ -158,7 +158,7 @@ function DesertSimulation() {
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24">
         <p className="section-index mb-8">Gallery</p>
         <div className="grid gap-10 md:grid-cols-2 md:gap-8">
-          {gallery.slice(1).map((item) => (
+          {rest.map((item) => (
             <figure key={item.image} className="group">
               <div className="glass rounded-[26px] p-2.5">
                 <img

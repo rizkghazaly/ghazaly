@@ -36,12 +36,13 @@ export const Route = createFileRoute("/")({
 const projects = [
   {
     title: "Petal Facade Tower",
-    meta: "Parametric facade · Urban infill",
-    location: "European city block — competition study",
+    meta: "Parametric facade · Desert simulation",
+    location: "UIC Barcelona, Spain — 2021",
     description:
       "A residential tower wrapped in thousands of rotating metal petals. The layered skin shades the glass core through the day and dissolves the building's mass against the sky.",
     image: petalTower.url,
     alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
+    href: "/projects/desert-simulation",
   },
   {
     title: "Desert Shade Canopy",
