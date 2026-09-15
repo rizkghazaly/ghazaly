@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsDesertSimulationRouteImport } from './routes/projects/desert-simulation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsDesertSimulationRoute =
+  ProjectsDesertSimulationRouteImport.update({
+    id: '/projects/desert-simulation',
+    path: '/projects/desert-simulation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/projects/desert-simulation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/projects/desert-simulation'
+  id: '__root__' | '/' | '/projects/desert-simulation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjectsDesertSimulationRoute: typeof ProjectsDesertSimulationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/desert-simulation': {
+      id: '/projects/desert-simulation'
+      path: '/projects/desert-simulation'
+      fullPath: '/projects/desert-simulation'
+      preLoaderRoute: typeof ProjectsDesertSimulationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjectsDesertSimulationRoute: ProjectsDesertSimulationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

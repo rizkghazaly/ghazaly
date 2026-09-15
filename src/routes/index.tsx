@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
 import petalTower from "@/assets/petal-tower.jpg.asset.json";
@@ -36,12 +36,13 @@ export const Route = createFileRoute("/")({
 const projects = [
   {
     title: "Petal Facade Tower",
-    meta: "Parametric facade · Urban infill",
-    location: "European city block — competition study",
+    meta: "Parametric facade · Desert simulation",
+    location: "UIC Barcelona, Spain — 2021",
     description:
       "A residential tower wrapped in thousands of rotating metal petals. The layered skin shades the glass core through the day and dissolves the building's mass against the sky.",
     image: petalTower.url,
     alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
+    href: "/projects/desert-simulation",
   },
   {
     title: "Desert Shade Canopy",
@@ -201,7 +202,13 @@ function Index() {
             <article className="project group" key={project.title}>
               <div className="relative overflow-hidden rounded-3xl p-[2px]">
                 <div className="prism absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
-                <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                {"href" in project && project.href ? (
+                  <Link to={project.href} aria-label={`View ${project.title} project`}>
+                    <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                  </Link>
+                ) : (
+                  <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                )}
               </div>
               <div className="mt-5 flex items-start justify-between gap-4">
                 <div>
