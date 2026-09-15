@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
 import petalTower from "@/assets/petal-tower.jpg.asset.json";
+import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
