@@ -36,6 +36,16 @@ const projects = [
     alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
     href: "/projects/desert-simulation",
   },
+  {
+    title: "Crypto Business Center",
+    meta: "Parametric towers · Island masterplan",
+    location: "UIC Barcelona, Spain — 2021",
+    description:
+      "Three towers wrapped in a parametric lattice shell above Barcelona's harbour, with an aquarium below sea level — designed to improve the visitor experience and reduce traffic.",
+    image: cbcHero.url,
+    alt: "Three crystalline towers wrapped in white lattice structures framing a plaza",
+    href: "/projects/crypto-business-center",
+  },
 ];
 
 function Index() {
