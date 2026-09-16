@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
+import { ThemeToggle } from "@/components/theme-toggle";
+
 import petalTower from "@/assets/petal-tower.jpg.asset.json";
 import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 
@@ -66,7 +68,10 @@ function Index() {
             <a href="#profile" className="transition-colors hover:text-foreground">Profile</a>
             <a href="#approach" className="transition-colors hover:text-foreground">Approach</a>
           </nav>
-          <a className="button-dark" href="#contact">Contact <ArrowUpRight size={14} aria-hidden="true" /></a>
+          <div className="flex items-center gap-2.5">
+            <ThemeToggle />
+            <a className="button-dark" href="#contact">Contact <ArrowUpRight size={14} aria-hidden="true" /></a>
+          </div>
         </div>
       </header>
 
