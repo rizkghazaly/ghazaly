@@ -93,9 +93,12 @@ function DesertSimulation() {
               Architecture
             </span>
           </Link>
-          <Link to="/" hash="work" className="text-link">
-            <ArrowLeft size={14} className="mr-1 inline" aria-hidden="true" /> All projects
-          </Link>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Link to="/" hash="work" className="text-link">
+              <ArrowLeft size={14} className="mr-1 inline" aria-hidden="true" /> All projects
+            </Link>
+          </div>
         </div>
       </header>
 
