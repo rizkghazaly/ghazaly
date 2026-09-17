@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
+import { ThemeToggle } from "@/components/theme-toggle";
 import cbc1 from "@/assets/cbc-1.jpg.asset.json";
 import cbc2 from "@/assets/cbc-2.jpg.asset.json";
 import cbc3 from "@/assets/cbc-3.jpg.asset.json";
@@ -93,9 +94,12 @@ function CryptoBusinessCenter() {
               Architecture
             </span>
           </Link>
-          <Link to="/" hash="work" className="text-link">
-            <ArrowLeft size={14} className="mr-1 inline" aria-hidden="true" /> All projects
-          </Link>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Link to="/" hash="work" className="text-link">
+              <ArrowLeft size={14} className="mr-1 inline" aria-hidden="true" /> All projects
+            </Link>
+          </div>
         </div>
       </header>
 

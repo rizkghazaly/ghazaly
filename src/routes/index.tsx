@@ -67,8 +67,10 @@ function Index() {
             <a href="#work" className="text-foreground transition-colors hover:text-primary">Work</a>
             <a href="#profile" className="transition-colors hover:text-foreground">Profile</a>
             <a href="#approach" className="transition-colors hover:text-foreground">Approach</a>
+            <Link to="/prizes" className="transition-colors hover:text-foreground">Prizes</Link>
           </nav>
           <div className="flex items-center gap-2.5">
+            <Link to="/prizes" className="text-link md:hidden">Prizes</Link>
             <ThemeToggle />
             <a className="button-dark" href="#contact">Contact <ArrowUpRight size={14} aria-hidden="true" /></a>
           </div>
