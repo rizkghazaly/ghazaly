@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrizesRouteImport } from './routes/prizes'
 import { Route as ProjectsCryptoBusinessCenterRouteImport } from './routes/projects/crypto-business-center'
 import { Route as ProjectsDesertSimulationRouteImport } from './routes/projects/desert-simulation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrizesRoute = PrizesRouteImport.update({
+  id: '/prizes',
+  path: '/prizes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsCryptoBusinessCenterRoute =
@@ -33,35 +39,47 @@ const ProjectsDesertSimulationRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/prizes': typeof PrizesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/prizes': typeof PrizesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/prizes': typeof PrizesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/projects/crypto-business-center' | '/projects/desert-simulation'
+    | '/'
+    | '/prizes'
+    | '/projects/crypto-business-center'
+    | '/projects/desert-simulation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects/crypto-business-center' | '/projects/desert-simulation'
+  to:
+    | '/'
+    | '/prizes'
+    | '/projects/crypto-business-center'
+    | '/projects/desert-simulation'
   id:
     | '__root__'
     | '/'
+    | '/prizes'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrizesRoute: typeof PrizesRoute
   ProjectsCryptoBusinessCenterRoute: typeof ProjectsCryptoBusinessCenterRoute
   ProjectsDesertSimulationRoute: typeof ProjectsDesertSimulationRoute
 }
@@ -73,6 +91,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prizes': {
+      id: '/prizes'
+      path: '/prizes'
+      fullPath: '/prizes'
+      preLoaderRoute: typeof PrizesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/crypto-business-center': {
@@ -94,6 +119,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrizesRoute: PrizesRoute,
   ProjectsCryptoBusinessCenterRoute: ProjectsCryptoBusinessCenterRoute,
   ProjectsDesertSimulationRoute: ProjectsDesertSimulationRoute,
 }
