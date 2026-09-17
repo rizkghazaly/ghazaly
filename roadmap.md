@@ -1,1 +1,4 @@
-Review prize PDF and add a dedicated Prizes page linked in portfolio navigation.
+- [x] Review prize PDF and recover its evidence links.
+- [x] Add a dedicated Prizes page linked in portfolio navigation.
+- [x] Complete the day/night switch on both project pages.
+- [ ] Verify all pages and both themes on desktop and mobile.
