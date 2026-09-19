@@ -129,7 +129,7 @@ function DesertSimulation() {
             src={hero.image}
             alt={hero.alt}
             fetchPriority="high"
-            className="aspect-[16/9] w-full rounded-[18px] object-cover"
+            className="h-auto w-full rounded-[18px] object-contain"
           />
         </div>
         <p className="mt-4 text-sm text-muted-foreground">{hero.caption}</p>
