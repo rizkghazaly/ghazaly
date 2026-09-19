@@ -33,8 +33,8 @@ const prizes = [
     context: "Community Choice Award · Builders Trail · Decentraland",
     description:
       "Nominated by the Decentraland community for the Builders Trail and selected as the Community Choice Award winner.",
-    proof:
-      "https://web.archive.org/web/20250620074450/https://discord.com/channels/417796904760639509/433376431603580970/1344277107995316267",
+      proof:
+        "https://discord.com/channels/417796904760639509/433376431603580970/1344277107995316267",
   },
   {
     date: "Sep 2024",
@@ -44,7 +44,7 @@ const prizes = [
     description:
       "A character skin merging two identities—half mermaid and half robot—created for the Across the Galaxy wearable contest.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://x.com/decentraland/status/1836910434529452455",
+      "https://twitter.com/decentraland/status/1836910434529452455",
   },
   {
     date: "Aug 2023",
@@ -54,7 +54,7 @@ const prizes = [
     description:
       "A cosmic adventure featuring space colonies, a monumental aquarium and a race-car experience, created for a Spatial contest on Sandstorm.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://app.sandstorm.co/collections/9365b72e84b690226004ade5791d4a15",
+        "https://app.sandstorm.co/collections/9365b72e84b690226004ade5791d4a15",
   },
   {
     date: "Jul 2023",
@@ -64,7 +64,7 @@ const prizes = [
     description:
       "A headquarters proposal submitted to the Decentraland DAO competition hosted through the Sandstorm platform.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://app.sandstorm.co/collections/9365b72e84b690226004ade5791d4a15",
+        "https://app.sandstorm.co/collections/9365b72e84b690226004ade5791d4a15",
   },
   {
     date: "Mar 2023",
@@ -74,7 +74,7 @@ const prizes = [
     description:
       "A retail world set within an imagined place and timeline, designed for Sandstorm's Space Metaverse competition.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://app.sandstorm.co/collections/9365b72e84b690226004ade5791d4a15",
+      "https://app.sandstorm.co/collections/9365b72e84b690226004ade5791d4a15",
   },
   {
     date: "Dec 2022",
@@ -84,7 +84,7 @@ const prizes = [
     description:
       "A deliberately unconventional holiday wearable translating the playful excess of real-world ugly sweaters into the metaverse.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://twitter.com/decentraland/status/1606402968651456512?s=46&t=cZx5dII5xpfmdCj4gW4Kug",
+      "https://twitter.com/decentraland/status/1606402968651456512?s=46&t=cZx5dII5xpfmdCj4gW4Kug",
   },
   {
     date: "Nov 2022",
@@ -94,7 +94,7 @@ const prizes = [
     description:
       "A bullet-time movement sequence designed as an emote for the 2022 Metaverse Music Festival.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://twitter.com/decentraland/status/1588578765491548162?s=20&t=tdDAkYqMcwEEoZ2CiTKJZw",
+      "https://twitter.com/decentraland/status/1588578765491548162?s=20&t=tdDAkYqMcwEEoZ2CiTKJZw",
   },
   {
     date: "Oct 2022",
@@ -114,7 +114,7 @@ const prizes = [
     description:
       "A metaverse-ready model of the historic 1908 Ford Model T pickup, created for the second DCL Builder Contest.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://twitter.com/sandstormmeetup/status/1577781108019699728?s=20&t=mj0ih8SR-YJXTCny4TE-Eg",
+      "https://twitter.com/sandstormmeetup/status/1577781108019699728?s=20&t=mj0ih8SR-YJXTCny4TE-Eg",
   },
   {
     date: "Feb 2022",
@@ -124,7 +124,7 @@ const prizes = [
     description:
       "Selected as a finalist in MonArch, one of the largest metaverse events hosted on the Monaverse platform.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://twitter.com/monaverse/status/1498357405087936515?s=20&t=x2VZBsSFvFes0ZlR8wn25g",
+      "https://twitter.com/monaverse/status/1498357405087936515?s=20&t=x2VZBsSFvFes0ZlR8wn25g",
   },
   {
     date: "Apr 2021",
@@ -134,7 +134,7 @@ const prizes = [
     description:
       "A cyberpunk environment created with the Aetheria Project for a themed Decentraland building competition.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://decentraland.org/blog/announcements/cyberpunk-2021-meet-the-winners/",
+      "https://decentraland.org/blog/announcements/cyberpunk-2021-meet-the-winners",
   },
   {
     date: "Dec 2020",
@@ -144,7 +144,7 @@ const prizes = [
     description:
       "An interactive holiday scene designed to spread joy and turn the metaverse into a merryverse for Christmas.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://decentraland.org/blog/announcements/game-jam-q4-2020-final-results/",
+      "https://decentraland.org/blog/announcements/game-jam-q4-2020-final-results",
   },
   {
     date: "Sep 2020",
@@ -154,7 +154,7 @@ const prizes = [
     description:
       "An amusement-park world designed for a Decentraland Game Jam, combining architecture with interactive play.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://decentraland.org/blog/announcements/game-jam-2020-winners-revealed/",
+      "https://decentraland.org/blog/announcements/game-jam-2020-winners-revealed",
   },
   {
     date: "Feb 2020",
@@ -174,7 +174,7 @@ const prizes = [
     description:
       "Two early Decentraland scenes—Game City and Interactive Stairs Game—both received prizes in the 2019 Creator Contest.",
     proof:
-      "https://web.archive.org/web/20250620074450/https://decentraland.org/blog/announcements/creator-contest-all-the-winners/",
+      "https://decentraland.org/blog/announcements/creator-contest-all-the-winners",
   },
 ];
 
