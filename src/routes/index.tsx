@@ -5,6 +5,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 import petalTower from "@/assets/petal-tower.jpg.asset.json";
 import cbcHero from "@/assets/cbc-3.jpg.asset.json";
+import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,6 +48,16 @@ const projects = [
     image: cbcHero.url,
     alt: "Three crystalline towers wrapped in white lattice structures framing a plaza",
     href: "/projects/crypto-business-center",
+  },
+  {
+    title: "Senegal Tower",
+    meta: "Climate-responsive tower · Adaptive reuse",
+    location: "Senegal — 2020",
+    description:
+      "A collaborative proposal pairing the adaptive reuse of historic buildings with a new planted tower shaped for Senegal's climate.",
+    image: senegalTower.url,
+    alt: "Senegal Tower rising above a tree-lined urban street at dusk",
+    href: "/projects/senegal-tower",
   },
 ];
 
