@@ -6,3 +6,4 @@
 
 - [x] Add medium circular badges to matching prize rows, starting with DECENTRAPEPE World and CyberSiren.
 - [x] Divide the portfolio into external and interior designs and add Beesline Offices.
+- [x] Add the Beesline general floor plan with room and furniture distribution.
