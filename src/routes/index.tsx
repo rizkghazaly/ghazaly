@@ -13,13 +13,13 @@ import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "METARIZK — Architecture & Visualization" },
+      { title: "Ghazaly — Architecture & Visualization" },
       {
         name: "description",
         content:
           "Selected architecture and visualization work by Rizk Ghazaly, spanning sustainable design, interiors, parametric form and virtual environments.",
       },
-      { property: "og:title", content: "METARIZK — Architecture & Visualization" },
+      { property: "og:title", content: "Ghazaly — Architecture & Visualization" },
       {
         property: "og:description",
         content: "A curated portfolio of architecture, visualization and immersive environments by Rizk Ghazaly.",
@@ -89,7 +89,7 @@ function Index() {
 
       <header className="relative z-20 mx-auto max-w-[1200px] px-4 pt-4 sm:px-6 sm:pt-7">
         <div className="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-6">
-          <a href="#top" className="flex items-baseline gap-2" aria-label="METARIZK home">
+          <a href="#top" className="flex items-baseline gap-2" aria-label="Ghazaly home">
             <span className="font-serif text-xl font-medium">Ghazaly
 </span>
             <span className="hidden text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">Architecture</span>

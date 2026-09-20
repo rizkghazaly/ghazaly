@@ -10,13 +10,13 @@ import senegalAerial from "@/assets/senegal-tower-aerial.jpg.asset.json";
 export const Route = createFileRoute("/projects/senegal-tower")({
   head: () => ({
     meta: [
-      { title: "Senegal Tower — METARIZK" },
+      { title: "Senegal Tower — Ghazaly" },
       {
         name: "description",
         content:
           "Senegal Tower by Rizk Ghazaly with Jean Deeb — a 2020 proposal combining adaptive reuse with climate-conscious new construction in Senegal.",
       },
-      { property: "og:title", content: "Senegal Tower — METARIZK" },
+      { property: "og:title", content: "Senegal Tower — Ghazaly" },
       {
         property: "og:description",
         content:
@@ -70,8 +70,8 @@ function SenegalTower() {
 
       <header className="relative z-20 mx-auto max-w-[1200px] px-4 pt-4 sm:px-6 sm:pt-7">
         <div className="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-6">
-          <Link to="/" className="flex items-baseline gap-2" aria-label="METARIZK home">
-            <span className="font-serif text-xl font-medium">METARIZK</span>
+          <Link to="/" className="flex items-baseline gap-2" aria-label="Ghazaly home">
+            <span className="font-serif text-xl font-medium">Ghazaly</span>
             <span className="hidden text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">
               Architecture
             </span>

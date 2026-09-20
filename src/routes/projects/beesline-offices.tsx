@@ -12,13 +12,13 @@ import { ThemeToggle } from "@/components/theme-toggle";
 export const Route = createFileRoute("/projects/beesline-offices")({
   head: () => ({
     meta: [
-      { title: "Beesline Offices — METARIZK" },
+      { title: "Beesline Offices — Ghazaly" },
       {
         name: "description",
         content:
           "Interior design for Beesline's offices in Lebanon, combining warm natural materials, sculptural details and light-filled workspaces.",
       },
-      { property: "og:title", content: "Beesline Offices — METARIZK" },
+      { property: "og:title", content: "Beesline Offices — Ghazaly" },
       {
         property: "og:description",
         content:
@@ -77,8 +77,8 @@ function BeeslineOffices() {
 
       <header className="relative z-20 mx-auto max-w-[1200px] px-4 pt-4 sm:px-6 sm:pt-7">
         <div className="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-6">
-          <Link to="/" className="flex items-baseline gap-2" aria-label="METARIZK home">
-            <span className="font-serif text-xl font-medium">METARIZK</span>
+          <Link to="/" className="flex items-baseline gap-2" aria-label="Ghazaly home">
+            <span className="font-serif text-xl font-medium">Ghazaly</span>
             <span className="hidden text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">
               Architecture
             </span>

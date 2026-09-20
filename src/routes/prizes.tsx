@@ -21,13 +21,13 @@ import gameCityBadge from "@/assets/prize-game-city.jpg.asset.json";
 export const Route = createFileRoute("/prizes")({
   head: () => ({
     meta: [
-      { title: "Metaverse Prizes — METARIZK" },
+      { title: "Metaverse Prizes — Ghazaly" },
       {
         name: "description",
         content:
           "Metaverse design awards won by Rizk Ghazaly across Decentraland, Sandstorm, Spatial and Monaverse from 2019 to 2025.",
       },
-      { property: "og:title", content: "Metaverse Prizes — METARIZK" },
+      { property: "og:title", content: "Metaverse Prizes — Ghazaly" },
       {
         property: "og:description",
         content:
@@ -265,8 +265,8 @@ function PrizesPage() {
 
       <header className="relative z-20 mx-auto max-w-[1200px] px-4 pt-4 sm:px-6 sm:pt-7">
         <div className="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-6">
-          <Link to="/" className="flex items-baseline gap-2" aria-label="METARIZK home">
-            <span className="font-serif text-xl font-medium">METARIZK</span>
+          <Link to="/" className="flex items-baseline gap-2" aria-label="Ghazaly home">
+            <span className="font-serif text-xl font-medium">Ghazaly</span>
             <span className="hidden text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">
               Architecture
             </span>
