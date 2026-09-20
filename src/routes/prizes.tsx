@@ -253,7 +253,7 @@ function PrizesPage() {
                 className={`grid gap-5 border-b border-border py-9 sm:items-start sm:gap-8 ${badge ? "sm:grid-cols-[7rem_8rem_1fr_auto]" : "sm:grid-cols-[8rem_1fr_auto]"}`}
               >
                 {badge ? (
-                  <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-border bg-surface sm:h-28 sm:w-28">
+                  <div className="flex h-30 w-30 items-center justify-center overflow-hidden rounded-full border border-border bg-surface sm:h-35 sm:w-35">
                     <img
                       src={badge.src}
                       alt={badge.alt}
