@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight, Award } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
+import cyberSirenBadge from "@/assets/prize-cybersiren.jpg.asset.json";
+import decentrapepeBadge from "@/assets/prize-decentrapepe-world.jpg.asset.json";
 
 export const Route = createFileRoute("/prizes")({
   head: () => ({
@@ -178,6 +180,17 @@ const prizes = [
   },
 ];
 
+const prizeBadges: Record<string, { src: string; alt: string }> = {
+  "DECENTRAPEPE World": {
+    src: decentrapepeBadge.url,
+    alt: "DECENTRAPEPE World Community Choice Award badge",
+  },
+  CyberSiren: {
+    src: cyberSirenBadge.url,
+    alt: "CyberSiren sixth-place award badge",
+  },
+};
+
 function PrizesPage() {
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
@@ -231,25 +244,42 @@ function PrizesPage() {
         </div>
 
         <ol className="border-t border-border">
-          {prizes.map((prize, index) => (
-            <li key={`${prize.date}-${prize.title}`} className="grid gap-5 border-b border-border py-9 sm:grid-cols-[8rem_1fr_auto] sm:items-start sm:gap-8">
-              <div>
-                <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
-                <p className="mt-2 text-sm font-semibold">{prize.date}</p>
-              </div>
-              <div className="max-w-2xl">
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <h3 className="font-serif text-2xl font-medium">{prize.title}</h3>
-                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">{prize.result}</span>
+          {prizes.map((prize, index) => {
+            const badge = prizeBadges[prize.title];
+
+            return (
+              <li
+                key={`${prize.date}-${prize.title}`}
+                className={`grid gap-5 border-b border-border py-9 sm:items-start sm:gap-8 ${badge ? "sm:grid-cols-[7rem_8rem_1fr_auto]" : "sm:grid-cols-[8rem_1fr_auto]"}`}
+              >
+                {badge ? (
+                  <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-border bg-surface sm:h-28 sm:w-28">
+                    <img
+                      src={badge.src}
+                      alt={badge.alt}
+                      className="h-full w-full object-cover"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  </div>
+                ) : null}
+                <div>
+                  <span className="font-mono text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
+                  <p className="mt-2 text-sm font-semibold">{prize.date}</p>
                 </div>
-                <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{prize.context}</p>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{prize.description}</p>
-              </div>
-              <a href={prize.proof} target="_blank" rel="noreferrer" className="text-link whitespace-nowrap sm:mt-1">
-                View proof <ArrowUpRight size={13} className="ml-1 inline" aria-hidden="true" />
-              </a>
-            </li>
-          ))}
+                <div className="max-w-2xl">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h3 className="font-serif text-2xl font-medium">{prize.title}</h3>
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">{prize.result}</span>
+                  </div>
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">{prize.context}</p>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{prize.description}</p>
+                </div>
+                <a href={prize.proof} target="_blank" rel="noreferrer" className="text-link whitespace-nowrap sm:mt-1">
+                  View proof <ArrowUpRight size={13} className="ml-1 inline" aria-hidden="true" />
+                </a>
+              </li>
+            );
+          })}
         </ol>
       </section>
 
