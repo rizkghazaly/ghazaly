@@ -1,11 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 import petalTower from "@/assets/petal-tower.jpg.asset.json";
 import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
+import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,7 +31,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const projects = [
+const externalProjects = [
   {
     title: "Petal Facade Tower",
     meta: "Parametric facade · Desert simulation",
@@ -61,7 +64,23 @@ const projects = [
   },
 ];
 
+const interiorProjects = [
+  {
+    title: "Beesline Offices",
+    meta: "Workplace interior · Brand environment",
+    location: "Lebanon",
+    description:
+      "A refined new workplace for the homegrown Lebanese skincare brand, balancing warm timber, pale stone and sculptural details with bright, flexible spaces for focused and collaborative work.",
+    image: beeslineOffices.url,
+    alt: "Beesline office reception with sculptural timber seating and a luminous display wall",
+    href: "/projects/beesline-offices",
+  },
+];
+
 function Index() {
+  const [projectCategory, setProjectCategory] = useState<"external" | "interior">("external");
+  const projects = projectCategory === "external" ? externalProjects : interiorProjects;
+
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
       <div className="ambient ambient-one" aria-hidden="true" />
@@ -132,11 +151,30 @@ function Index() {
       </div>
 
       <section id="work" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 py-20 sm:py-28">
-        <div className="mb-10 flex items-end justify-between">
-          <div><p className="section-index">01 — Selected work</p><h2 className="mt-3 font-serif text-4xl font-light">Selected projects</h2></div>
-          <span className="hidden text-sm text-muted-foreground sm:inline">Architecture · visualization · interiors</span>
+        <div className="mb-10 grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+          <div className="min-w-0"><p className="section-index">01 — Selected work</p><h2 className="mt-3 font-serif text-4xl font-light">Selected projects</h2></div>
+          <div className="glass grid grid-cols-2 rounded-xl p-1" aria-label="Project category">
+            <Button
+              type="button"
+              variant={projectCategory === "external" ? "default" : "ghost"}
+              aria-pressed={projectCategory === "external"}
+              onClick={() => setProjectCategory("external")}
+              className="h-10 rounded-lg px-4 shadow-none sm:px-6"
+            >
+              External designs
+            </Button>
+            <Button
+              type="button"
+              variant={projectCategory === "interior" ? "default" : "ghost"}
+              aria-pressed={projectCategory === "interior"}
+              onClick={() => setProjectCategory("interior")}
+              className="h-10 rounded-lg px-4 shadow-none sm:px-6"
+            >
+              Interior designs
+            </Button>
+          </div>
         </div>
-        <div className="grid gap-10 md:grid-cols-2 md:gap-8">
+        <div key={projectCategory} className="grid gap-10 md:grid-cols-2 md:gap-8">
           {projects.map((project, index) => (
             <article className="project group" key={project.title}>
               <div className="relative overflow-hidden rounded-3xl p-[2px]">

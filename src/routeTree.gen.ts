@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PrizesRouteImport } from './routes/prizes'
+import { Route as ProjectsBeeslineOfficesRouteImport } from './routes/projects/beesline-offices'
 import { Route as ProjectsCryptoBusinessCenterRouteImport } from './routes/projects/crypto-business-center'
 import { Route as ProjectsDesertSimulationRouteImport } from './routes/projects/desert-simulation'
 import { Route as ProjectsSenegalTowerRouteImport } from './routes/projects/senegal-tower'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const PrizesRoute = PrizesRouteImport.update({
   id: '/prizes',
   path: '/prizes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsBeeslineOfficesRoute = ProjectsBeeslineOfficesRouteImport.update({
+  id: '/projects/beesline-offices',
+  path: '/projects/beesline-offices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsCryptoBusinessCenterRoute =
@@ -46,6 +52,7 @@ const ProjectsSenegalTowerRoute = ProjectsSenegalTowerRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/prizes': typeof PrizesRoute
+  '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
@@ -53,6 +60,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/prizes': typeof PrizesRoute
+  '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/prizes': typeof PrizesRoute
+  '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
@@ -70,6 +79,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/prizes'
+    | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
     | '/projects/senegal-tower'
@@ -77,6 +87,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/prizes'
+    | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
     | '/projects/senegal-tower'
@@ -84,6 +95,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/prizes'
+    | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
     | '/projects/senegal-tower'
@@ -92,6 +104,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PrizesRoute: typeof PrizesRoute
+  ProjectsBeeslineOfficesRoute: typeof ProjectsBeeslineOfficesRoute
   ProjectsCryptoBusinessCenterRoute: typeof ProjectsCryptoBusinessCenterRoute
   ProjectsDesertSimulationRoute: typeof ProjectsDesertSimulationRoute
   ProjectsSenegalTowerRoute: typeof ProjectsSenegalTowerRoute
@@ -111,6 +124,13 @@ declare module '@tanstack/react-router' {
       path: '/prizes'
       fullPath: '/prizes'
       preLoaderRoute: typeof PrizesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/beesline-offices': {
+      id: '/projects/beesline-offices'
+      path: '/projects/beesline-offices'
+      fullPath: '/projects/beesline-offices'
+      preLoaderRoute: typeof ProjectsBeeslineOfficesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/crypto-business-center': {
@@ -140,6 +160,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PrizesRoute: PrizesRoute,
+  ProjectsBeeslineOfficesRoute: ProjectsBeeslineOfficesRoute,
   ProjectsCryptoBusinessCenterRoute: ProjectsCryptoBusinessCenterRoute,
   ProjectsDesertSimulationRoute: ProjectsDesertSimulationRoute,
   ProjectsSenegalTowerRoute: ProjectsSenegalTowerRoute,
