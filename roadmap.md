@@ -5,3 +5,4 @@
 - [x] Add Senegal Tower to Selected Projects with a dedicated four-render project page.
 
 - [x] Add medium circular badges to matching prize rows, starting with DECENTRAPEPE World and CyberSiren.
+- [ ] Divide the portfolio into external and interior designs and add Beesline Offices.
