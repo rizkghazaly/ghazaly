@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import beeslineReception from "@/assets/beesline-reception.jpg.asset.json";
 import beeslineOpenOffice from "@/assets/beesline-open-office.jpg.asset.json";
 import beeslineBoardroom from "@/assets/beesline-boardroom.jpg.asset.json";
+import beeslineGeneralPlan from "@/assets/beesline-general-plan.jpg.asset.json";
 import beeslinePrivateOffice from "@/assets/beesline-private-office.jpg.asset.json";
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -142,7 +143,49 @@ function BeeslineOffices() {
         </div>
       </section>
 
-      <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24">
+      <section className="relative z-10 border-y border-border bg-surface/40">
+        <div className="mx-auto grid max-w-[1200px] items-start gap-10 px-6 py-16 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16 lg:py-24">
+          <div className="lg:sticky lg:top-8">
+            <p className="section-index">03 — Plan &amp; distribution</p>
+            <h2 className="mt-3 max-w-md font-serif text-3xl font-light sm:text-4xl">
+              The complete workplace, seen as one composition
+            </h2>
+            <p className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground">
+              The general plan reveals how reception, private offices, meeting rooms, shared
+              workspaces and support areas are arranged around a connected central sequence. It
+              also shows the furniture layout, circulation and planted moments that shape the
+              experience beyond the individual renders.
+            </p>
+            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-border pt-6">
+              <div>
+                <dt className="stat-label mt-0">Drawing</dt>
+                <dd className="mt-2 text-sm text-foreground/90">General floor plan</dd>
+              </div>
+              <div>
+                <dt className="stat-label mt-0">Focus</dt>
+                <dd className="mt-2 text-sm text-foreground/90">Rooms &amp; furniture</dd>
+              </div>
+            </dl>
+          </div>
+
+          <figure>
+            <div className="glass overflow-hidden rounded-[26px] p-2.5 sm:p-3">
+              <img
+                src={beeslineGeneralPlan.url}
+                alt="General floor plan of the Beesline offices showing room distribution, furniture and circulation"
+                loading="lazy"
+                className="h-auto w-full rounded-[18px] object-contain"
+              />
+            </div>
+            <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">
+              Ground-floor organization — the complete office program and its relationship to the
+              central collaborative spaces.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24 pt-16 lg:pt-24">
         <p className="section-index mb-8">Gallery</p>
         <div className="grid items-start gap-10 md:grid-cols-2 md:gap-8">
           {rest.map((item) => (
