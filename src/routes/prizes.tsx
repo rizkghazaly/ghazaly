@@ -4,6 +4,16 @@ import { ArrowLeft, ArrowUpRight, Award } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import cyberSirenBadge from "@/assets/prize-cybersiren.jpg.asset.json";
 import decentrapepeBadge from "@/assets/prize-decentrapepe-world.jpg.asset.json";
+import spaceRaceBadge from "@/assets/prize-space-race.jpg.asset.json";
+import daoHqBadge from "@/assets/prize-dao-hq.jpg.asset.json";
+import spaceSuitShopBadge from "@/assets/prize-space-suit-shop.jpg.asset.json";
+import uglySweaterBadge from "@/assets/prize-ugly-sweater.jpg.asset.json";
+import matrixDanceBadge from "@/assets/prize-matrix-dance.jpg.asset.json";
+import lostFountainBadge from "@/assets/prize-lost-fountain.jpg.asset.json";
+import fordTPickupBadge from "@/assets/prize-ford-t-pickup.jpg.asset.json";
+import monArchZoneBadge from "@/assets/prize-monarch-zone.jpg.asset.json";
+import cyberPunkBuilderBadge from "@/assets/prize-cyberpunk-builder.jpg.asset.json";
+import saveXmasBadge from "@/assets/prize-save-xmas.jpg.asset.json";
 
 export const Route = createFileRoute("/prizes")({
   head: () => ({
