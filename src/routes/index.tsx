@@ -90,7 +90,8 @@ function Index() {
       <header className="relative z-20 mx-auto max-w-[1200px] px-4 pt-4 sm:px-6 sm:pt-7">
         <div className="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-6">
           <a href="#top" className="flex items-baseline gap-2" aria-label="METARIZK home">
-            <span className="font-serif text-xl font-medium">METARIZK</span>
+            <span className="font-serif text-xl font-medium">Ghazaly
+</span>
             <span className="hidden text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">Architecture</span>
           </a>
           <nav aria-label="Primary navigation" className="hidden items-center gap-8 text-[13px] font-medium text-muted-foreground md:flex">
