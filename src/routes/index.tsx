@@ -75,7 +75,7 @@ function Index() {
             <span className="hidden text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">Architecture</span>
           </a>
           <nav aria-label="Primary navigation" className="hidden items-center gap-8 text-[13px] font-medium text-muted-foreground md:flex">
-            <a href="#work" className="text-foreground transition-colors hover:text-primary">Work</a>
+             <a href="#work" className="text-foreground transition-colors hover:text-primary">Portfolio</a>
             <a href="#profile" className="transition-colors hover:text-foreground">Profile</a>
             <a href="#approach" className="transition-colors hover:text-foreground">Approach</a>
             <Link to="/prizes" className="transition-colors hover:text-foreground">Prizes</Link>
