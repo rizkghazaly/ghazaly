@@ -285,7 +285,7 @@ function PrizesPage() {
           <div>
             <p className="eyebrow"><Award size={13} aria-hidden="true" /> Metaverse recognition</p>
             <h1 className="mt-7 max-w-3xl font-serif text-[clamp(3rem,6vw,5rem)] font-light leading-[0.95]">
-              Prizes across<br /><em className="font-medium text-muted-foreground">virtual worlds.</em>
+              Prizes across<br /><em className="font-medium text-muted-foreground">virtual reality worlds.</em>
             </h1>
           </div>
           <p className="max-w-xl text-[15px] leading-7 text-muted-foreground lg:pb-1">
