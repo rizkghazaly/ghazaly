@@ -223,7 +223,7 @@ function Index() {
           <div><p className="section-index">04 — Contact</p><h2 className="mt-3 font-serif text-4xl font-light">Let’s create something memorable.</h2><p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">Open to architecture and visualization roles, collaborations and selected commissions.</p></div>
           <a href="https://www.metarizk.net/contact/" className="button-dark" rel="noreferrer">Start a conversation <ArrowUpRight size={15} aria-hidden="true" /></a>
         </div>
-        <div className="mx-auto flex max-w-[1200px] flex-col gap-3 border-t border-border px-6 py-7 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><span>© 2026 METARIZK — Architecture & Visualization</span><a href="https://www.youtube.com/channel/UCrIceUut8nFiL-AReB9cfjw/videos" target="_blank" rel="noreferrer" className="transition-colors hover:text-foreground">YouTube <ArrowUpRight className="inline" size={12} aria-hidden="true" /></a></div>
+         <div className="mx-auto flex max-w-[1200px] flex-col gap-3 border-t border-border px-6 py-7 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><span>© 2026 Ghazaly— Architecture & Visualization</span><a href="https://www.youtube.com/channel/UCrIceUut8nFiL-AReB9cfjw/videos" target="_blank" rel="noreferrer" className="transition-colors hover:text-foreground">YouTube <ArrowUpRight className="inline" size={12} aria-hidden="true" /></a></div>
       </footer>
     </main>
   );
