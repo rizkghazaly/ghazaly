@@ -199,6 +199,46 @@ const prizeBadges: Record<string, { src: string; alt: string }> = {
     src: cyberSirenBadge.url,
     alt: "CyberSiren sixth-place award badge",
   },
+  "Space Race": {
+    src: spaceRaceBadge.url,
+    alt: "Space Race second prize badge",
+  },
+  "Decentraland DAO HQ": {
+    src: daoHqBadge.url,
+    alt: "Decentraland DAO HQ second prize badge",
+  },
+  "Space-Suit Shop": {
+    src: spaceSuitShopBadge.url,
+    alt: "Space-Suit Shop first prize badge",
+  },
+  "Ugly Sweater Wearable": {
+    src: uglySweaterBadge.url,
+    alt: "Ugly Sweater Wearable third prize badge",
+  },
+  "The Matrix Dance — Bullet Time": {
+    src: matrixDanceBadge.url,
+    alt: "The Matrix Dance Bullet Time ninth prize badge",
+  },
+  "The Lost Fountain": {
+    src: lostFountainBadge.url,
+    alt: "The Lost Fountain third prize badge",
+  },
+  "Ford T Pickup Model (1908)": {
+    src: fordTPickupBadge.url,
+    alt: "Ford T Pickup Model 1908 fifth place badge",
+  },
+  "MonArch Zone": {
+    src: monArchZoneBadge.url,
+    alt: "MonArch Zone finalist badge",
+  },
+  "CyberPunk Builder Contest": {
+    src: cyberPunkBuilderBadge.url,
+    alt: "CyberPunk Builder Contest second prize badge",
+  },
+  "Save Xmas Game Jam": {
+    src: saveXmasBadge.url,
+    alt: "Save Xmas Game Jam community prize badge",
+  },
 };
 
 function PrizesPage() {
