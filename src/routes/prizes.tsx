@@ -14,6 +14,9 @@ import fordTPickupBadge from "@/assets/prize-ford-t-pickup.jpg.asset.json";
 import monArchZoneBadge from "@/assets/prize-monarch-zone.jpg.asset.json";
 import cyberPunkBuilderBadge from "@/assets/prize-cyberpunk-builder.jpg.asset.json";
 import saveXmasBadge from "@/assets/prize-save-xmas.jpg.asset.json";
+import rizkAmusementParkBadge from "@/assets/prize-rizk-amusement-park.jpg.asset.json";
+import astronautSuitBadge from "@/assets/prize-astronaut-suit.jpg.asset.json";
+import gameCityBadge from "@/assets/prize-game-city.jpg.asset.json";
 
 export const Route = createFileRoute("/prizes")({
   head: () => ({
@@ -238,6 +241,18 @@ const prizeBadges: Record<string, { src: string; alt: string }> = {
   "Save Xmas Game Jam": {
     src: saveXmasBadge.url,
     alt: "Save Xmas Game Jam community prize badge",
+  },
+  "Rizk Amusement Park": {
+    src: rizkAmusementParkBadge.url,
+    alt: "Rizk Amusement Park Decentraland World Create Contest badge",
+  },
+  "Decentraland Astronaut Suit": {
+    src: astronautSuitBadge.url,
+    alt: "Decentraland Astronaut Suit prize badge",
+  },
+  "Game City + Interactive Stairs Game": {
+    src: gameCityBadge.url,
+    alt: "ISG Games City Creator Contest badge",
   },
 };
 
