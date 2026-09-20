@@ -13,13 +13,13 @@ import ds55 from "@/assets/ds-55.jpg.asset.json";
 export const Route = createFileRoute("/projects/desert-simulation")({
   head: () => ({
     meta: [
-      { title: "Desert Simulation — METARIZK" },
+      { title: "Desert Simulation — Ghazaly" },
       {
         name: "description",
         content:
           "Parametric desert simulations by Rizk Ghazaly — Master Degree in Biodigital Architecture, UIC Barcelona, 2021.",
       },
-      { property: "og:title", content: "Desert Simulation — METARIZK" },
+      { property: "og:title", content: "Desert Simulation — Ghazaly" },
       {
         property: "og:description",
         content:
@@ -88,8 +88,8 @@ function DesertSimulation() {
 
       <header className="relative z-20 mx-auto max-w-[1200px] px-4 pt-4 sm:px-6 sm:pt-7">
         <div className="glass flex min-h-16 items-center justify-between rounded-2xl px-4 sm:px-6">
-          <Link to="/" className="flex items-baseline gap-2" aria-label="METARIZK home">
-            <span className="font-serif text-xl font-medium">METARIZK</span>
+          <Link to="/" className="flex items-baseline gap-2" aria-label="Ghazaly home">
+            <span className="font-serif text-xl font-medium">Ghazaly</span>
             <span className="hidden text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">
               Architecture
             </span>
