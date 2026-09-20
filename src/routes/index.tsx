@@ -9,6 +9,7 @@ import petalTower from "@/assets/petal-tower.jpg.asset.json";
 import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
+import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,6 +66,16 @@ const externalProjects = [
 ];
 
 const interiorProjects = [
+  {
+    title: "Mandara Villa",
+    meta: "Residential interior · Neo-Levantine revival",
+    location: "Lebanon",
+    description:
+      "A richly crafted villa centered on the traditional Mandara reception suite, combining Damascene and Ottoman-Lebanese influences through carved timber, limestone, mashrabiya screens and inlaid furnishings.",
+    image: mandaraVilla.url,
+    alt: "Mandara Villa reception and dining room with carved timber ceiling and crystal chandeliers",
+    href: "/projects/mandara-villa",
+  },
   {
     title: "Beesline Offices",
     meta: "Workplace interior · Brand environment",

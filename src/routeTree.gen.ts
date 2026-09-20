@@ -14,6 +14,7 @@ import { Route as PrizesRouteImport } from './routes/prizes'
 import { Route as ProjectsBeeslineOfficesRouteImport } from './routes/projects/beesline-offices'
 import { Route as ProjectsCryptoBusinessCenterRouteImport } from './routes/projects/crypto-business-center'
 import { Route as ProjectsDesertSimulationRouteImport } from './routes/projects/desert-simulation'
+import { Route as ProjectsMandaraVillaRouteImport } from './routes/projects/mandara-villa'
 import { Route as ProjectsSenegalTowerRouteImport } from './routes/projects/senegal-tower'
 
 const IndexRoute = IndexRouteImport.update({
@@ -43,6 +44,11 @@ const ProjectsDesertSimulationRoute =
     path: '/projects/desert-simulation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ProjectsMandaraVillaRoute = ProjectsMandaraVillaRouteImport.update({
+  id: '/projects/mandara-villa',
+  path: '/projects/mandara-villa',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsSenegalTowerRoute = ProjectsSenegalTowerRouteImport.update({
   id: '/projects/senegal-tower',
   path: '/projects/senegal-tower',
@@ -55,6 +61,7 @@ export interface FileRoutesByFullPath {
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
+  '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
 }
 export interface FileRoutesByTo {
@@ -63,6 +70,7 @@ export interface FileRoutesByTo {
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
+  '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
 }
 export interface FileRoutesById {
@@ -72,6 +80,7 @@ export interface FileRoutesById {
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
+  '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
 }
 export interface FileRouteTypes {
@@ -82,6 +91,7 @@ export interface FileRouteTypes {
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
+    | '/projects/mandara-villa'
     | '/projects/senegal-tower'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -90,6 +100,7 @@ export interface FileRouteTypes {
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
+    | '/projects/mandara-villa'
     | '/projects/senegal-tower'
   id:
     | '__root__'
@@ -98,6 +109,7 @@ export interface FileRouteTypes {
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
+    | '/projects/mandara-villa'
     | '/projects/senegal-tower'
   fileRoutesById: FileRoutesById
 }
@@ -107,6 +119,7 @@ export interface RootRouteChildren {
   ProjectsBeeslineOfficesRoute: typeof ProjectsBeeslineOfficesRoute
   ProjectsCryptoBusinessCenterRoute: typeof ProjectsCryptoBusinessCenterRoute
   ProjectsDesertSimulationRoute: typeof ProjectsDesertSimulationRoute
+  ProjectsMandaraVillaRoute: typeof ProjectsMandaraVillaRoute
   ProjectsSenegalTowerRoute: typeof ProjectsSenegalTowerRoute
 }
 
@@ -147,6 +160,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsDesertSimulationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/mandara-villa': {
+      id: '/projects/mandara-villa'
+      path: '/projects/mandara-villa'
+      fullPath: '/projects/mandara-villa'
+      preLoaderRoute: typeof ProjectsMandaraVillaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/senegal-tower': {
       id: '/projects/senegal-tower'
       path: '/projects/senegal-tower'
@@ -163,6 +183,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsBeeslineOfficesRoute: ProjectsBeeslineOfficesRoute,
   ProjectsCryptoBusinessCenterRoute: ProjectsCryptoBusinessCenterRoute,
   ProjectsDesertSimulationRoute: ProjectsDesertSimulationRoute,
+  ProjectsMandaraVillaRoute: ProjectsMandaraVillaRoute,
   ProjectsSenegalTowerRoute: ProjectsSenegalTowerRoute,
 }
 export const routeTree = rootRouteImport
