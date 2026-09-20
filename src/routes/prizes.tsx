@@ -242,6 +242,18 @@ const prizeBadges: Record<string, { src: string; alt: string }> = {
     src: saveXmasBadge.url,
     alt: "Save Xmas Game Jam community prize badge",
   },
+  "Rizk Amusement Park": {
+    src: rizkAmusementParkBadge.url,
+    alt: "Rizk Amusement Park Decentraland World Create Contest badge",
+  },
+  "Decentraland Astronaut Suit": {
+    src: astronautSuitBadge.url,
+    alt: "Decentraland Astronaut Suit prize badge",
+  },
+  "Game City + Interactive Stairs Game": {
+    src: gameCityBadge.url,
+    alt: "ISG Games City Creator Contest badge",
+  },
 };
 
 function PrizesPage() {
