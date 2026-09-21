@@ -78,7 +78,7 @@ const groups: CollectionGroup[] = [
     number: "02",
     title: "Bedrooms",
     introduction:
-      "Five distinct private-room studies respond to different personalities: warm and relaxed, dramatic and urban, sculptural, minimal, and classically comfortable.",
+      "Six distinct private-room studies respond to different personalities: warm and relaxed, dramatic and urban, sculptural, minimal, classically comfortable, and a rainforest studio retreat.",
     items: [
       {
         src: warmBedroom.url,
