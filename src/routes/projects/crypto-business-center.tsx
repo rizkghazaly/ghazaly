@@ -81,7 +81,14 @@ const facts = [
 
 function CryptoBusinessCenter() {
   const [hero, ...rest] = gallery;
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   if (!hero) return null;
+
+  const lightboxItems: LightboxItem[] = gallery.map((item) => ({
+    src: item.image,
+    alt: item.alt,
+    caption: item.caption,
+  }));
 
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">

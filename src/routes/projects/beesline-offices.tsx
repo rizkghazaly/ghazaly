@@ -70,7 +70,20 @@ const facts = [
 
 function BeeslineOffices() {
   const [hero, ...rest] = gallery;
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   if (!hero) return null;
+
+  const planItem: LightboxItem = {
+    src: beeslineGeneralPlan.url,
+    alt: "General floor plan of the Beesline offices showing room distribution, furniture and circulation",
+    caption:
+      "Ground-floor organization — the complete office program and its relationship to the central collaborative spaces.",
+  };
+  const lightboxItems: LightboxItem[] = [
+    { src: hero.image, alt: hero.alt, caption: hero.caption },
+    planItem,
+    ...rest.map((item) => ({ src: item.image, alt: item.alt, caption: item.caption })),
+  ];
 
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
