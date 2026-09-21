@@ -103,7 +103,7 @@ const projects: ResidentialProject[] = [
       {
         src: zebdelSunset.url,
         alt: "Sunset front view of Zebdel Al Mays Villa with arches, balconies and carved timber screens",
-        caption: "Front elevation — symmetrical balconies, broad arches and timber screens establish a formal identity.",
+        caption: "Back elevation — symmetrical balconies, broad arches and timber screens establish a formal identity.",
       },
     ],
   },
