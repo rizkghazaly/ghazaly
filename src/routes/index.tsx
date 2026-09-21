@@ -10,7 +10,7 @@ import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
-import mandaraSalon from "@/assets/mandara-formal-salon.jpg.asset.json";
+import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
@@ -142,10 +142,10 @@ const heroSlides = [
     caption: "Neo-Levantine interior",
   },
   {
-    image: mandaraSalon.url,
-    alt: "Mandara Villa formal salon with gilded carved ceiling, crystal chandeliers and mother-of-pearl seating",
-    title: "Mandara Villa",
-    caption: "Formal salon interior",
+    image: beeslineWorkspace.url,
+    alt: "Beesline open workspace with natural timber desks and soft daylight",
+    title: "Beesline Offices",
+    caption: "Skincare brand workspace",
   },
 ];
 
