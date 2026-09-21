@@ -5,7 +5,6 @@ import mandaraReceptionDining from "@/assets/mandara-reception-dining.jpg.asset.
 import mandaraMajlis from "@/assets/mandara-majlis.jpg.asset.json";
 import mandaraFormalSalon from "@/assets/mandara-formal-salon.jpg.asset.json";
 import mandaraStairHall from "@/assets/mandara-stair-hall.jpg.asset.json";
-import mandaraCourtyardArch from "@/assets/mandara-courtyard-arch.jpg.asset.json";
 import mandaraStoneLounge from "@/assets/mandara-stone-lounge.jpg.asset.json";
 import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
