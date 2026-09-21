@@ -50,7 +50,7 @@ type Branch = {
 const branches: Branch[] = [
   {
     number: "01",
-    title: "Town Center Mall",
+    title: "Joffrey's Town Center",
     location: "Jeddah, Saudi Arabia",
     description:
       "A full café interior developed from the general layout and design visualization through to construction. The planning balances open table seating, curved banquettes and a clear service sequence, while timber shelving and suspended lighting give the completed branch a warm, vertical character.",
