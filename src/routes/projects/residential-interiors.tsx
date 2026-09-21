@@ -110,6 +110,12 @@ const groups: CollectionGroup[] = [
         caption:
           "Bedroom suite — rich timber detailing and a private sitting area bring domestic warmth to a bright landscape-facing room.",
       },
+      {
+        src: jungleBedroom.url,
+        alt: "Jungle studio bedroom with exposed brick walls, warm timber ceiling and rainforest views",
+        caption:
+          "Jungle studio — a compact Costa Rican rainforest retreat where exposed brick, warm timber and clerestory glazing open the room to the surrounding trees.",
+      },
     ],
   },
   {
