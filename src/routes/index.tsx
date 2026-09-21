@@ -14,6 +14,7 @@ import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
+import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -80,6 +81,16 @@ const externalProjects = [
 ];
 
 const interiorProjects = [
+  {
+    title: "Residential Interiors Collection",
+    meta: "Private homes · Multi-country portfolio",
+    location: "Dubai · Lebanon · Costa Rica · Saudi Arabia",
+    description:
+      "A varied collection of living rooms, dining spaces, bedrooms and compact homes designed for different clients, tastes and requirements.",
+    image: residentialInteriors.url,
+    alt: "Warm residential dining and sitting areas connected through timber screens",
+    href: "/projects/residential-interiors",
+  },
   {
     title: "Joffrey’s Coffee & Tea Company",
     meta: "Café interiors · Branch development",

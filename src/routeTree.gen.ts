@@ -18,6 +18,7 @@ import { Route as ProjectsDesertSimulationRouteImport } from './routes/projects/
 import { Route as ProjectsJoffreysCoffeeRouteImport } from './routes/projects/joffreys-coffee'
 import { Route as ProjectsMandaraVillaRouteImport } from './routes/projects/mandara-villa'
 import { Route as ProjectsResidentialCollectionRouteImport } from './routes/projects/residential-collection'
+import { Route as ProjectsResidentialInteriorsRouteImport } from './routes/projects/residential-interiors'
 import { Route as ProjectsSenegalTowerRouteImport } from './routes/projects/senegal-tower'
 
 const IndexRoute = IndexRouteImport.update({
@@ -69,6 +70,12 @@ const ProjectsResidentialCollectionRoute =
     path: '/projects/residential-collection',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ProjectsResidentialInteriorsRoute =
+  ProjectsResidentialInteriorsRouteImport.update({
+    id: '/projects/residential-interiors',
+    path: '/projects/residential-interiors',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProjectsSenegalTowerRoute = ProjectsSenegalTowerRouteImport.update({
   id: '/projects/senegal-tower',
   path: '/projects/senegal-tower',
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/projects/joffreys-coffee': typeof ProjectsJoffreysCoffeeRoute
   '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/residential-collection': typeof ProjectsResidentialCollectionRoute
+  '/projects/residential-interiors': typeof ProjectsResidentialInteriorsRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
 }
 export interface FileRoutesByTo {
@@ -97,6 +105,7 @@ export interface FileRoutesByTo {
   '/projects/joffreys-coffee': typeof ProjectsJoffreysCoffeeRoute
   '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/residential-collection': typeof ProjectsResidentialCollectionRoute
+  '/projects/residential-interiors': typeof ProjectsResidentialInteriorsRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
 }
 export interface FileRoutesById {
@@ -110,6 +119,7 @@ export interface FileRoutesById {
   '/projects/joffreys-coffee': typeof ProjectsJoffreysCoffeeRoute
   '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/residential-collection': typeof ProjectsResidentialCollectionRoute
+  '/projects/residential-interiors': typeof ProjectsResidentialInteriorsRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
 }
 export interface FileRouteTypes {
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
     | '/projects/joffreys-coffee'
     | '/projects/mandara-villa'
     | '/projects/residential-collection'
+    | '/projects/residential-interiors'
     | '/projects/senegal-tower'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
     | '/projects/joffreys-coffee'
     | '/projects/mandara-villa'
     | '/projects/residential-collection'
+    | '/projects/residential-interiors'
     | '/projects/senegal-tower'
   id:
     | '__root__'
@@ -148,6 +160,7 @@ export interface FileRouteTypes {
     | '/projects/joffreys-coffee'
     | '/projects/mandara-villa'
     | '/projects/residential-collection'
+    | '/projects/residential-interiors'
     | '/projects/senegal-tower'
   fileRoutesById: FileRoutesById
 }
@@ -161,6 +174,7 @@ export interface RootRouteChildren {
   ProjectsJoffreysCoffeeRoute: typeof ProjectsJoffreysCoffeeRoute
   ProjectsMandaraVillaRoute: typeof ProjectsMandaraVillaRoute
   ProjectsResidentialCollectionRoute: typeof ProjectsResidentialCollectionRoute
+  ProjectsResidentialInteriorsRoute: typeof ProjectsResidentialInteriorsRoute
   ProjectsSenegalTowerRoute: typeof ProjectsSenegalTowerRoute
 }
 
@@ -229,6 +243,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsResidentialCollectionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/residential-interiors': {
+      id: '/projects/residential-interiors'
+      path: '/projects/residential-interiors'
+      fullPath: '/projects/residential-interiors'
+      preLoaderRoute: typeof ProjectsResidentialInteriorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/senegal-tower': {
       id: '/projects/senegal-tower'
       path: '/projects/senegal-tower'
@@ -249,6 +270,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsJoffreysCoffeeRoute: ProjectsJoffreysCoffeeRoute,
   ProjectsMandaraVillaRoute: ProjectsMandaraVillaRoute,
   ProjectsResidentialCollectionRoute: ProjectsResidentialCollectionRoute,
+  ProjectsResidentialInteriorsRoute: ProjectsResidentialInteriorsRoute,
   ProjectsSenegalTowerRoute: ProjectsSenegalTowerRoute,
 }
 export const routeTree = rootRouteImport
