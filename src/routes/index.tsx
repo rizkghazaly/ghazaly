@@ -158,7 +158,7 @@ function HeroShowcase() {
     return () => window.clearInterval(id);
   }, []);
 
-  const slide = heroSlides[active];
+  const slide = heroSlides[active] ?? heroSlides[0]!;
 
   return (
     <div className="hero-visual relative mx-auto w-full max-w-[520px] lg:mx-0">
