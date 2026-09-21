@@ -45,7 +45,7 @@ type Branch = {
   description: string;
   facts: Array<{ label: string; value: string }>;
   plan: LightboxItem;
-  groups: Array<{ label: string; items: BranchItem[] }>;
+  groups: Array<{ label: string; items: BranchItem[]; columns?: number }>;
 };
 
 const branches: Branch[] = [
