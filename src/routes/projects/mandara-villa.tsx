@@ -204,10 +204,10 @@ function MandaraVilla() {
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24 pt-16 lg:pt-24">
         <p className="section-index mb-8">Gallery</p>
-        <div className="columns-1 gap-8 md:columns-2">
+        <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
           {rest.map((item) => (
-            <figure key={item.image} className="group mb-8 break-inside-avoid">
-              <div className="glass overflow-hidden rounded-[26px] p-2.5">
+            <figure key={item.image} className="group glass rounded-[26px] p-2.5">
+              <div className="overflow-hidden rounded-[18px]">
                 <img
                   src={item.image}
                   alt={item.alt}
@@ -215,7 +215,7 @@ function MandaraVilla() {
                   className="h-auto w-full rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                 />
               </div>
-              <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">
+              <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">
                 {item.caption}
               </figcaption>
             </figure>
