@@ -119,7 +119,7 @@ function Index() {
           <nav aria-label="Primary navigation" className="hidden items-center gap-8 text-[13px] font-medium text-muted-foreground md:flex">
              <a href="#work" className="text-foreground transition-colors hover:text-primary">Portfolio</a>
             <a href="#profile" className="transition-colors hover:text-foreground">Profile</a>
-            <a href="#approach" className="transition-colors hover:text-foreground">Approach</a>
+            <a href="#approach" className="transition-colors hover:text-foreground">{"\n"}</a>
             <Link to="/prizes" className="transition-colors hover:text-foreground">Prizes</Link>
           </nav>
           <div className="flex items-center gap-2.5">
