@@ -178,8 +178,7 @@ const prizes = [
     context: "Layer One wearables collection · Decentraland",
     description:
       "An astronaut suit selected in a competition to create a new collection of Layer One wearables.",
-    proof:
-      "https://web.archive.org/web/20250620074450/https://opensea.io/bundles/ethereum/decentraland-astronaut-suit-6az",
+    proof: "https://opensea.io/bundles/ethereum/decentraland-astronaut-suit-6az",
   },
   {
     date: "Dec 2019",
