@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -121,6 +121,85 @@ const interiorProjects = [
   },
 ];
 
+const heroSlides = [
+  {
+    image: petalTower.url,
+    alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
+    title: "Petal Facade Tower",
+    caption: "Parametric facade study",
+  },
+  {
+    image: senegalTower.url,
+    alt: "Senegal Tower rising above a tree-lined urban street at dusk",
+    title: "Senegal Tower",
+    caption: "Climate-responsive tower",
+  },
+  {
+    image: mandaraVilla.url,
+    alt: "Mandara Villa reception and dining room with carved timber ceiling and crystal chandeliers",
+    title: "Mandara Villa",
+    caption: "Neo-Levantine interior",
+  },
+  {
+    image: cbcHero.url,
+    alt: "Three crystalline towers wrapped in white lattice structures framing a plaza",
+    title: "Crypto Business Center",
+    caption: "Parametric island towers",
+  },
+];
+
+function HeroShowcase() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setActive((current) => (current + 1) % heroSlides.length);
+    }, 4000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const slide = heroSlides[active] ?? heroSlides[0]!;
+
+  return (
+    <div className="hero-visual relative mx-auto w-full max-w-[520px] lg:mx-0">
+      <div className="prism absolute -inset-1.5 rounded-[28px] opacity-80" aria-hidden="true" />
+      <div className="glass relative rounded-[26px] p-2.5">
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px]">
+          {heroSlides.map((item, index) => (
+            <img
+              key={item.title}
+              src={item.image}
+              alt={item.alt}
+              width={1088}
+              height={1360}
+              fetchPriority={index === 0 ? "high" : "auto"}
+              aria-hidden={index !== active}
+              className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out ${
+                index === active ? "scale-100 opacity-100" : "scale-[1.04] opacity-0"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="glass absolute -bottom-6 -left-5 hidden rounded-2xl px-5 py-4 sm:block">
+        <span className="stat-label mt-0">Featured</span>
+        <p key={slide.title} className="mt-1 font-serif text-lg font-medium animate-fade-in">{slide.title}</p>
+        <p key={`${slide.title}-caption`} className="text-xs text-muted-foreground animate-fade-in">{slide.caption}</p>
+      </div>
+      <div className="absolute -bottom-6 right-2 hidden gap-1.5 sm:flex" aria-hidden="true">
+        {heroSlides.map((item, index) => (
+          <span
+            key={item.title}
+            className={`h-1 rounded-full transition-all duration-500 ${
+              index === active ? "w-6 bg-foreground/70" : "w-2 bg-foreground/25"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const [projectCategory, setProjectCategory] = useState<"external" | "interior">("external");
   const projects = projectCategory === "external" ? externalProjects : interiorProjects;
@@ -171,17 +250,7 @@ function Index() {
             </div>
           </div>
 
-          <div className="hero-visual relative mx-auto w-full max-w-[520px] lg:mx-0">
-            <div className="prism absolute -inset-1.5 rounded-[28px] opacity-80" aria-hidden="true" />
-            <div className="glass relative rounded-[26px] p-2.5">
-              <img src={petalTower.url} alt="Tower clad in thousands of overlapping bronze and silver petals on a city corner" width={1088} height={1360} fetchPriority="high" className="aspect-[4/5] w-full rounded-[20px] object-cover" />
-            </div>
-            <div className="glass absolute -bottom-6 -left-5 hidden rounded-2xl px-5 py-4 sm:block">
-              <span className="stat-label mt-0">Featured</span>
-              <p className="mt-1 font-serif text-lg font-medium">Petal Facade Tower</p>
-              <p className="text-xs text-muted-foreground">Parametric facade study</p>
-            </div>
-          </div>
+          <HeroShowcase />
         </div>
       </section>
 
