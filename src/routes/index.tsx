@@ -10,6 +10,7 @@ import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
+import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,6 +34,16 @@ export const Route = createFileRoute("/")({
 });
 
 const externalProjects = [
+  {
+    title: "Residential Collection",
+    meta: "Private villas · Multi-unit residence",
+    location: "Lebanon · Dubai",
+    description:
+      "Three residential studies presented through their plans and exterior views, from landscaped private villas to a multi-unit rental residence.",
+    image: residentialCollection.url,
+    alt: "Aerial view of a contemporary stone and timber villa with pool and landscaped grounds",
+    href: "/projects/residential-collection",
+  },
   {
     title: "Petal Facade Tower",
     meta: "Parametric facade · Desert simulation",
