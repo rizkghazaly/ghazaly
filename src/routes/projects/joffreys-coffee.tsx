@@ -11,6 +11,9 @@ import alEhsaPlan from "@/assets/joffreys-al-ehsa-plan.jpg.asset.json";
 import alEhsaExterior from "@/assets/joffreys-al-ehsa-exterior.jpg.asset.json";
 import alEhsaInteriorOne from "@/assets/joffreys-al-ehsa-interior-one.jpg.asset.json";
 import alEhsaInteriorTwo from "@/assets/joffreys-al-ehsa-interior-two.jpg.asset.json";
+import rivieraPlan from "@/assets/joffreys-riviera-plan.jpg.asset.json";
+import rivieraFacade from "@/assets/joffreys-riviera-facade.jpg.asset.json";
+import rivieraInterior from "@/assets/joffreys-riviera-interior.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -21,13 +24,13 @@ export const Route = createFileRoute("/projects/joffreys-coffee")({
       {
         name: "description",
         content:
-          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah and Al Ehsa, Saudi Arabia, presented through plans, design renders and completed interiors.",
+          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa and Dammam, Saudi Arabia, presented through plans, design renders and completed interiors.",
       },
       { property: "og:title", content: "Joffrey’s Coffee & Tea Company — Ghazaly" },
       {
         property: "og:description",
         content:
-          "Two Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
+          "Three Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -141,6 +144,45 @@ const branches: Branch[] = [
       },
     ],
   },
+  {
+    number: "03",
+    title: "Riviera Mall Café",
+    location: "Dammam, Saudi Arabia",
+    description:
+      "A double-height mall branch organized around one signature element: a decorative timber lattice wall that separates the seating hall from the stair and service zones without closing the space off. Its geometric star pattern carries the branch's identity from the storefront glazing through to the mezzanine.",
+    facts: [
+      { label: "Location", value: "Dammam, Saudi Arabia" },
+      { label: "Scope", value: "Interior design" },
+      { label: "Presentation", value: "Plan & architectural renders" },
+      { label: "Type", value: "Specialty coffee shop" },
+    ],
+    plan: {
+      src: rivieraPlan.url,
+      alt: "General layout plan of the Joffrey’s café in Riviera Mall, Dammam",
+      caption:
+        "General plan — open table seating leads along a timber route toward the cashier, kitchen island and storage at the rear.",
+    },
+    groups: [
+      {
+        label: "Storefront & interior design",
+        columns: 2,
+        items: [
+          {
+            src: rivieraFacade.url,
+            alt: "Storefront render of the Joffrey’s Riviera Mall café with timber lattice screen and mezzanine",
+            caption:
+              "Storefront — the lattice screen, spiral stair and glowing signage give the branch a strong presence inside the mall.",
+          },
+          {
+            src: rivieraInterior.url,
+            alt: "Interior render of the Dammam café with the decorative separation wall in timber and red",
+            caption:
+              "Interior view — the decorative separation wall in patterned timber and deep red defines the dining hall from the stair side.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const lightboxItems: LightboxItem[] = branches.flatMap((branch) => [
@@ -178,11 +220,11 @@ function JoffreysCoffee() {
           Joffrey&apos;s Coffee &amp; Tea Company
         </h1>
         <p className="mt-6 max-w-3xl text-[15px] leading-7 text-muted-foreground">
-          Joffrey&apos;s operates more than 50 specialty coffee outlets and a local roastery across Saudi Arabia through the AlGhazzawi Group&apos;s exclusive regional franchise. These two branches show my work developing café environments from plans and design visualization through renovation and completion.
+          Joffrey&apos;s operates more than 50 specialty coffee outlets and a local roastery across Saudi Arabia through the AlGhazzawi Group&apos;s exclusive regional franchise. These three branches show my work developing café environments from plans and design visualization through renovation and completion.
         </p>
         <dl className="mt-10 grid max-w-4xl grid-cols-1 gap-6 border-t border-border pt-8 sm:grid-cols-3">
           <div><dt className="stat-label mt-0">Client</dt><dd className="mt-2 text-sm text-foreground/90">Joffrey&apos;s Coffee &amp; Tea Company</dd></div>
-          <div><dt className="stat-label mt-0">Branches shown</dt><dd className="mt-2 text-sm text-foreground/90">Jeddah · Al Ehsa</dd></div>
+          <div><dt className="stat-label mt-0">Branches shown</dt><dd className="mt-2 text-sm text-foreground/90">Jeddah · Al Ehsa · Dammam</dd></div>
           <div><dt className="stat-label mt-0">Scope</dt><dd className="mt-2 text-sm text-foreground/90">Plans, interiors &amp; exterior renovation</dd></div>
         </dl>
       </section>
