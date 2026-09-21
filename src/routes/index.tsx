@@ -164,7 +164,7 @@ function Index() {
 
       <section id="work" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 py-20 sm:py-28">
         <div className="mb-10 grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
-          <div className="min-w-0"><p className="section-index">01 — Selected work</p><h2 className="mt-3 font-serif text-4xl font-light">Selected projects</h2></div>
+          <div className="min-w-0"><p className="section-index">{"\n"}</p><h2 className="mt-3 font-serif text-4xl font-light">{"\n\n\n"}</h2></div>
           <div className="glass grid grid-cols-2 rounded-xl p-1" aria-label="Project category">
             <Button
               type="button"
