@@ -36,6 +36,8 @@ export const Route = createFileRoute("/projects/joffreys-coffee")({
   component: JoffreysCoffee,
 });
 
+type BranchItem = LightboxItem & { tag?: string };
+
 type Branch = {
   number: string;
   title: string;
@@ -43,7 +45,7 @@ type Branch = {
   description: string;
   facts: Array<{ label: string; value: string }>;
   plan: LightboxItem;
-  groups: Array<{ label: string; items: LightboxItem[] }>;
+  groups: Array<{ label: string; items: BranchItem[] }>;
 };
 
 const branches: Branch[] = [
