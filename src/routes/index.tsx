@@ -46,14 +46,14 @@ const externalProjects = [
     href: "/projects/residential-collection",
   },
   {
-    title: "Petal Facade Tower",
-    meta: "Parametric facade · Desert simulation",
-    location: "UIC Barcelona, Spain — 2021",
+    title: "Senegal Tower",
+    meta: "Climate-responsive tower · Adaptive reuse",
+    location: "Senegal — 2020",
     description:
-      "A residential tower wrapped in thousands of rotating metal petals. The layered skin shades the glass core through the day and dissolves the building's mass against the sky.",
-    image: petalTower.url,
-    alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
-    href: "/projects/desert-simulation",
+      "A collaborative proposal pairing the adaptive reuse of historic buildings with a new planted tower shaped for Senegal's climate.",
+    image: senegalTower.url,
+    alt: "Senegal Tower rising above a tree-lined urban street at dusk",
+    href: "/projects/senegal-tower",
   },
   {
     title: "Crypto Business Center",
@@ -66,14 +66,14 @@ const externalProjects = [
     href: "/projects/crypto-business-center",
   },
   {
-    title: "Senegal Tower",
-    meta: "Climate-responsive tower · Adaptive reuse",
-    location: "Senegal — 2020",
+    title: "Petal Facade Tower",
+    meta: "Parametric facade · Desert simulation",
+    location: "UIC Barcelona, Spain — 2021",
     description:
-      "A collaborative proposal pairing the adaptive reuse of historic buildings with a new planted tower shaped for Senegal's climate.",
-    image: senegalTower.url,
-    alt: "Senegal Tower rising above a tree-lined urban street at dusk",
-    href: "/projects/senegal-tower",
+      "A residential tower wrapped in thousands of rotating metal petals. The layered skin shades the glass core through the day and dissolves the building's mass against the sky.",
+    image: petalTower.url,
+    alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
+    href: "/projects/desert-simulation",
   },
 ];
 
