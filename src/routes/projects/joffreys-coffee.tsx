@@ -144,6 +144,45 @@ const branches: Branch[] = [
       },
     ],
   },
+  {
+    number: "03",
+    title: "Riviera Mall Café",
+    location: "Dammam, Saudi Arabia",
+    description:
+      "A double-height mall branch organized around one signature element: a decorative timber lattice wall that separates the seating hall from the stair and service zones without closing the space off. Its geometric star pattern carries the branch's identity from the storefront glazing through to the mezzanine.",
+    facts: [
+      { label: "Location", value: "Dammam, Saudi Arabia" },
+      { label: "Scope", value: "Interior design" },
+      { label: "Presentation", value: "Plan & architectural renders" },
+      { label: "Type", value: "Specialty coffee shop" },
+    ],
+    plan: {
+      src: rivieraPlan.url,
+      alt: "General layout plan of the Joffrey’s café in Riviera Mall, Dammam",
+      caption:
+        "General plan — open table seating leads along a timber route toward the cashier, kitchen island and storage at the rear.",
+    },
+    groups: [
+      {
+        label: "Storefront & interior design",
+        columns: 2,
+        items: [
+          {
+            src: rivieraFacade.url,
+            alt: "Storefront render of the Joffrey’s Riviera Mall café with timber lattice screen and mezzanine",
+            caption:
+              "Storefront — the lattice screen, spiral stair and glowing signage give the branch a strong presence inside the mall.",
+          },
+          {
+            src: rivieraInterior.url,
+            alt: "Interior render of the Dammam café with the decorative separation wall in timber and red",
+            caption:
+              "Interior view — the decorative separation wall in patterned timber and deep red defines the dining hall from the stair side.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const lightboxItems: LightboxItem[] = branches.flatMap((branch) => [
