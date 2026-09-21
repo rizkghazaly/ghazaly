@@ -204,9 +204,9 @@ function MandaraVilla() {
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24 pt-16 lg:pt-24">
         <p className="section-index mb-8">Gallery</p>
-        <div className="grid items-start gap-10 md:grid-cols-2 md:gap-8">
+        <div className="columns-1 gap-8 md:columns-2">
           {rest.map((item) => (
-            <figure key={item.image} className="group">
+            <figure key={item.image} className="group mb-8 break-inside-avoid">
               <div className="glass overflow-hidden rounded-[26px] p-2.5">
                 <img
                   src={item.image}
