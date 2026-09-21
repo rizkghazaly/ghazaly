@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import mandaraReceptionDining from "@/assets/mandara-reception-dining.jpg.asset.json";
@@ -8,6 +9,7 @@ import mandaraStairHall from "@/assets/mandara-stair-hall.jpg.asset.json";
 import mandaraStoneLounge from "@/assets/mandara-stone-lounge.jpg.asset.json";
 import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Lightbox, type LightboxItem } from "@/components/lightbox";
 
 export const Route = createFileRoute("/projects/mandara-villa")({
   head: () => ({
