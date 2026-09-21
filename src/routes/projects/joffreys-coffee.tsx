@@ -120,6 +120,7 @@ const branches: Branch[] = [
     groups: [
       {
         label: "Exterior & interior design",
+        columns: 3,
         items: [
           {
             src: alEhsaExterior.url,
@@ -229,7 +230,13 @@ function JoffreysCoffee() {
                 return (
                   <div key={group.label} className="mt-12 lg:mt-16">
                     <p className="section-index mb-8">{group.label}</p>
-                    <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+                    <div
+                      className={
+                        group.columns === 3
+                          ? "grid grid-cols-1 items-start gap-6 md:grid-cols-3"
+                          : "grid grid-cols-1 items-start gap-8 md:grid-cols-2"
+                      }
+                    >
                       {group.items.map((item, itemIndex) => (
                         <figure key={item.src} className="group glass rounded-[26px] p-2.5">
                           <div className="overflow-hidden rounded-[18px]">
