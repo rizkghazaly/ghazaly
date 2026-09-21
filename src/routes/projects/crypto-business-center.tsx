@@ -138,7 +138,8 @@ function CryptoBusinessCenter() {
             src={hero.image}
             alt={hero.alt}
             fetchPriority="high"
-            className="aspect-[16/9] w-full rounded-[18px] object-cover"
+            onClick={() => setLightboxIndex(0)}
+            className="aspect-[16/9] w-full cursor-zoom-in rounded-[18px] object-cover"
           />
         </div>
         <p className="mt-4 text-sm text-muted-foreground">{hero.caption}</p>
@@ -169,14 +170,15 @@ function CryptoBusinessCenter() {
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24">
         <p className="section-index mb-8">Gallery</p>
         <div className="grid gap-10 md:grid-cols-2 md:gap-8">
-          {rest.map((item) => (
+          {rest.map((item, itemIndex) => (
             <figure key={item.image} className="group">
               <div className="glass rounded-[26px] p-2.5">
                 <img
                   src={item.image}
                   alt={item.alt}
                   loading="lazy"
-                  className="aspect-[4/3] w-full rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.015]"
+                  onClick={() => setLightboxIndex(1 + itemIndex)}
+                  className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.015]"
                 />
               </div>
               <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
@@ -184,6 +186,13 @@ function CryptoBusinessCenter() {
           ))}
         </div>
       </section>
+
+      <Lightbox
+        items={lightboxItems}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
 
       <footer className="relative z-10 border-t border-border bg-surface/50">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
