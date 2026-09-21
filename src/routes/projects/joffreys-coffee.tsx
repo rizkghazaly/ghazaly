@@ -241,7 +241,10 @@ function JoffreysCoffee() {
                               className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                             />
                           </div>
-                          <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
+                          {item.tag && (
+                            <p className="px-3 pt-4 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{item.tag}</p>
+                          )}
+                          <figcaption className="px-3 pb-3 pt-2 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
                         </figure>
                       ))}
                     </div>
