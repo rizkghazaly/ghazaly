@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import mandaraReceptionDining from "@/assets/mandara-reception-dining.jpg.asset.json";
@@ -8,6 +9,7 @@ import mandaraStairHall from "@/assets/mandara-stair-hall.jpg.asset.json";
 import mandaraStoneLounge from "@/assets/mandara-stone-lounge.jpg.asset.json";
 import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Lightbox, type LightboxItem } from "@/components/lightbox";
 
 export const Route = createFileRoute("/projects/mandara-villa")({
   head: () => ({
@@ -73,7 +75,20 @@ const facts = [
 
 function MandaraVilla() {
   const [hero, ...rest] = gallery;
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   if (!hero) return null;
+
+  const lightboxItems: LightboxItem[] = [
+    { src: hero.image, alt: hero.alt, caption: hero.caption },
+    {
+      src: mandaraGroundFloorPlan.url,
+      alt: "Ground-floor presentation plan of Mandara Villa showing rooms, furniture, pool, terraces and landscape",
+      caption:
+        "Ground-floor organization — the villa, formal approach and surrounding outdoor areas presented as a complete composition.",
+    },
+    ...rest.map((item) => ({ src: item.image, alt: item.alt, caption: item.caption })),
+  ];
+  const openLightbox = (index: number) => setLightboxIndex(index);
 
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
@@ -125,7 +140,8 @@ function MandaraVilla() {
             src={hero.image}
             alt={hero.alt}
             fetchPriority="high"
-            className="h-auto w-full rounded-[18px] object-contain"
+            onClick={() => openLightbox(0)}
+            className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain"
           />
         </div>
         <p className="mt-4 text-sm text-muted-foreground">{hero.caption}</p>
@@ -192,7 +208,8 @@ function MandaraVilla() {
                 src={mandaraGroundFloorPlan.url}
                 alt="Ground-floor presentation plan of Mandara Villa showing rooms, furniture, pool, terraces and landscape"
                 loading="lazy"
-                className="h-auto w-full rounded-[18px] object-contain"
+                onClick={() => openLightbox(1)}
+                className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain"
               />
             </div>
             <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">
@@ -206,14 +223,15 @@ function MandaraVilla() {
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24 pt-16 lg:pt-24">
         <p className="section-index mb-8">Gallery</p>
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-          {rest.map((item) => (
+          {rest.map((item, itemIndex) => (
             <figure key={item.image} className="group glass rounded-[26px] p-2.5">
               <div className="overflow-hidden rounded-[18px]">
                 <img
                   src={item.image}
                   alt={item.alt}
                   loading="lazy"
-                  className="h-auto w-full rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                  onClick={() => openLightbox(2 + itemIndex)}
+                  className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                 />
               </div>
               <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">
@@ -223,6 +241,14 @@ function MandaraVilla() {
           ))}
         </div>
       </section>
+
+      <Lightbox
+        items={lightboxItems}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
+
 
       <footer className="relative z-10 border-t border-border bg-surface/50">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
