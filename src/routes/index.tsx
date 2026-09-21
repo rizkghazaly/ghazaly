@@ -270,3 +270,43 @@ function Index() {
     </main>
   );
 }
+
+function Showreel() {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <div className="glass relative overflow-hidden rounded-[32px] p-2.5">
+      <div className="prism absolute -left-24 -bottom-24 size-72 opacity-50 blur-2xl" aria-hidden="true" />
+      <div className="relative aspect-video w-full overflow-hidden rounded-[24px] bg-surface">
+        {playing ? (
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/G8pqZ30OWzo?autoplay=1&rel=0"
+            title="Ghazaly — Architecture animation showreel"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0"
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            aria-label="Play the architecture animation showreel"
+            className="group absolute inset-0 h-full w-full cursor-pointer"
+          >
+            <img
+              src="https://i.ytimg.com/vi/G8pqZ30OWzo/maxresdefault.jpg"
+              alt="Still frame from the architecture animation showreel"
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            />
+            <span className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" aria-hidden="true" />
+            <span className="glass absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="ml-1 size-6 fill-foreground"><path d="M8 5v14l11-7z" /></svg>
+            </span>
+            <span className="stat-label absolute bottom-4 left-5 mt-0">Play — 1 min</span>
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
