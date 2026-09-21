@@ -10,6 +10,7 @@ import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
+import mandaraSalon from "@/assets/mandara-formal-salon.jpg.asset.json";
 import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
