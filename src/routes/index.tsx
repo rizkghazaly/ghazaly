@@ -141,10 +141,10 @@ const heroSlides = [
     caption: "Neo-Levantine interior",
   },
   {
-    image: cbcHero.url,
-    alt: "Three crystalline towers wrapped in white lattice structures framing a plaza",
-    title: "Crypto Business Center",
-    caption: "Parametric island towers",
+    image: mandaraSalon.url,
+    alt: "Mandara Villa formal salon with gilded carved ceiling, crystal chandeliers and mother-of-pearl seating",
+    title: "Mandara Villa",
+    caption: "Formal salon interior",
   },
 ];
 
