@@ -58,12 +58,6 @@ const gallery = [
       "Stair hall — patterned risers, carved panels and concealed lighting turn circulation into a crafted architectural sequence.",
   },
   {
-    image: mandaraCourtyardArch.url,
-    alt: "Multifoil arch with geometric mashrabiya framing a courtyard fountain at Mandara Villa",
-    caption:
-      "Courtyard threshold — a layered multifoil arch and mashrabiya screen frame the fountain beyond.",
-  },
-  {
     image: mandaraStoneLounge.url,
     alt: "Mandara Villa stone-vaulted lounge with fireplace and night terrace views",
     caption:
