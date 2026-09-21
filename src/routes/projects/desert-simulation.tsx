@@ -8,9 +8,7 @@ import dsNeww from "@/assets/ds-1_NEWW-2.jpg.asset.json";
 import ds1a from "@/assets/ds-1a-2.jpg.asset.json";
 import ds2 from "@/assets/ds-2-2.jpg.asset.json";
 import ds11 from "@/assets/ds-11-2.jpg.asset.json";
-import ds22 from "@/assets/ds-22-2.jpg.asset.json";
 import ds34 from "@/assets/ds-34-2.jpg.asset.json";
-import ds55 from "@/assets/ds-55.jpg.asset.json";
 
 export const Route = createFileRoute("/projects/desert-simulation")({
   head: () => ({
@@ -56,19 +54,9 @@ const gallery = [
     caption: "Cube matrix — a stacked lattice of glazed modules that grows in any direction.",
   },
   {
-    image: ds22.url,
-    alt: "Alternative arrangement of the stacked glass cube structure with cantilevered volumes",
-    caption: "Second cluster — testing how far the cantilevered volumes can reach.",
-  },
-  {
     image: ds34.url,
     alt: "Aerial masterplan of hexagonal green plates over red desert sand",
     caption: "Crop-circle formations — hexagonal green plates turning dune terrain into a liveable grid.",
-  },
-  {
-    image: ds55.url,
-    alt: "Parametric desert simulation study",
-    caption: "Desert simulation — parametric study of form against sand terrain.",
   },
 ];
 
