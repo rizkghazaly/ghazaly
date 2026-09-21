@@ -233,9 +233,20 @@ function Index() {
         </div>
       </section>
 
+      <section id="showreel" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 pb-20 sm:pb-28">
+        <div className="mb-10 max-w-2xl">
+          <p className="section-index">02 — Showreel</p>
+          <h2 className="mt-3 font-serif text-4xl font-light">Architecture in motion.</h2>
+          <p className="mt-4 text-sm leading-6 text-muted-foreground">
+            A one-minute selection of my animation work — parametric towers, climate studies and immersive environments brought to life.
+          </p>
+        </div>
+        <Showreel />
+      </section>
+
       <section id="profile" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 pb-20 sm:pb-28">
         <div className="grid gap-10 border-y border-border py-12 md:grid-cols-[0.8fr_1.2fr] md:py-16">
-          <div><p className="section-index">02 — Profile</p><h2 className="mt-3 font-serif text-4xl font-light">R. Ghazaly</h2><p className="mt-3 text-sm text-muted-foreground">Architect · Visualization Designer</p></div>
+          <div><p className="section-index">03 — Profile</p><h2 className="mt-3 font-serif text-4xl font-light">R. Ghazaly</h2><p className="mt-3 text-sm text-muted-foreground">Architect · Visualization Designer</p></div>
           <div><p className="max-w-2xl font-serif text-2xl font-light leading-snug text-foreground/90">A decade of exploring architecture across built, imagined and digital space—with a focus on atmosphere, clear ideas and memorable visual storytelling.</p>
             <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-3 text-sm text-muted-foreground sm:grid-cols-3"><span>Architectural design</span><span>Visualization</span><span>Parametric design</span><span>Commercial interiors</span><span>Sustainable design</span><span>Immersive environments</span></div>
           </div>
@@ -245,13 +256,13 @@ function Index() {
       <section id="approach" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 pb-24">
         <div className="glass relative overflow-hidden rounded-[32px] px-8 py-16 md:px-16 md:py-20">
           <div className="prism absolute -right-20 -top-24 size-72 opacity-60 blur-2xl" aria-hidden="true" />
-          <div className="relative max-w-3xl"><p className="section-index">03 — Approach</p><blockquote className="mt-6 font-serif text-[clamp(2rem,4vw,3.25rem)] font-light leading-[1.12]">“There are no limitations—if you can dream it, <em className="font-medium text-muted-foreground">you can build it.</em>”</blockquote><p className="mt-6 max-w-xl text-sm leading-6 text-muted-foreground">Every project begins with a clear spatial idea, then develops through material, light and an image strong enough to communicate the architecture.</p></div>
+          <div className="relative max-w-3xl"><p className="section-index">04 — Approach</p><blockquote className="mt-6 font-serif text-[clamp(2rem,4vw,3.25rem)] font-light leading-[1.12]">“There are no limitations—if you can dream it, <em className="font-medium text-muted-foreground">you can build it.</em>”</blockquote><p className="mt-6 max-w-xl text-sm leading-6 text-muted-foreground">Every project begins with a clear spatial idea, then develops through material, light and an image strong enough to communicate the architecture.</p></div>
         </div>
       </section>
 
       <footer id="contact" className="relative z-10 border-t border-border bg-surface/50">
         <div className="mx-auto grid max-w-[1200px] gap-8 px-6 py-14 sm:grid-cols-[1fr_auto] sm:items-end">
-          <div><p className="section-index">04 — Contact</p><h2 className="mt-3 font-serif text-4xl font-light">Let’s create something memorable.</h2><p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">Open to architecture and visualization roles, collaborations and selected commissions.</p></div>
+          <div><p className="section-index">05 — Contact</p><h2 className="mt-3 font-serif text-4xl font-light">Let’s create something memorable.</h2><p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">Open to architecture and visualization roles, collaborations and selected commissions.</p></div>
           <a href="https://www.metarizk.net/contact/" className="button-dark" rel="noreferrer">Start a conversation <ArrowUpRight size={15} aria-hidden="true" /></a>
         </div>
          <div className="mx-auto flex max-w-[1200px] flex-col gap-3 border-t border-border px-6 py-7 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><span>© 2026 Ghazaly— Architecture & Visualization</span><a href="https://www.youtube.com/channel/UCrIceUut8nFiL-AReB9cfjw/videos" target="_blank" rel="noreferrer" className="transition-colors hover:text-foreground">YouTube <ArrowUpRight className="inline" size={12} aria-hidden="true" /></a></div>
