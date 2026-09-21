@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import senegalStreet from "@/assets/senegal-tower-street.jpg.asset.json";
 import senegalCorner from "@/assets/senegal-tower-corner.jpg.asset.json";
 import senegalFacade from "@/assets/senegal-tower-facade.jpg.asset.json";
@@ -61,7 +63,14 @@ const facts = [
 
 function SenegalTower() {
   const [hero, ...rest] = gallery;
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   if (!hero) return null;
+
+  const lightboxItems: LightboxItem[] = gallery.map((item) => ({
+    src: item.image,
+    alt: item.alt,
+    caption: item.caption,
+  }));
 
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
@@ -112,7 +121,8 @@ function SenegalTower() {
             src={hero.image}
             alt={hero.alt}
             fetchPriority="high"
-            className="h-auto w-full rounded-[18px] object-contain"
+            onClick={() => setLightboxIndex(0)}
+            className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain"
           />
         </div>
         <p className="mt-4 text-sm text-muted-foreground">{hero.caption}</p>
@@ -144,14 +154,15 @@ function SenegalTower() {
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24">
         <p className="section-index mb-8">Gallery</p>
         <div className="grid items-start gap-10 md:grid-cols-2 md:gap-8">
-          {rest.map((item) => (
+          {rest.map((item, itemIndex) => (
             <figure key={item.image} className="group">
               <div className="glass overflow-hidden rounded-[26px] p-2.5">
                 <img
                   src={item.image}
                   alt={item.alt}
                   loading="lazy"
-                  className="h-auto w-full rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                  onClick={() => setLightboxIndex(1 + itemIndex)}
+                  className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                 />
               </div>
               <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
@@ -159,6 +170,13 @@ function SenegalTower() {
           ))}
         </div>
       </section>
+
+      <Lightbox
+        items={lightboxItems}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
 
       <footer className="relative z-10 border-t border-border bg-surface/50">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">

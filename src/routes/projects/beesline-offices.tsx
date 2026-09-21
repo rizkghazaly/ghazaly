@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import beeslineReception from "@/assets/beesline-reception.jpg.asset.json";
@@ -8,6 +9,7 @@ import beeslineGeneralPlan from "@/assets/beesline-general-plan.jpg.asset.json";
 import beeslinePrivateOffice from "@/assets/beesline-private-office.jpg.asset.json";
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Lightbox, type LightboxItem } from "@/components/lightbox";
 
 export const Route = createFileRoute("/projects/beesline-offices")({
   head: () => ({
@@ -68,7 +70,20 @@ const facts = [
 
 function BeeslineOffices() {
   const [hero, ...rest] = gallery;
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   if (!hero) return null;
+
+  const planItem: LightboxItem = {
+    src: beeslineGeneralPlan.url,
+    alt: "General floor plan of the Beesline offices showing room distribution, furniture and circulation",
+    caption:
+      "Ground-floor organization — the complete office program and its relationship to the central collaborative spaces.",
+  };
+  const lightboxItems: LightboxItem[] = [
+    { src: hero.image, alt: hero.alt, caption: hero.caption },
+    planItem,
+    ...rest.map((item) => ({ src: item.image, alt: item.alt, caption: item.caption })),
+  ];
 
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
@@ -115,7 +130,7 @@ function BeeslineOffices() {
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-10">
         <div className="glass relative overflow-hidden rounded-[26px] p-2.5">
-          <img src={hero.image} alt={hero.alt} fetchPriority="high" className="h-auto w-full rounded-[18px] object-contain" />
+          <img src={hero.image} alt={hero.alt} fetchPriority="high" onClick={() => setLightboxIndex(0)} className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain" />
         </div>
         <p className="mt-4 text-sm text-muted-foreground">{hero.caption}</p>
       </section>
@@ -174,7 +189,8 @@ function BeeslineOffices() {
                 src={beeslineGeneralPlan.url}
                 alt="General floor plan of the Beesline offices showing room distribution, furniture and circulation"
                 loading="lazy"
-                className="h-auto w-full rounded-[18px] object-contain"
+                onClick={() => setLightboxIndex(1)}
+                className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain"
               />
             </div>
             <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">
@@ -188,16 +204,23 @@ function BeeslineOffices() {
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24 pt-16 lg:pt-24">
         <p className="section-index mb-8">Gallery</p>
         <div className="grid items-start gap-10 md:grid-cols-2 md:gap-8">
-          {rest.map((item) => (
+          {rest.map((item, itemIndex) => (
             <figure key={item.image} className="group">
               <div className="glass overflow-hidden rounded-[26px] p-2.5">
-                <img src={item.image} alt={item.alt} loading="lazy" className="h-auto w-full rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]" />
+                <img src={item.image} alt={item.alt} loading="lazy" onClick={() => setLightboxIndex(2 + itemIndex)} className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]" />
               </div>
               <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
             </figure>
           ))}
         </div>
       </section>
+
+      <Lightbox
+        items={lightboxItems}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
 
       <footer className="relative z-10 border-t border-border bg-surface/50">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
