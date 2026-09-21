@@ -166,14 +166,22 @@ function MandaraVilla() {
               areas within the wider villa grounds. Terraces, planting, the pool and curved arrival
               route extend the interior sequence into the landscape.
             </p>
-            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-border pt-6">
+            <dl className="mt-8 grid grid-cols-1 gap-x-6 gap-y-5 border-t border-border pt-6 sm:grid-cols-2">
+              <div>
+                <dt className="stat-label mt-0">Floor plan area</dt>
+                <dd className="mt-2 text-sm text-foreground/90">≈ 400 m²</dd>
+              </div>
+              <div>
+                <dt className="stat-label mt-0">Gross ground footprint</dt>
+                <dd className="mt-2 text-sm text-foreground/90">510 m²</dd>
+              </div>
+              <div>
+                <dt className="stat-label mt-0">Walled site boundary</dt>
+                <dd className="mt-2 text-sm text-foreground/90">1,600 m²</dd>
+              </div>
               <div>
                 <dt className="stat-label mt-0">Drawing</dt>
                 <dd className="mt-2 text-sm text-foreground/90">Ground-floor plan</dd>
-              </div>
-              <div>
-                <dt className="stat-label mt-0">Focus</dt>
-                <dd className="mt-2 text-sm text-foreground/90">Rooms &amp; landscape</dd>
               </div>
             </dl>
           </div>
