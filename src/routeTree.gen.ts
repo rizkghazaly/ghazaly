@@ -15,6 +15,7 @@ import { Route as ProjectsBathroomShowroomRouteImport } from './routes/projects/
 import { Route as ProjectsBeeslineOfficesRouteImport } from './routes/projects/beesline-offices'
 import { Route as ProjectsCryptoBusinessCenterRouteImport } from './routes/projects/crypto-business-center'
 import { Route as ProjectsDesertSimulationRouteImport } from './routes/projects/desert-simulation'
+import { Route as ProjectsJoffreysCoffeeRouteImport } from './routes/projects/joffreys-coffee'
 import { Route as ProjectsMandaraVillaRouteImport } from './routes/projects/mandara-villa'
 import { Route as ProjectsResidentialCollectionRouteImport } from './routes/projects/residential-collection'
 import { Route as ProjectsSenegalTowerRouteImport } from './routes/projects/senegal-tower'
@@ -52,6 +53,11 @@ const ProjectsDesertSimulationRoute =
     path: '/projects/desert-simulation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ProjectsJoffreysCoffeeRoute = ProjectsJoffreysCoffeeRouteImport.update({
+  id: '/projects/joffreys-coffee',
+  path: '/projects/joffreys-coffee',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsMandaraVillaRoute = ProjectsMandaraVillaRouteImport.update({
   id: '/projects/mandara-villa',
   path: '/projects/mandara-villa',
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
+  '/projects/joffreys-coffee': typeof ProjectsJoffreysCoffeeRoute
   '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/residential-collection': typeof ProjectsResidentialCollectionRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByTo {
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
+  '/projects/joffreys-coffee': typeof ProjectsJoffreysCoffeeRoute
   '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/residential-collection': typeof ProjectsResidentialCollectionRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
+  '/projects/joffreys-coffee': typeof ProjectsJoffreysCoffeeRoute
   '/projects/mandara-villa': typeof ProjectsMandaraVillaRoute
   '/projects/residential-collection': typeof ProjectsResidentialCollectionRoute
   '/projects/senegal-tower': typeof ProjectsSenegalTowerRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
+    | '/projects/joffreys-coffee'
     | '/projects/mandara-villa'
     | '/projects/residential-collection'
     | '/projects/senegal-tower'
@@ -123,6 +133,7 @@ export interface FileRouteTypes {
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
+    | '/projects/joffreys-coffee'
     | '/projects/mandara-villa'
     | '/projects/residential-collection'
     | '/projects/senegal-tower'
@@ -134,6 +145,7 @@ export interface FileRouteTypes {
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
+    | '/projects/joffreys-coffee'
     | '/projects/mandara-villa'
     | '/projects/residential-collection'
     | '/projects/senegal-tower'
@@ -146,6 +158,7 @@ export interface RootRouteChildren {
   ProjectsBeeslineOfficesRoute: typeof ProjectsBeeslineOfficesRoute
   ProjectsCryptoBusinessCenterRoute: typeof ProjectsCryptoBusinessCenterRoute
   ProjectsDesertSimulationRoute: typeof ProjectsDesertSimulationRoute
+  ProjectsJoffreysCoffeeRoute: typeof ProjectsJoffreysCoffeeRoute
   ProjectsMandaraVillaRoute: typeof ProjectsMandaraVillaRoute
   ProjectsResidentialCollectionRoute: typeof ProjectsResidentialCollectionRoute
   ProjectsSenegalTowerRoute: typeof ProjectsSenegalTowerRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsDesertSimulationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/joffreys-coffee': {
+      id: '/projects/joffreys-coffee'
+      path: '/projects/joffreys-coffee'
+      fullPath: '/projects/joffreys-coffee'
+      preLoaderRoute: typeof ProjectsJoffreysCoffeeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/mandara-villa': {
       id: '/projects/mandara-villa'
       path: '/projects/mandara-villa'
@@ -226,6 +246,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsBeeslineOfficesRoute: ProjectsBeeslineOfficesRoute,
   ProjectsCryptoBusinessCenterRoute: ProjectsCryptoBusinessCenterRoute,
   ProjectsDesertSimulationRoute: ProjectsDesertSimulationRoute,
+  ProjectsJoffreysCoffeeRoute: ProjectsJoffreysCoffeeRoute,
   ProjectsMandaraVillaRoute: ProjectsMandaraVillaRoute,
   ProjectsResidentialCollectionRoute: ProjectsResidentialCollectionRoute,
   ProjectsSenegalTowerRoute: ProjectsSenegalTowerRoute,
