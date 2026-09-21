@@ -9,3 +9,4 @@
 - [x] Add the Beesline general floor plan with room and furniture distribution.
 - [x] Add Mandara Villa to Interior Designs with six renders and its ground-floor plan.
 - [x] Add the three-project Residential Collection with plans, renders and supplied area details.
+- [x] Add the two-branch Joffrey’s Coffee project with plans, design renders and completed photographs.

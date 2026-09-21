@@ -12,6 +12,7 @@ import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
 import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
+import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,6 +79,16 @@ const externalProjects = [
 ];
 
 const interiorProjects = [
+  {
+    title: "Joffrey’s Coffee & Tea Company",
+    meta: "Café interiors · Branch development",
+    location: "Jeddah & Al Ehsa, Saudi Arabia",
+    description:
+      "Two café branches developed for Joffrey’s regional network, bringing warm timber, precise lighting and customer-focused layouts from design plans and renders through to completed spaces.",
+    image: joffreysCoffee.url,
+    alt: "Completed Joffrey’s café interior with a timber display wall and suspended lighting",
+    href: "/projects/joffreys-coffee",
+  },
   {
     title: "Bathroom Showroom & Renovations",
     meta: "Retail showroom · Bathroom renovations",
