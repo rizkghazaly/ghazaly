@@ -69,32 +69,31 @@ const branches: Branch[] = [
     },
     groups: [
       {
-        label: "Before implementation · Design phase",
+        label: "Before & after — design phase and completion",
         items: [
           {
             src: townCenterDesignOne.url,
             alt: "Design render of the Town Center café lounge with concrete walls and suspended lights",
             caption: "Design study — a quiet lounge framed by concrete, timber shelving and suspended light lines.",
+            tag: "Before · Design phase",
+          },
+          {
+            src: townCenterCompletedOne.url,
+            alt: "Completed Town Center café seating area with concrete wall and suspended lighting",
+            caption: "After completion — the lighting composition and material palette carried through from the design phase.",
+            tag: "After · Built",
           },
           {
             src: townCenterDesignTwo.url,
             alt: "Design render of the Town Center café counter and tall timber display wall",
             caption: "Design study — the service counter and full-height timber display establish the branch’s main identity.",
-          },
-        ],
-      },
-      {
-        label: "After completion",
-        items: [
-          {
-            src: townCenterCompletedOne.url,
-            alt: "Completed Town Center café seating area with concrete wall and suspended lighting",
-            caption: "Completed interior — the lighting composition and material palette carried through from the design phase.",
+            tag: "Before · Design phase",
           },
           {
             src: townCenterCompletedTwo.url,
             alt: "Completed Town Center café with timber display wall and service counter",
-            caption: "Completed café — timber shelving, warm pendants and the service counter define the finished customer space.",
+            caption: "After completion — timber shelving, warm pendants and the service counter define the finished customer space.",
+            tag: "After · Built",
           },
         ],
       },
