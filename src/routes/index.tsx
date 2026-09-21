@@ -11,6 +11,7 @@ import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
 import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
+import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -77,6 +78,16 @@ const externalProjects = [
 ];
 
 const interiorProjects = [
+  {
+    title: "Bathroom Showroom & Renovations",
+    meta: "Retail showroom · Bathroom renovations",
+    location: "Lebanon",
+    description:
+      "A showroom designed to exhibit and sell bathroom equipment, jacuzzis, tiles, porcelain, ceramic and marble — followed by a continuing practice renovating private bathrooms.",
+    image: bathroomShowroom.url,
+    alt: "Retail bathroom showroom with sanitary ware displays, tile stands and a consultation desk",
+    href: "/projects/bathroom-showroom",
+  },
   {
     title: "Mandara Villa",
     meta: "Residential interior · Neo-Levantine revival",
