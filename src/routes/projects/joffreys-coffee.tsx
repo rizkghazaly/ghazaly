@@ -257,7 +257,7 @@ function JoffreysCoffee() {
                       alt={branch.plan.alt}
                       loading={branchIndex === 0 ? "eager" : "lazy"}
                       onClick={() => setLightboxIndex(branchOffset)}
-                      className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain"
+                      className="mx-auto h-auto max-h-[560px] w-auto max-w-full cursor-zoom-in rounded-[18px] object-contain"
                     />
                   </div>
                   <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{branch.plan.caption}</figcaption>
