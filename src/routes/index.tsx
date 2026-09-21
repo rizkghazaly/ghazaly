@@ -10,6 +10,7 @@ import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
+import mandaraSalon from "@/assets/mandara-formal-salon.jpg.asset.json";
 import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
@@ -141,10 +142,10 @@ const heroSlides = [
     caption: "Neo-Levantine interior",
   },
   {
-    image: cbcHero.url,
-    alt: "Three crystalline towers wrapped in white lattice structures framing a plaza",
-    title: "Crypto Business Center",
-    caption: "Parametric island towers",
+    image: mandaraSalon.url,
+    alt: "Mandara Villa formal salon with gilded carved ceiling, crystal chandeliers and mother-of-pearl seating",
+    title: "Mandara Villa",
+    caption: "Formal salon interior",
   },
 ];
 
