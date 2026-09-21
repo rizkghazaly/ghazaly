@@ -11,6 +11,9 @@ import alEhsaPlan from "@/assets/joffreys-al-ehsa-plan.jpg.asset.json";
 import alEhsaExterior from "@/assets/joffreys-al-ehsa-exterior.jpg.asset.json";
 import alEhsaInteriorOne from "@/assets/joffreys-al-ehsa-interior-one.jpg.asset.json";
 import alEhsaInteriorTwo from "@/assets/joffreys-al-ehsa-interior-two.jpg.asset.json";
+import rivieraPlan from "@/assets/joffreys-riviera-plan.jpg.asset.json";
+import rivieraFacade from "@/assets/joffreys-riviera-facade.jpg.asset.json";
+import rivieraInterior from "@/assets/joffreys-riviera-interior.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -21,13 +24,13 @@ export const Route = createFileRoute("/projects/joffreys-coffee")({
       {
         name: "description",
         content:
-          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah and Al Ehsa, Saudi Arabia, presented through plans, design renders and completed interiors.",
+          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa and Dammam, Saudi Arabia, presented through plans, design renders and completed interiors.",
       },
       { property: "og:title", content: "Joffrey’s Coffee & Tea Company — Ghazaly" },
       {
         property: "og:description",
         content:
-          "Two Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
+          "Three Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
