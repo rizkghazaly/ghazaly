@@ -49,7 +49,7 @@ type ResidentialProject = {
 const projects: ResidentialProject[] = [
   {
     number: "01",
-    title: "Faytroon Residential Project 1",
+    title: "Faytroon Residential Project ",
     location: "Lebanon",
     description:
       "A contemporary family residence composed as a series of warm stone and timber volumes. Sheltered terraces, roof decks and the pool court extend daily life into the landscape while preserving privacy around the home.",
