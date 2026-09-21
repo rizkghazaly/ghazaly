@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PrizesRouteImport } from './routes/prizes'
+import { Route as ProjectsBathroomShowroomRouteImport } from './routes/projects/bathroom-showroom'
 import { Route as ProjectsBeeslineOfficesRouteImport } from './routes/projects/beesline-offices'
 import { Route as ProjectsCryptoBusinessCenterRouteImport } from './routes/projects/crypto-business-center'
 import { Route as ProjectsDesertSimulationRouteImport } from './routes/projects/desert-simulation'
@@ -28,6 +29,12 @@ const PrizesRoute = PrizesRouteImport.update({
   path: '/prizes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsBathroomShowroomRoute =
+  ProjectsBathroomShowroomRouteImport.update({
+    id: '/projects/bathroom-showroom',
+    path: '/projects/bathroom-showroom',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProjectsBeeslineOfficesRoute = ProjectsBeeslineOfficesRouteImport.update({
   id: '/projects/beesline-offices',
   path: '/projects/beesline-offices',
@@ -65,6 +72,7 @@ const ProjectsSenegalTowerRoute = ProjectsSenegalTowerRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/prizes': typeof PrizesRoute
+  '/projects/bathroom-showroom': typeof ProjectsBathroomShowroomRoute
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
@@ -75,6 +83,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/prizes': typeof PrizesRoute
+  '/projects/bathroom-showroom': typeof ProjectsBathroomShowroomRoute
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
@@ -86,6 +95,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/prizes': typeof PrizesRoute
+  '/projects/bathroom-showroom': typeof ProjectsBathroomShowroomRoute
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
   '/projects/crypto-business-center': typeof ProjectsCryptoBusinessCenterRoute
   '/projects/desert-simulation': typeof ProjectsDesertSimulationRoute
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/prizes'
+    | '/projects/bathroom-showroom'
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/prizes'
+    | '/projects/bathroom-showroom'
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
@@ -118,6 +130,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/prizes'
+    | '/projects/bathroom-showroom'
     | '/projects/beesline-offices'
     | '/projects/crypto-business-center'
     | '/projects/desert-simulation'
@@ -129,6 +142,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PrizesRoute: typeof PrizesRoute
+  ProjectsBathroomShowroomRoute: typeof ProjectsBathroomShowroomRoute
   ProjectsBeeslineOfficesRoute: typeof ProjectsBeeslineOfficesRoute
   ProjectsCryptoBusinessCenterRoute: typeof ProjectsCryptoBusinessCenterRoute
   ProjectsDesertSimulationRoute: typeof ProjectsDesertSimulationRoute
@@ -151,6 +165,13 @@ declare module '@tanstack/react-router' {
       path: '/prizes'
       fullPath: '/prizes'
       preLoaderRoute: typeof PrizesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/bathroom-showroom': {
+      id: '/projects/bathroom-showroom'
+      path: '/projects/bathroom-showroom'
+      fullPath: '/projects/bathroom-showroom'
+      preLoaderRoute: typeof ProjectsBathroomShowroomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/beesline-offices': {
@@ -201,6 +222,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PrizesRoute: PrizesRoute,
+  ProjectsBathroomShowroomRoute: ProjectsBathroomShowroomRoute,
   ProjectsBeeslineOfficesRoute: ProjectsBeeslineOfficesRoute,
   ProjectsCryptoBusinessCenterRoute: ProjectsCryptoBusinessCenterRoute,
   ProjectsDesertSimulationRoute: ProjectsDesertSimulationRoute,
