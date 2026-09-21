@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import townCenterPlan from "@/assets/joffreys-town-center-plan.jpg.asset.json";
 import townCenterDesignOne from "@/assets/joffreys-town-center-design-one.jpg.asset.json";
 import townCenterDesignTwo from "@/assets/joffreys-town-center-design-two.jpg.asset.json";
-import townCenterCounter from "@/assets/joffreys-town-center-counter.jpg.asset.json";
 import townCenterCompletedOne from "@/assets/joffreys-town-center-completed-one.jpg.asset.json";
 import townCenterCompletedTwo from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
 import alEhsaPlan from "@/assets/joffreys-al-ehsa-plan.jpg.asset.json";
@@ -79,11 +78,6 @@ const branches: Branch[] = [
             src: townCenterDesignTwo.url,
             alt: "Design render of the Town Center café counter and tall timber display wall",
             caption: "Design study — the service counter and full-height timber display establish the branch’s main identity.",
-          },
-          {
-            src: townCenterCounter.url,
-            alt: "Design render of the Joffrey’s Town Center service counter and product display",
-            caption: "Counter study — layered timber panels, brick and planting organize the product and menu display.",
           },
         ],
       },
