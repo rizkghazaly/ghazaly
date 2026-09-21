@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import beeslineReception from "@/assets/beesline-reception.jpg.asset.json";
@@ -8,6 +9,7 @@ import beeslineGeneralPlan from "@/assets/beesline-general-plan.jpg.asset.json";
 import beeslinePrivateOffice from "@/assets/beesline-private-office.jpg.asset.json";
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Lightbox, type LightboxItem } from "@/components/lightbox";
 
 export const Route = createFileRoute("/projects/beesline-offices")({
   head: () => ({

@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import cbc1 from "@/assets/cbc-1.jpg.asset.json";
 import cbc2 from "@/assets/cbc-2.jpg.asset.json";
 import cbc3 from "@/assets/cbc-3.jpg.asset.json";

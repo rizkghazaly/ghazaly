@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import dsNeww from "@/assets/ds-1_NEWW-2.jpg.asset.json";
 import ds1a from "@/assets/ds-1a-2.jpg.asset.json";
 import ds2 from "@/assets/ds-2-2.jpg.asset.json";
