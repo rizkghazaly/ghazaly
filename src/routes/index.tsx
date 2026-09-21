@@ -215,7 +215,7 @@ function Index() {
 
       <section id="profile" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 pb-20 sm:pb-28">
         <div className="grid gap-10 border-y border-border py-12 md:grid-cols-[0.8fr_1.2fr] md:py-16">
-          <div><p className="section-index">02 — Profile</p><h2 className="mt-3 font-serif text-4xl font-light">Rizk Ghazaly</h2><p className="mt-3 text-sm text-muted-foreground">Architect · Visualization Designer</p></div>
+          <div><p className="section-index">02 — Profile</p><h2 className="mt-3 font-serif text-4xl font-light">R. Ghazaly</h2><p className="mt-3 text-sm text-muted-foreground">Architect · Visualization Designer</p></div>
           <div><p className="max-w-2xl font-serif text-2xl font-light leading-snug text-foreground/90">A decade of exploring architecture across built, imagined and digital space—with a focus on atmosphere, clear ideas and memorable visual storytelling.</p>
             <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-3 text-sm text-muted-foreground sm:grid-cols-3"><span>Architectural design</span><span>Visualization</span><span>Parametric design</span><span>Commercial interiors</span><span>Sustainable design</span><span>Immersive environments</span></div>
           </div>
