@@ -8,3 +8,4 @@
 - [x] Divide the portfolio into external and interior designs and add Beesline Offices.
 - [x] Add the Beesline general floor plan with room and furniture distribution.
 - [x] Add Mandara Villa to Interior Designs with six renders and its ground-floor plan.
+- [x] Add the three-project Residential Collection with plans, renders and supplied area details.
