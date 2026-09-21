@@ -10,6 +10,7 @@ import nightBedroom from "@/assets/residential-interiors-night-bedroom.jpg.asset
 import sculpturalBedroom from "@/assets/residential-interiors-sculptural-bedroom.jpg.asset.json";
 import cityBedroom from "@/assets/residential-interiors-city-bedroom.jpg.asset.json";
 import bedroomSuite from "@/assets/residential-interiors-bedroom-suite.jpg.asset.json";
+import jungleBedroom from "@/assets/residential-interiors-jungle-bedroom.jpg.asset.json";
 import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
 import compactKitchen from "@/assets/residential-interiors-compact-kitchen.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
