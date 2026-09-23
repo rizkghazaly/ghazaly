@@ -12,6 +12,7 @@ import bathroomMosaicSpa from "@/assets/bathroom-mosaic-spa.jpg.asset.json";
 import bathroomDarkMarble from "@/assets/bathroom-dark-marble.jpg.asset.json";
 import showroomJacuzziMotion from "@/assets/showroom-jacuzzi-motion.webm.asset.json";
 import showroomHallMotion from "@/assets/showroom-hall-motion.webm.asset.json";
+import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { Button } from "@/components/ui/button";
@@ -223,13 +224,12 @@ function BathroomShowroom() {
       </section>
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-10">
-        <div className="glass relative overflow-hidden rounded-[26px] p-2.5">
-          <img
-            src={showroomMain.url}
+        <div className="glass group relative overflow-hidden rounded-[26px] p-2.5">
+          <MotionPreview
+            image={showroomMain.url}
+            video={showroomMainMotion.url}
             alt="Retail showroom interior with sanitary ware displays, tile stands and a consultation desk"
-            fetchPriority="high"
-            onClick={() => setLightboxIndex(0)}
-            className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain"
+            onOpen={() => setLightboxIndex(0)}
           />
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
