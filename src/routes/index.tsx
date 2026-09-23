@@ -213,7 +213,7 @@ function HeroShowcase() {
 }
 
 function Index() {
-  const [projectCategory, setProjectCategory] = useState<"external" | "interior">("external");
+  const [projectCategory, setProjectCategory] = useState<"external" | "interior">("interior");
   const projects = projectCategory === "external" ? externalProjects : interiorProjects;
 
   return (
@@ -285,7 +285,7 @@ function Index() {
               onClick={() => setProjectCategory("external")}
               className="h-10 rounded-lg px-4 shadow-none sm:px-6"
             >
-              External designs
+              Exterior designs
             </Button>
             <Button
               type="button"
