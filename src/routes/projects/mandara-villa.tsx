@@ -11,6 +11,7 @@ import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset
 import mandaraMajlisMotion from "@/assets/mandara-majlis-motion.webm.asset.json";
 import mandaraFormalSalonMotion from "@/assets/mandara-formal-salon-motion.webm.asset.json";
 import mandaraStairHallMotion from "@/assets/mandara-stair-hall-motion.webm.asset.json";
+import mandaraStoneLoungeMotion from "@/assets/mandara-stone-lounge-motion.webm.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { Button } from "@/components/ui/button";
@@ -74,6 +75,7 @@ const gallery: GalleryItem[] = [
   },
   {
     image: mandaraStoneLounge.url,
+    video: mandaraStoneLoungeMotion.url,
     alt: "Mandara Villa stone-vaulted lounge with fireplace and night terrace views",
     caption:
       "Stone lounge — a quieter evening room pairs a vaulted stone shell with warm firelight and views to the terrace.",
