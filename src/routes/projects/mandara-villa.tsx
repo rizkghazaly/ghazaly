@@ -35,7 +35,14 @@ export const Route = createFileRoute("/projects/mandara-villa")({
   component: MandaraVilla,
 });
 
-const gallery = [
+type GalleryItem = {
+  image: string;
+  video?: string;
+  alt: string;
+  caption: string;
+};
+
+const gallery: GalleryItem[] = [
   {
     image: mandaraReceptionDining.url,
     alt: "Mandara Villa formal reception and dining room with carved timber ceilings and crystal chandeliers",
