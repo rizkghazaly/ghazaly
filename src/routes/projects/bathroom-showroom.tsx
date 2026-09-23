@@ -12,6 +12,7 @@ import bathroomMosaicSpa from "@/assets/bathroom-mosaic-spa.jpg.asset.json";
 import bathroomDarkMarble from "@/assets/bathroom-dark-marble.jpg.asset.json";
 import showroomJacuzziMotion from "@/assets/showroom-jacuzzi-motion.webm.asset.json";
 import showroomHallMotion from "@/assets/showroom-hall-motion.webm.asset.json";
+import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { Button } from "@/components/ui/button";
