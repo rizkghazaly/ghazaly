@@ -10,6 +10,7 @@ import mandaraStoneLounge from "@/assets/mandara-stone-lounge.jpg.asset.json";
 import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset.json";
 import mandaraMajlisMotion from "@/assets/mandara-majlis-motion.webm.asset.json";
 import mandaraFormalSalonMotion from "@/assets/mandara-formal-salon-motion.webm.asset.json";
+import mandaraStairHallMotion from "@/assets/mandara-stair-hall-motion.webm.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { Button } from "@/components/ui/button";
@@ -66,6 +67,7 @@ const gallery: GalleryItem[] = [
   },
   {
     image: mandaraStairHall.url,
+    video: mandaraStairHallMotion.url,
     alt: "Mandara Villa stair hall with patterned risers, carved wood panels and red drapery",
     caption:
       "Stair hall — patterned risers, carved panels and concealed lighting turn circulation into a crafted architectural sequence.",
