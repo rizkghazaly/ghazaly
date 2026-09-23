@@ -307,13 +307,22 @@ function BathroomShowroom() {
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
           {showroomViews.map((item, itemIndex) => (
             <figure key={item.image} className="group glass rounded-[26px] p-2.5">
-              <img
-                src={item.image}
-                alt={item.alt}
-                loading="lazy"
-                onClick={() => setLightboxIndex(2 + itemIndex)}
-                className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
-              />
+              {item.video ? (
+                <MotionPreview
+                  image={item.image}
+                  video={item.video}
+                  alt={item.alt}
+                  onOpen={() => setLightboxIndex(2 + itemIndex)}
+                />
+              ) : (
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  loading="lazy"
+                  onClick={() => setLightboxIndex(2 + itemIndex)}
+                  className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                />
+              )}
               <figcaption className="px-2 pb-1 pt-4 text-sm leading-6 text-muted-foreground">
                 {item.caption}
               </figcaption>
