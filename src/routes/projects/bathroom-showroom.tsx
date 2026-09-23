@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import showroomMain from "@/assets/showroom-main.jpg.asset.json";
 import showroomHall from "@/assets/showroom-hall.jpg.asset.json";
@@ -10,8 +10,10 @@ import bathroomSlateShower from "@/assets/bathroom-slate-shower.jpg.asset.json";
 import bathroomWalnutVanity from "@/assets/bathroom-walnut-vanity.jpg.asset.json";
 import bathroomMosaicSpa from "@/assets/bathroom-mosaic-spa.jpg.asset.json";
 import bathroomDarkMarble from "@/assets/bathroom-dark-marble.jpg.asset.json";
+import showroomJacuzziMotion from "@/assets/showroom-jacuzzi-motion.webm.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/bathroom-showroom")({
   head: () => ({
