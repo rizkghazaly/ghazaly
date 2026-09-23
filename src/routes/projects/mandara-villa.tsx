@@ -8,7 +8,7 @@ import mandaraFormalSalon from "@/assets/mandara-formal-salon.jpg.asset.json";
 import mandaraStairHall from "@/assets/mandara-stair-hall.jpg.asset.json";
 import mandaraStoneLounge from "@/assets/mandara-stone-lounge.jpg.asset.json";
 import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset.json";
-import mandaraMajlisMotion from "@/assets/mandara-majlis-motion-web.mp4.asset.json";
+import mandaraMajlisMotion from "@/assets/mandara-majlis-motion.webm.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { Button } from "@/components/ui/button";
