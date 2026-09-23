@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import mandaraReceptionDining from "@/assets/mandara-reception-dining.jpg.asset.json";
 import mandaraMajlis from "@/assets/mandara-majlis.jpg.asset.json";
@@ -8,8 +8,10 @@ import mandaraFormalSalon from "@/assets/mandara-formal-salon.jpg.asset.json";
 import mandaraStairHall from "@/assets/mandara-stair-hall.jpg.asset.json";
 import mandaraStoneLounge from "@/assets/mandara-stone-lounge.jpg.asset.json";
 import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset.json";
+import mandaraMajlisMotion from "@/assets/mandara-majlis-motion.webm.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/mandara-villa")({
   head: () => ({
@@ -33,7 +35,14 @@ export const Route = createFileRoute("/projects/mandara-villa")({
   component: MandaraVilla,
 });
 
-const gallery = [
+type GalleryItem = {
+  image: string;
+  video?: string;
+  alt: string;
+  caption: string;
+};
+
+const gallery: GalleryItem[] = [
   {
     image: mandaraReceptionDining.url,
     alt: "Mandara Villa formal reception and dining room with carved timber ceilings and crystal chandeliers",
@@ -42,6 +51,7 @@ const gallery = [
   },
   {
     image: mandaraMajlis.url,
+    video: mandaraMajlisMotion.url,
     alt: "Mandara Villa majlis with geometric ceiling panels, low seating and tall draped windows",
     caption:
       "Mandara salon — low-profile seating and framed daylight create an intimate setting for receiving guests.",
@@ -65,6 +75,74 @@ const gallery = [
       "Stone lounge — a quieter evening room pairs a vaulted stone shell with warm firelight and views to the terrace.",
   },
 ];
+
+type MotionPreviewProps = {
+  image: string;
+  video: string;
+  alt: string;
+  onOpen: () => void;
+};
+
+function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const play = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  const pause = (reset = false) => {
+    const element = videoRef.current;
+    if (!element) return;
+    element.pause();
+    if (reset) element.currentTime = 0;
+    setPlaying(false);
+  };
+
+  const toggle = () => {
+    if (playing) pause();
+    else void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-[18px]"
+      onMouseEnter={play}
+      onMouseLeave={() => pause(true)}
+      data-motion-preview
+    >
+      <video
+        ref={videoRef}
+        src={video}
+        poster={image}
+        aria-label={`${alt} — animated preview`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        onClick={onOpen}
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+        className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain"
+      />
+      <Button
+        type="button"
+        variant="secondary"
+        size="icon"
+        aria-label={playing ? "Pause animation" : "Play animation"}
+        title={playing ? "Pause animation" : "Play animation"}
+        onClick={(event) => {
+          event.stopPropagation();
+          toggle();
+        }}
+        className="glass absolute bottom-3 right-3 z-10 rounded-full md:opacity-0 md:transition-opacity md:group-hover:opacity-100 md:focus-visible:opacity-100"
+      >
+        {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+      </Button>
+    </div>
+  );
+}
 
 const facts = [
   { label: "Location", value: "Lebanon" },
@@ -225,15 +303,24 @@ function MandaraVilla() {
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
           {rest.map((item, itemIndex) => (
             <figure key={item.image} className="group glass rounded-[26px] p-2.5">
-              <div className="overflow-hidden rounded-[18px]">
-                <img
-                  src={item.image}
+              {item.video ? (
+                <MotionPreview
+                  image={item.image}
+                  video={item.video}
                   alt={item.alt}
-                  loading="lazy"
-                  onClick={() => openLightbox(2 + itemIndex)}
-                  className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                  onOpen={() => openLightbox(2 + itemIndex)}
                 />
-              </div>
+              ) : (
+                <div className="overflow-hidden rounded-[18px]">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    onClick={() => openLightbox(2 + itemIndex)}
+                    className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                  />
+                </div>
+              )}
               <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">
                 {item.caption}
               </figcaption>
