@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 import livingDining from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import formalDining from "@/assets/residential-interiors-formal-dining.jpg.asset.json";
 import openLiving from "@/assets/residential-interiors-open-living.jpg.asset.json";
+import scenicLiving from "@/assets/residential-interiors-scenic-living.jpg.asset.json";
 import warmBedroom from "@/assets/residential-interiors-warm-bedroom.jpg.asset.json";
 import warmBedroomMotion from "@/assets/residential-interiors-warm-bedroom-motion.webm.asset.json";
 import nightBedroom from "@/assets/residential-interiors-night-bedroom.jpg.asset.json";
@@ -55,8 +56,7 @@ const groups: CollectionGroup[] = [
     number: "01",
     title: "Living & dining",
     introduction:
-      "Three approaches to shared space—from a layered sequence of reception rooms to a formal marble dining room and an open contemporary living plan.",
-    columns: 3,
+      "Four approaches to shared space—from a layered sequence of reception rooms to a formal marble dining room and open contemporary living plans.",
     items: [
       {
         src: livingDining.url,
@@ -75,6 +75,12 @@ const groups: CollectionGroup[] = [
         alt: "Open-plan living, sitting and dining room with bronze screen and dark stone floor",
         caption:
           "Open living — a bronze screen gently separates the intimate sitting area from the larger lounge and dining zones.",
+      },
+      {
+        src: scenicLiving.url,
+        alt: "High-rise living room with grey lounge chairs, sculptural white shelving and skyline views",
+        caption:
+          "Skyline lounge — sculptural shelving and tailored grey seating frame a panoramic city view in polished stone and soft light.",
       },
     ],
   },
