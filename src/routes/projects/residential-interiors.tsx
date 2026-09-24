@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import livingDining from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import formalDining from "@/assets/residential-interiors-formal-dining.jpg.asset.json";
 import openLiving from "@/assets/residential-interiors-open-living.jpg.asset.json";
 import warmBedroom from "@/assets/residential-interiors-warm-bedroom.jpg.asset.json";
+import warmBedroomMotion from "@/assets/residential-interiors-warm-bedroom-motion.webm.asset.json";
 import nightBedroom from "@/assets/residential-interiors-night-bedroom.jpg.asset.json";
 import sculpturalBedroom from "@/assets/residential-interiors-sculptural-bedroom.jpg.asset.json";
 import cityBedroom from "@/assets/residential-interiors-city-bedroom.jpg.asset.json";
@@ -15,6 +16,7 @@ import compactLiving from "@/assets/residential-interiors-compact-living.jpg.ass
 import compactKitchen from "@/assets/residential-interiors-compact-kitchen.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/residential-interiors")({
   head: () => ({
@@ -38,12 +40,14 @@ export const Route = createFileRoute("/projects/residential-interiors")({
   component: ResidentialInteriors,
 });
 
+type CollectionItem = LightboxItem & { video?: string };
+
 type CollectionGroup = {
   number: string;
   title: string;
   introduction: string;
   columns?: 2 | 3;
-  items: LightboxItem[];
+  items: CollectionItem[];
 };
 
 const groups: CollectionGroup[] = [
@@ -82,6 +86,7 @@ const groups: CollectionGroup[] = [
     items: [
       {
         src: warmBedroom.url,
+        video: warmBedroomMotion.url,
         alt: "Warm modern bedroom with blue upholstered bed, timber floor and diagonal stone wall",
         caption:
           "Warm contemporary — soft blue upholstery and amber accents balance the strong diagonal wall and dark ceiling plane.",
@@ -141,6 +146,74 @@ const groups: CollectionGroup[] = [
 ];
 
 const lightboxItems = groups.flatMap((group) => group.items);
+
+type MotionPreviewProps = {
+  image: string;
+  video: string;
+  alt: string;
+  onOpen: () => void;
+};
+
+function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const play = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  const pause = (reset = false) => {
+    const element = videoRef.current;
+    if (!element) return;
+    element.pause();
+    if (reset) element.currentTime = 0;
+    setPlaying(false);
+  };
+
+  const toggle = () => {
+    if (playing) pause();
+    else void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-[18px]"
+      onMouseEnter={play}
+      onMouseLeave={() => pause(true)}
+      data-motion-preview
+    >
+      <video
+        ref={videoRef}
+        src={video}
+        poster={image}
+        aria-label={`${alt} — animated preview`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        onClick={onOpen}
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+        className="aspect-[4/3] h-auto w-full cursor-zoom-in rounded-[18px] object-cover"
+      />
+      <Button
+        type="button"
+        variant="secondary"
+        size="icon"
+        aria-label={playing ? "Pause animation" : "Play animation"}
+        title={playing ? "Pause animation" : "Play animation"}
+        onClick={(event) => {
+          event.stopPropagation();
+          toggle();
+        }}
+        className="glass absolute bottom-3 right-3 z-10 rounded-full md:opacity-0 md:transition-opacity md:group-hover:opacity-100 md:focus-visible:opacity-100"
+      >
+        {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+      </Button>
+    </div>
+  );
+}
 
 function ResidentialInteriors() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -213,13 +286,22 @@ function ResidentialInteriors() {
                   {group.items.map((item, itemIndex) => (
                     <figure key={item.src} className="group glass rounded-[26px] p-2.5">
                       <div className="overflow-hidden rounded-[18px]">
-                        <img
-                          src={item.src}
-                          alt={item.alt}
-                          loading="lazy"
-                          onClick={() => setLightboxIndex(groupOffset + itemIndex)}
-                          className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                        />
+                        {item.video ? (
+                          <MotionPreview
+                            image={item.src}
+                            video={item.video}
+                            alt={item.alt}
+                            onOpen={() => setLightboxIndex(groupOffset + itemIndex)}
+                          />
+                        ) : (
+                          <img
+                            src={item.src}
+                            alt={item.alt}
+                            loading="lazy"
+                            onClick={() => setLightboxIndex(groupOffset + itemIndex)}
+                            className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                          />
+                        )}
                       </div>
                       <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
                     </figure>
