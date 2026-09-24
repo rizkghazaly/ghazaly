@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import livingDining from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import formalDining from "@/assets/residential-interiors-formal-dining.jpg.asset.json";
 import openLiving from "@/assets/residential-interiors-open-living.jpg.asset.json";
 import warmBedroom from "@/assets/residential-interiors-warm-bedroom.jpg.asset.json";
+import warmBedroomMotion from "@/assets/residential-interiors-warm-bedroom-motion.webm.asset.json";
 import nightBedroom from "@/assets/residential-interiors-night-bedroom.jpg.asset.json";
 import sculpturalBedroom from "@/assets/residential-interiors-sculptural-bedroom.jpg.asset.json";
 import cityBedroom from "@/assets/residential-interiors-city-bedroom.jpg.asset.json";
@@ -15,6 +16,7 @@ import compactLiving from "@/assets/residential-interiors-compact-living.jpg.ass
 import compactKitchen from "@/assets/residential-interiors-compact-kitchen.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/residential-interiors")({
   head: () => ({
@@ -38,12 +40,14 @@ export const Route = createFileRoute("/projects/residential-interiors")({
   component: ResidentialInteriors,
 });
 
+type CollectionItem = LightboxItem & { video?: string };
+
 type CollectionGroup = {
   number: string;
   title: string;
   introduction: string;
   columns?: 2 | 3;
-  items: LightboxItem[];
+  items: CollectionItem[];
 };
 
 const groups: CollectionGroup[] = [
@@ -82,6 +86,7 @@ const groups: CollectionGroup[] = [
     items: [
       {
         src: warmBedroom.url,
+        video: warmBedroomMotion.url,
         alt: "Warm modern bedroom with blue upholstered bed, timber floor and diagonal stone wall",
         caption:
           "Warm contemporary — soft blue upholstery and amber accents balance the strong diagonal wall and dark ceiling plane.",
