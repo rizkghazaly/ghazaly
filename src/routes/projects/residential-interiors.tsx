@@ -147,6 +147,74 @@ const groups: CollectionGroup[] = [
 
 const lightboxItems = groups.flatMap((group) => group.items);
 
+type MotionPreviewProps = {
+  image: string;
+  video: string;
+  alt: string;
+  onOpen: () => void;
+};
+
+function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const play = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  const pause = (reset = false) => {
+    const element = videoRef.current;
+    if (!element) return;
+    element.pause();
+    if (reset) element.currentTime = 0;
+    setPlaying(false);
+  };
+
+  const toggle = () => {
+    if (playing) pause();
+    else void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-[18px]"
+      onMouseEnter={play}
+      onMouseLeave={() => pause(true)}
+      data-motion-preview
+    >
+      <video
+        ref={videoRef}
+        src={video}
+        poster={image}
+        aria-label={`${alt} — animated preview`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        onClick={onOpen}
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+        className="aspect-[4/3] h-auto w-full cursor-zoom-in rounded-[18px] object-cover"
+      />
+      <Button
+        type="button"
+        variant="secondary"
+        size="icon"
+        aria-label={playing ? "Pause animation" : "Play animation"}
+        title={playing ? "Pause animation" : "Play animation"}
+        onClick={(event) => {
+          event.stopPropagation();
+          toggle();
+        }}
+        className="glass absolute bottom-3 right-3 z-10 rounded-full md:opacity-0 md:transition-opacity md:group-hover:opacity-100 md:focus-visible:opacity-100"
+      >
+        {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+      </Button>
+    </div>
+  );
+}
+
 function ResidentialInteriors() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   let itemOffset = 0;
@@ -218,13 +286,22 @@ function ResidentialInteriors() {
                   {group.items.map((item, itemIndex) => (
                     <figure key={item.src} className="group glass rounded-[26px] p-2.5">
                       <div className="overflow-hidden rounded-[18px]">
-                        <img
-                          src={item.src}
-                          alt={item.alt}
-                          loading="lazy"
-                          onClick={() => setLightboxIndex(groupOffset + itemIndex)}
-                          className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                        />
+                        {item.video ? (
+                          <MotionPreview
+                            image={item.src}
+                            video={item.video}
+                            alt={item.alt}
+                            onOpen={() => setLightboxIndex(groupOffset + itemIndex)}
+                          />
+                        ) : (
+                          <img
+                            src={item.src}
+                            alt={item.alt}
+                            loading="lazy"
+                            onClick={() => setLightboxIndex(groupOffset + itemIndex)}
+                            className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                          />
+                        )}
                       </div>
                       <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
                     </figure>
