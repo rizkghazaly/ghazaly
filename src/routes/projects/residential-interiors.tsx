@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import livingDining from "@/assets/residential-interiors-living-dining.jpg.asset.json";
+import livingDiningMotion from "@/assets/residential-interiors-living-dining-motion.webm.asset.json";
 import formalDining from "@/assets/residential-interiors-formal-dining.jpg.asset.json";
 import openLiving from "@/assets/residential-interiors-open-living.jpg.asset.json";
 import scenicLiving from "@/assets/residential-interiors-scenic-living.jpg.asset.json";
@@ -63,6 +64,7 @@ const groups: CollectionGroup[] = [
     items: [
       {
         src: livingDining.url,
+        video: livingDiningMotion.url,
         alt: "Warm residential dining and sitting areas connected through timber screens",
         caption:
           "Layered reception rooms — walnut, soft upholstery and geometric screens create depth while keeping each social area connected.",
@@ -164,9 +166,10 @@ type MotionPreviewProps = {
   video: string;
   alt: string;
   onOpen: () => void;
+  featured?: boolean;
 };
 
-function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
+function MotionPreview({ image, video, alt, onOpen, featured = false }: MotionPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -207,7 +210,7 @@ function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
         onClick={onOpen}
         onPause={() => setPlaying(false)}
         onPlay={() => setPlaying(true)}
-        className="aspect-[4/3] h-auto w-full cursor-zoom-in rounded-[18px] object-cover"
+        className={`${featured ? "aspect-[16/9]" : "aspect-[4/3]"} h-auto w-full cursor-zoom-in rounded-[18px] object-cover`}
       />
       <Button
         type="button"
@@ -267,13 +270,13 @@ function ResidentialInteriors() {
       </section>
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-16">
-        <div className="glass relative overflow-hidden rounded-[26px] p-2.5">
-          <img
-            src={livingDining.url}
+        <div className="group glass relative overflow-hidden rounded-[26px] p-2.5">
+          <MotionPreview
+            image={livingDining.url}
+            video={livingDiningMotion.url}
             alt="Warm residential dining and sitting areas connected through timber screens"
-            fetchPriority="high"
-            onClick={() => setLightboxIndex(0)}
-            className="aspect-[16/9] w-full cursor-zoom-in rounded-[18px] object-cover"
+            onOpen={() => setLightboxIndex(0)}
+            featured
           />
         </div>
         <p className="mt-4 max-w-3xl text-sm leading-6 text-muted-foreground">
