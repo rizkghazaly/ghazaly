@@ -6,7 +6,7 @@ import exteriorSteps from "@/assets/san-carlos-cottage-exterior-steps.jpg.asset.
 import twinCabins from "@/assets/san-carlos-cottage-twin-cabins.jpg.asset.json";
 import terrace from "@/assets/san-carlos-cottage-terrace.jpg.asset.json";
 import studioInterior from "@/assets/san-carlos-cottage-studio-interior.jpg.asset.json";
-import bedroomView from "@/assets/san-carlos-cottage-bedroom-view.jpg.asset.json";
+import sanCarlosBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
 import kitchenAlcove from "@/assets/san-carlos-cottage-kitchen-alcove.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -80,7 +80,7 @@ const groups: Group[] = [
           "Studio interior — a stone feature wall and the exposed roof structure give the compact room warmth and character.",
       },
       {
-        src: bedroomView.url,
+        src: sanCarlosBedroom.url,
         alt: "Bedroom with full-height glazing, clerestory windows and a stone feature wall facing the jungle",
         caption:
           "Bedroom — full-height glazing and a band of clerestory windows bring the surrounding jungle directly into the room.",
@@ -138,8 +138,8 @@ function SanCarlosCottage() {
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-16">
         <div className="glass overflow-hidden rounded-[26px] p-2.5">
           <img
-            src={exteriorSteps.url}
-            alt="Dark clad cottage with a wide timber roof reached by floating stone steps on a green hillside"
+            src={sanCarlosBedroom.url}
+            alt="Jungle cottage bedroom with stone walls, warm timber ceiling and full-height glazing opening to the trees"
             loading="lazy"
             onClick={() => setLightboxIndex(0)}
             className="aspect-[16/9] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
