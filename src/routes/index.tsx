@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowDownRight, ArrowUpRight, Pause, Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -13,6 +13,7 @@ import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
+import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
 import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 
@@ -37,7 +38,18 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const externalProjects = [
+type ProjectEntry = {
+  title: string;
+  meta: string;
+  location: string;
+  description: string;
+  image: string;
+  alt: string;
+  href: string;
+  video?: string;
+};
+
+const externalProjects: ProjectEntry[] = [
   {
     title: "Residential Collection",
     meta: "Private villas · Multi-unit residence",
@@ -80,7 +92,7 @@ const externalProjects = [
   },
 ];
 
-const interiorProjects = [
+const interiorProjects: ProjectEntry[] = [
   {
     title: "Residential Interiors Collection",
     meta: "Private homes · Multi-country portfolio",
@@ -108,6 +120,7 @@ const interiorProjects = [
     description:
       "A showroom designed to exhibit and sell bathroom equipment, jacuzzis, tiles, porcelain, ceramic and marble — followed by a continuing practice renovating private bathrooms.",
     image: bathroomShowroom.url,
+    video: showroomMainMotion.url,
     alt: "Retail bathroom showroom with sanitary ware displays, tile stands and a consultation desk",
     href: "/projects/bathroom-showroom",
   },
@@ -212,6 +225,73 @@ function HeroShowcase() {
   );
 }
 
+type CardMotionPreviewProps = {
+  image: string;
+  video: string;
+  alt: string;
+};
+
+function CardMotionPreview({ image, video, alt }: CardMotionPreviewProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const play = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  const pause = (reset = false) => {
+    const element = videoRef.current;
+    if (!element) return;
+    element.pause();
+    if (reset) element.currentTime = 0;
+    setPlaying(false);
+  };
+
+  const toggle = () => {
+    if (playing) pause();
+    else void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-[22px]"
+      onMouseEnter={play}
+      onMouseLeave={() => pause(true)}
+      data-motion-preview
+    >
+      <video
+        ref={videoRef}
+        src={video}
+        poster={image}
+        aria-label={`${alt} — animated preview`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+        className="aspect-[4/3] w-full rounded-[22px] object-cover"
+      />
+      <Button
+        type="button"
+        variant="secondary"
+        size="icon"
+        aria-label={playing ? "Pause animation" : "Play animation"}
+        title={playing ? "Pause animation" : "Play animation"}
+        onClick={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          toggle();
+        }}
+        className="glass absolute bottom-3 right-3 z-10 rounded-full md:opacity-0 md:transition-opacity md:group-hover:opacity-100 md:focus-visible:opacity-100"
+      >
+        {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+      </Button>
+    </div>
+  );
+}
+
 function Index() {
   const [projectCategory, setProjectCategory] = useState<"external" | "interior">("interior");
   const projects = projectCategory === "external" ? externalProjects : interiorProjects;
@@ -305,7 +385,11 @@ function Index() {
                 <div className="prism absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
                 {"href" in project && project.href ? (
                   <Link to={project.href} aria-label={`View ${project.title} project`}>
-                    <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                    {project.video ? (
+                      <CardMotionPreview image={project.image} video={project.video} alt={project.alt} />
+                    ) : (
+                      <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                    )}
                   </Link>
                 ) : (
                   <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
