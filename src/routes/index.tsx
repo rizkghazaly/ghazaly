@@ -19,6 +19,7 @@ import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asse
 import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import residentialInteriorsMotion from "@/assets/residential-interiors-living-dining-motion.webm.asset.json";
 import sanCarlosCottageBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
+import sanCarlosCottageMotion from "@/assets/san-carlos-bedroom-motion.webm.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -114,6 +115,7 @@ const interiorProjects: ProjectEntry[] = [
     description:
       "A compact jungle cottage in San Carlos with dark clad walls, deep timber roofs and rooms that open fully to the surrounding greenery.",
     image: sanCarlosCottageBedroom.url,
+    video: sanCarlosCottageMotion.url,
     alt: "Jungle cottage bedroom with stone walls, warm timber ceiling and full-height glazing opening to the trees",
     href: "/projects/san-carlos-cottage",
   },
