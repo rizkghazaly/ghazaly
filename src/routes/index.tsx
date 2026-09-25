@@ -17,6 +17,7 @@ import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
 import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
 import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
+import residentialInteriorsMotion from "@/assets/residential-interiors-living-dining-motion.webm.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -101,6 +102,7 @@ const interiorProjects: ProjectEntry[] = [
     description:
       "A varied collection of living rooms, dining spaces, bedrooms and compact homes designed for different clients, tastes and requirements.",
     image: residentialInteriors.url,
+    video: residentialInteriorsMotion.url,
     alt: "Warm residential dining and sitting areas connected through timber screens",
     href: "/projects/residential-interiors",
   },
