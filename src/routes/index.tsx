@@ -38,7 +38,18 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const externalProjects = [
+type ProjectEntry = {
+  title: string;
+  meta: string;
+  location: string;
+  description: string;
+  image: string;
+  alt: string;
+  href: string;
+  video?: string;
+};
+
+const externalProjects: ProjectEntry[] = [
   {
     title: "Residential Collection",
     meta: "Private villas · Multi-unit residence",
@@ -81,7 +92,7 @@ const externalProjects = [
   },
 ];
 
-const interiorProjects = [
+const interiorProjects: ProjectEntry[] = [
   {
     title: "Residential Interiors Collection",
     meta: "Private homes · Multi-country portfolio",
@@ -374,7 +385,7 @@ function Index() {
                 <div className="prism absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
                 {"href" in project && project.href ? (
                   <Link to={project.href} aria-label={`View ${project.title} project`}>
-                    {"video" in project && project.video ? (
+                    {project.video ? (
                       <CardMotionPreview image={project.image} video={project.video} alt={project.alt} />
                     ) : (
                       <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
