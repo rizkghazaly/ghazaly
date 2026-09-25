@@ -43,7 +43,7 @@ type Group = {
 
 const groups: Group[] = [
   {
-    number: "01",
+    number: "02",
     title: "On the hillside",
     introduction:
       "The cottage sits on a sloping site. Floating stone steps climb through the planting to the entrance while dark, slender cladding keeps the building quiet against the greenery.",
@@ -69,7 +69,7 @@ const groups: Group[] = [
     ],
   },
   {
-    number: "02",
+    number: "03",
     title: "Inside",
     introduction:
       "Compact, calm rooms carry the outside in: a stone feature wall and exposed timber roof structure inside, with full-height glazing and clerestory bands framing the jungle beyond.",
@@ -158,45 +158,10 @@ function SanCarlosCottage() {
         </p>
       </section>
 
-      {groups.map((group, groupIndex) => {
-        const groupOffset = groups
-          .slice(0, groupIndex)
-          .reduce((sum, g) => sum + g.items.length, 0);
-
-
-        return (
-          <section key={group.number} className="relative z-10 border-t border-border">
-            <div className="mx-auto max-w-[1200px] px-6 py-16 lg:py-24">
-              <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] lg:gap-14">
-                <div className="lg:sticky lg:top-8">
-                  <p className="section-index">{group.number} — Selected studies</p>
-                  <h2 className="mt-3 font-serif text-3xl font-light sm:text-4xl">{group.title}</h2>
-                  <p className="mt-5 max-w-md text-sm leading-7 text-muted-foreground">{group.introduction}</p>
-                </div>
-                <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-                  {group.items.map((item, itemIndex) => (
-                    <figure key={item.src} className="group glass rounded-[26px] p-2.5">
-                      <img
-                        src={item.src}
-                        alt={item.alt}
-                        loading="lazy"
-                        onClick={() => setLightboxIndex(groupOffset + itemIndex)}
-                        className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                      />
-                      <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
-                    </figure>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-        );
-      })}
-
       <section className="relative z-10 border-t border-border bg-surface/40">
         <div className="mx-auto grid max-w-[1200px] items-start gap-10 px-6 py-16 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16 lg:py-24">
           <div className="lg:sticky lg:top-8">
-            <p className="section-index">03 — Plan &amp; distribution</p>
+            <p className="section-index">01 — Plan &amp; distribution</p>
             <h2 className="mt-3 max-w-md font-serif text-3xl font-light sm:text-4xl">
               Two cabins in one garden
             </h2>
@@ -235,6 +200,42 @@ function SanCarlosCottage() {
           </figure>
         </div>
       </section>
+
+      {groups.map((group, groupIndex) => {
+        const groupOffset = groups
+          .slice(0, groupIndex)
+          .reduce((sum, g) => sum + g.items.length, 0);
+
+
+        return (
+          <section key={group.number} className="relative z-10 border-t border-border">
+            <div className="mx-auto max-w-[1200px] px-6 py-16 lg:py-24">
+              <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] lg:gap-14">
+                <div className="lg:sticky lg:top-8">
+                  <p className="section-index">{group.number} — Selected studies</p>
+                  <h2 className="mt-3 font-serif text-3xl font-light sm:text-4xl">{group.title}</h2>
+                  <p className="mt-5 max-w-md text-sm leading-7 text-muted-foreground">{group.introduction}</p>
+                </div>
+                <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+                  {group.items.map((item, itemIndex) => (
+                    <figure key={item.src} className="group glass rounded-[26px] p-2.5">
+                      <img
+                        src={item.src}
+                        alt={item.alt}
+                        loading="lazy"
+                        onClick={() => setLightboxIndex(groupOffset + itemIndex)}
+                        className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                      <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
 
       <Lightbox items={lightboxItems} index={lightboxIndex} onClose={() => setLightboxIndex(null)} onNavigate={setLightboxIndex} />
 
