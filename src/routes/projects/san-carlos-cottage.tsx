@@ -96,7 +96,14 @@ const groups: Group[] = [
   },
 ];
 
-const lightboxItems = groups.flatMap((group) => group.items);
+const planItem: LightboxItem = {
+  src: generalPlan.url,
+  alt: "General site plan of the San Carlos Cottage retreat showing two private residences connected by a central access path among native tree groves",
+  caption:
+    "General plan — the two residences sit side by side on the slope, joined by a central access path that crosses the deck, with native tree groves and a retention pond framing the garden.",
+};
+
+const lightboxItems = [...groups.flatMap((group) => group.items), planItem];
 
 function SanCarlosCottage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
