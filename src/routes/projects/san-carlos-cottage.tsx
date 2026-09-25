@@ -69,7 +69,7 @@ const groups: Group[] = [
     ],
   },
   {
-    number: "02",
+    number: "03",
     title: "Inside",
     introduction:
       "Compact, calm rooms carry the outside in: a stone feature wall and exposed timber roof structure inside, with full-height glazing and clerestory bands framing the jungle beyond.",
