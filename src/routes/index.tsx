@@ -109,6 +109,7 @@ const interiorProjects = [
     description:
       "A showroom designed to exhibit and sell bathroom equipment, jacuzzis, tiles, porcelain, ceramic and marble — followed by a continuing practice renovating private bathrooms.",
     image: bathroomShowroom.url,
+    video: showroomMainMotion.url,
     alt: "Retail bathroom showroom with sanitary ware displays, tile stands and a consultation desk",
     href: "/projects/bathroom-showroom",
   },
