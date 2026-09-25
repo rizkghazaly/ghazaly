@@ -7,6 +7,7 @@ import twinCabins from "@/assets/san-carlos-cottage-twin-cabins.jpg.asset.json";
 import terrace from "@/assets/san-carlos-cottage-terrace.jpg.asset.json";
 import studioInterior from "@/assets/san-carlos-cottage-studio-interior.jpg.asset.json";
 import sanCarlosBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
+import generalPlan from "@/assets/san-carlos-cottage-general-plan.jpg.asset.json";
 import kitchenAlcove from "@/assets/san-carlos-cottage-kitchen-alcove.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -95,7 +96,14 @@ const groups: Group[] = [
   },
 ];
 
-const lightboxItems = groups.flatMap((group) => group.items);
+const planItem: LightboxItem = {
+  src: generalPlan.url,
+  alt: "General site plan of the San Carlos Cottage retreat showing two private residences connected by a central access path among native tree groves",
+  caption:
+    "General plan — the two residences sit side by side on the slope, joined by a central access path that crosses the deck, with native tree groves and a retention pond framing the garden.",
+};
+
+const lightboxItems = [...groups.flatMap((group) => group.items), planItem];
 
 function SanCarlosCottage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -184,6 +192,49 @@ function SanCarlosCottage() {
           </section>
         );
       })}
+
+      <section className="relative z-10 border-t border-border bg-surface/40">
+        <div className="mx-auto grid max-w-[1200px] items-start gap-10 px-6 py-16 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16 lg:py-24">
+          <div className="lg:sticky lg:top-8">
+            <p className="section-index">03 — Plan &amp; distribution</p>
+            <h2 className="mt-3 max-w-md font-serif text-3xl font-light sm:text-4xl">
+              Two cabins in one garden
+            </h2>
+            <p className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground">
+              The site plan shows how the retreat works as a whole: two private residences set
+              side by side on the slope, joined by a central access path that crosses their shared
+              deck. Native tree groves and planting islands follow the contours of the hillside,
+              while a retention pond keeps the garden&apos;s water on site.
+            </p>
+            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-border pt-6">
+              <div>
+                <dt className="stat-label mt-0">Drawing</dt>
+                <dd className="mt-2 text-sm text-foreground/90">General site plan · 1/500</dd>
+              </div>
+              <div>
+                <dt className="stat-label mt-0">Zones</dt>
+                <dd className="mt-2 text-sm text-foreground/90">Residence A · Residence B · Garden</dd>
+              </div>
+            </dl>
+          </div>
+
+          <figure>
+            <div className="glass overflow-hidden rounded-[26px] p-2.5 sm:p-3">
+              <img
+                src={generalPlan.url}
+                alt="General site plan of the San Carlos Cottage retreat showing two private residences connected by a central access path among native tree groves"
+                loading="lazy"
+                onClick={() => setLightboxIndex(lightboxItems.length - 1)}
+                className="mx-auto h-auto max-h-[560px] w-auto max-w-full cursor-zoom-in rounded-[18px] object-contain"
+              />
+            </div>
+            <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">
+              General plan — two private residences, a central access path and a garden kept to its
+              native trees and contours.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
       <Lightbox items={lightboxItems} index={lightboxIndex} onClose={() => setLightboxIndex(null)} onNavigate={setLightboxIndex} />
 
