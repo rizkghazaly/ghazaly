@@ -18,6 +18,7 @@ import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
 import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import residentialInteriorsMotion from "@/assets/residential-interiors-living-dining-motion.webm.asset.json";
+import sanCarlosCottage from "@/assets/san-carlos-cottage-exterior-steps.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -105,6 +106,16 @@ const interiorProjects: ProjectEntry[] = [
     video: residentialInteriorsMotion.url,
     alt: "Warm residential dining and sitting areas connected through timber screens",
     href: "/projects/residential-interiors",
+  },
+  {
+    title: "San Carlos Cottage",
+    meta: "Cottage retreat · Hillside interior",
+    location: "San Carlos, Costa Rica",
+    description:
+      "A compact jungle cottage in San Carlos with dark clad walls, deep timber roofs and rooms that open fully to the surrounding greenery.",
+    image: sanCarlosCottage.url,
+    alt: "Dark clad cottage with a wide timber roof reached by floating stone steps on a green hillside",
+    href: "/projects/san-carlos-cottage",
   },
   {
     title: "Joffrey’s Coffee & Tea Company",
