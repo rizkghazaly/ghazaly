@@ -13,6 +13,7 @@ import nightBedroom from "@/assets/residential-interiors-night-bedroom.jpg.asset
 import nightBedroomMotion from "@/assets/residential-interiors-night-bedroom-motion.webm.asset.json";
 import sculpturalBedroom from "@/assets/residential-interiors-sculptural-bedroom.jpg.asset.json";
 import cityBedroom from "@/assets/residential-interiors-city-bedroom.jpg.asset.json";
+import sculpturalBedroomMotion from "@/assets/residential-interiors-sculptural-bedroom-motion.webm.asset.json";
 import bedroomSuite from "@/assets/residential-interiors-bedroom-suite.jpg.asset.json";
 import jungleBedroom from "@/assets/residential-interiors-jungle-bedroom.jpg.asset.json";
 import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
@@ -109,6 +110,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: sculpturalBedroom.url,
+        video: sculpturalBedroomMotion.url,
         alt: "Daylit bedroom with a faceted geometric feature wall and sea view",
         caption:
           "Sculptural retreat — an illuminated faceted wall becomes the focal point against a calm timber platform and wide coastal view.",
