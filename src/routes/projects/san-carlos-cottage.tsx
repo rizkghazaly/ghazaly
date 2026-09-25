@@ -150,8 +150,11 @@ function SanCarlosCottage() {
         </p>
       </section>
 
-      {groups.map((group) => {
-        const groupOffset = lightboxItems.indexOf(group.items[0]);
+      {groups.map((group, groupIndex) => {
+        const groupOffset = groups
+          .slice(0, groupIndex)
+          .reduce((sum, g) => sum + g.items.length, 0);
+
 
         return (
           <section key={group.number} className="relative z-10 border-t border-border">
