@@ -6,6 +6,7 @@ import livingDining from "@/assets/residential-interiors-living-dining.jpg.asset
 import formalDining from "@/assets/residential-interiors-formal-dining.jpg.asset.json";
 import openLiving from "@/assets/residential-interiors-open-living.jpg.asset.json";
 import scenicLiving from "@/assets/residential-interiors-scenic-living.jpg.asset.json";
+import formalDiningMotion from "@/assets/residential-interiors-formal-dining-motion.webm.asset.json";
 import warmBedroom from "@/assets/residential-interiors-warm-bedroom.jpg.asset.json";
 import warmBedroomMotion from "@/assets/residential-interiors-warm-bedroom-motion.webm.asset.json";
 import nightBedroom from "@/assets/residential-interiors-night-bedroom.jpg.asset.json";
@@ -67,6 +68,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: formalDining.url,
+        video: formalDiningMotion.url,
         alt: "Formal dining room with marble walls, black pendant lights and tailored chairs",
         caption:
           "Formal dining — crisp marble, sculptural black pendants and bronze-edged seating create a polished entertaining space.",
