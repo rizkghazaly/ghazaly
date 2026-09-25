@@ -374,7 +374,11 @@ function Index() {
                 <div className="prism absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
                 {"href" in project && project.href ? (
                   <Link to={project.href} aria-label={`View ${project.title} project`}>
-                    <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                    {"video" in project && project.video ? (
+                      <CardMotionPreview image={project.image} video={project.video} alt={project.alt} />
+                    ) : (
+                      <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
+                    )}
                   </Link>
                 ) : (
                   <img src={project.image} alt={project.alt} loading="lazy" className="relative aspect-[4/3] w-full rounded-[22px] object-cover transition-transform duration-700 group-hover:scale-[1.025]" />
