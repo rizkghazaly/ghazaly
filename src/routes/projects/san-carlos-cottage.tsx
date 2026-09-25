@@ -80,7 +80,7 @@ const groups: Group[] = [
           "Studio interior — a stone feature wall and the exposed roof structure give the compact room warmth and character.",
       },
       {
-        src: bedroomView.url,
+        src: sanCarlosBedroom.url,
         alt: "Bedroom with full-height glazing, clerestory windows and a stone feature wall facing the jungle",
         caption:
           "Bedroom — full-height glazing and a band of clerestory windows bring the surrounding jungle directly into the room.",
