@@ -10,6 +10,7 @@ import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
 import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
+import mandaraVillaMotion from "@/assets/mandara-reception-dining-motion.webm.asset.json";
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
@@ -131,6 +132,7 @@ const interiorProjects: ProjectEntry[] = [
     description:
       "A richly crafted villa centered on the traditional Mandara reception suite, combining Damascene and Ottoman-Lebanese influences through carved timber, limestone, mashrabiya screens and inlaid furnishings.",
     image: mandaraVilla.url,
+    video: mandaraVillaMotion.url,
     alt: "Mandara Villa reception and dining room with carved timber ceiling and crystal chandeliers",
     href: "/projects/mandara-villa",
   },
