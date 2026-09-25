@@ -7,6 +7,7 @@ import twinCabins from "@/assets/san-carlos-cottage-twin-cabins.jpg.asset.json";
 import terrace from "@/assets/san-carlos-cottage-terrace.jpg.asset.json";
 import studioInterior from "@/assets/san-carlos-cottage-studio-interior.jpg.asset.json";
 import sanCarlosBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
+import generalPlan from "@/assets/san-carlos-cottage-general-plan.jpg.asset.json";
 import kitchenAlcove from "@/assets/san-carlos-cottage-kitchen-alcove.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
