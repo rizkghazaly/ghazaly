@@ -119,6 +119,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: cityBedroom.url,
+        video: cityBedroomMotion.url,
         alt: "Minimal master bedroom with timber slat wall and floor-to-ceiling city windows",
         caption:
           "Quiet modernism — vertical timber, integrated shelving and precise light lines frame a restrained master bedroom.",
