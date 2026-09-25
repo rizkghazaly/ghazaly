@@ -18,7 +18,7 @@ import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
 import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import residentialInteriorsMotion from "@/assets/residential-interiors-living-dining-motion.webm.asset.json";
-import sanCarlosCottage from "@/assets/san-carlos-cottage-exterior-steps.jpg.asset.json";
+import sanCarlosCottageBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
