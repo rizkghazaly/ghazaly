@@ -22,6 +22,7 @@ import jungleBedroom from "@/assets/residential-interiors-jungle-bedroom.jpg.ass
 import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
 import compactKitchen from "@/assets/residential-interiors-compact-kitchen.jpg.asset.json";
 import compactKitchenMotion from "@/assets/residential-interiors-compact-kitchen-motion.webm.asset.json";
+import compactLivingMotion from "@/assets/residential-interiors-compact-living-motion.webm.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -150,6 +151,7 @@ const groups: CollectionGroup[] = [
     items: [
       {
         src: compactLiving.url,
+        video: compactLivingMotion.url,
         alt: "Compact sitting room connected to a walnut and marble kitchen",
         caption:
           "Sitting area — textured stone, warm light and an open breakfast counter make the compact plan feel generous and connected.",
