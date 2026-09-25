@@ -43,7 +43,7 @@ type Group = {
 
 const groups: Group[] = [
   {
-    number: "01",
+    number: "02",
     title: "On the hillside",
     introduction:
       "The cottage sits on a sloping site. Floating stone steps climb through the planting to the entrance while dark, slender cladding keeps the building quiet against the greenery.",
