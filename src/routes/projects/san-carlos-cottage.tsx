@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import exteriorSteps from "@/assets/san-carlos-cottage-exterior-steps.jpg.asset.json";
 import twinCabins from "@/assets/san-carlos-cottage-twin-cabins.jpg.asset.json";
@@ -9,8 +9,10 @@ import studioInterior from "@/assets/san-carlos-cottage-studio-interior.jpg.asse
 import sanCarlosBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
 import generalPlan from "@/assets/san-carlos-cottage-general-plan.jpg.asset.json";
 import kitchenAlcove from "@/assets/san-carlos-cottage-kitchen-alcove.jpg.asset.json";
+import sanCarlosBedroomMotion from "@/assets/san-carlos-bedroom-motion.webm.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/san-carlos-cottage")({
   head: () => ({
@@ -105,6 +107,74 @@ const planItem: LightboxItem = {
 
 const lightboxItems = [...groups.flatMap((group) => group.items), planItem];
 
+type MotionPreviewProps = {
+  image: string;
+  video: string;
+  alt: string;
+  onOpen: () => void;
+};
+
+function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const play = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  const pause = (reset = false) => {
+    const element = videoRef.current;
+    if (!element) return;
+    element.pause();
+    if (reset) element.currentTime = 0;
+    setPlaying(false);
+  };
+
+  const toggle = () => {
+    if (playing) pause();
+    else void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  return (
+    <div
+      className="group relative overflow-hidden rounded-[18px]"
+      onMouseEnter={play}
+      onMouseLeave={() => pause(true)}
+      data-motion-preview
+    >
+      <video
+        ref={videoRef}
+        src={video}
+        poster={image}
+        aria-label={`${alt} — animated preview`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        onClick={onOpen}
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+        className="aspect-[16/9] h-auto w-full cursor-zoom-in rounded-[18px] object-cover"
+      />
+      <Button
+        type="button"
+        variant="secondary"
+        size="icon"
+        aria-label={playing ? "Pause animation" : "Play animation"}
+        title={playing ? "Pause animation" : "Play animation"}
+        onClick={(event) => {
+          event.stopPropagation();
+          toggle();
+        }}
+        className="glass absolute bottom-3 right-3 z-10 rounded-full md:opacity-0 md:transition-opacity md:group-hover:opacity-100 md:focus-visible:opacity-100"
+      >
+        {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+      </Button>
+    </div>
+  );
+}
+
 function SanCarlosCottage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -145,12 +215,11 @@ function SanCarlosCottage() {
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-16">
         <div className="glass overflow-hidden rounded-[26px] p-2.5">
-          <img
-            src={sanCarlosBedroom.url}
+          <MotionPreview
+            image={sanCarlosBedroom.url}
+            video={sanCarlosBedroomMotion.url}
             alt="Jungle cottage bedroom with stone walls, warm timber ceiling and full-height glazing opening to the trees"
-            loading="lazy"
-            onClick={() => setLightboxIndex(0)}
-            className="aspect-[16/9] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            onOpen={() => setLightboxIndex(4)}
           />
         </div>
         <p className="mt-4 max-w-3xl text-sm leading-6 text-muted-foreground">
