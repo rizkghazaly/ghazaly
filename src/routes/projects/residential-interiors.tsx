@@ -20,6 +20,7 @@ import bedroomSuite from "@/assets/residential-interiors-bedroom-suite.jpg.asset
 import jungleBedroom from "@/assets/residential-interiors-jungle-bedroom.jpg.asset.json";
 import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
 import compactKitchen from "@/assets/residential-interiors-compact-kitchen.jpg.asset.json";
+import compactKitchenMotion from "@/assets/residential-interiors-compact-kitchen-motion.webm.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -153,6 +154,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: compactKitchen.url,
+        video: compactKitchenMotion.url,
         alt: "Compact walnut kitchen with marble peninsula and metallic mosaic backsplash",
         caption:
           "Kitchen — a marble-wrapped peninsula and metallic mosaic bring richness to an efficient, carefully lit workspace.",
