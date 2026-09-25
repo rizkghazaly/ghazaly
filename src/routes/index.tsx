@@ -113,8 +113,8 @@ const interiorProjects: ProjectEntry[] = [
     location: "San Carlos, Costa Rica",
     description:
       "A compact jungle cottage in San Carlos with dark clad walls, deep timber roofs and rooms that open fully to the surrounding greenery.",
-    image: sanCarlosCottage.url,
-    alt: "Dark clad cottage with a wide timber roof reached by floating stone steps on a green hillside",
+    image: sanCarlosCottageBedroom.url,
+    alt: "Jungle cottage bedroom with stone walls, warm timber ceiling and full-height glazing opening to the trees",
     href: "/projects/san-carlos-cottage",
   },
   {
