@@ -17,6 +17,7 @@ import cityBedroom from "@/assets/residential-interiors-city-bedroom.jpg.asset.j
 import cityBedroomMotion from "@/assets/residential-interiors-city-bedroom-motion.webm.asset.json";
 import sculpturalBedroomMotion from "@/assets/residential-interiors-sculptural-bedroom-motion.webm.asset.json";
 import bedroomSuite from "@/assets/residential-interiors-bedroom-suite.jpg.asset.json";
+import bedroomSuiteMotion from "@/assets/residential-interiors-bedroom-suite-motion.webm.asset.json";
 import jungleBedroom from "@/assets/residential-interiors-jungle-bedroom.jpg.asset.json";
 import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
 import compactKitchen from "@/assets/residential-interiors-compact-kitchen.jpg.asset.json";
@@ -128,6 +129,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: bedroomSuite.url,
+        video: bedroomSuiteMotion.url,
         alt: "Classic contemporary bedroom suite with lounge and mountain view",
         caption:
           "Bedroom suite — rich timber detailing and a private sitting area bring domestic warmth to a bright landscape-facing room.",
