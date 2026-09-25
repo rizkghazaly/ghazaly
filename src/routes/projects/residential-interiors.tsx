@@ -9,6 +9,7 @@ import scenicLiving from "@/assets/residential-interiors-scenic-living.jpg.asset
 import warmBedroom from "@/assets/residential-interiors-warm-bedroom.jpg.asset.json";
 import warmBedroomMotion from "@/assets/residential-interiors-warm-bedroom-motion.webm.asset.json";
 import nightBedroom from "@/assets/residential-interiors-night-bedroom.jpg.asset.json";
+import nightBedroomMotion from "@/assets/residential-interiors-night-bedroom-motion.webm.asset.json";
 import sculpturalBedroom from "@/assets/residential-interiors-sculptural-bedroom.jpg.asset.json";
 import cityBedroom from "@/assets/residential-interiors-city-bedroom.jpg.asset.json";
 import bedroomSuite from "@/assets/residential-interiors-bedroom-suite.jpg.asset.json";
@@ -99,6 +100,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: nightBedroom.url,
+        video: nightBedroomMotion.url,
         alt: "Dark urban bedroom overlooking a city skyline at night",
         caption:
           "Urban night — dark timber, suspended jewel lights and a panoramic skyline give the room a cinematic character.",
