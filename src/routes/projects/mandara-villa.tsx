@@ -75,6 +75,12 @@ const gallery: GalleryItem[] = [
       "Stair hall — patterned risers, carved panels and concealed lighting turn circulation into a crafted architectural sequence.",
   },
   {
+    image: mandaraArchedThreshold.url,
+    alt: "Mandara Villa carved horseshoe arch with openwork screen framing the stone-vaulted lounge beyond",
+    caption:
+      "Carved threshold — a horseshoe arch framed by openwork screens and gilded friezes opens the reception hall onto the vaulted stone lounge.",
+  },
+  {
     image: mandaraStoneLounge.url,
     video: mandaraStoneLoungeMotion.url,
     alt: "Mandara Villa stone-vaulted lounge with fireplace and night terrace views",
