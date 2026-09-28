@@ -7,6 +7,7 @@ import livingDiningMotion from "@/assets/residential-interiors-living-dining-mot
 import formalDining from "@/assets/residential-interiors-formal-dining.jpg.asset.json";
 import openLiving from "@/assets/residential-interiors-open-living.jpg.asset.json";
 import scenicLiving from "@/assets/residential-interiors-scenic-living.jpg.asset.json";
+import scenicLivingMotion from "@/assets/residential-interiors-scenic-living-motion.webm.asset.json";
 import formalDiningMotion from "@/assets/residential-interiors-formal-dining-motion.webm.asset.json";
 import warmBedroom from "@/assets/residential-interiors-warm-bedroom.jpg.asset.json";
 import warmBedroomMotion from "@/assets/residential-interiors-warm-bedroom-motion.webm.asset.json";
@@ -89,6 +90,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: scenicLiving.url,
+        video: scenicLivingMotion.url,
         alt: "High-rise living room with grey lounge chairs, sculptural white shelving and skyline views",
         caption:
           "Skyline lounge — sculptural shelving and tailored grey seating frame a panoramic city view in polished stone and soft light.",
