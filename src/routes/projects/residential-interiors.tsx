@@ -19,6 +19,7 @@ import sculpturalBedroomMotion from "@/assets/residential-interiors-sculptural-b
 import bedroomSuite from "@/assets/residential-interiors-bedroom-suite.jpg.asset.json";
 import bedroomSuiteMotion from "@/assets/residential-interiors-bedroom-suite-motion.webm.asset.json";
 import jungleBedroom from "@/assets/residential-interiors-jungle-bedroom.jpg.asset.json";
+import jungleBedroomMotion from "@/assets/residential-interiors-jungle-bedroom-motion.webm.asset.json";
 import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
 import compactKitchen from "@/assets/residential-interiors-compact-kitchen.jpg.asset.json";
 import compactKitchenMotion from "@/assets/residential-interiors-compact-kitchen-motion.webm.asset.json";
@@ -137,6 +138,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: jungleBedroom.url,
+        video: jungleBedroomMotion.url,
         alt: "Jungle studio bedroom with exposed brick walls, warm timber ceiling and rainforest views",
         caption:
           "Jungle studio — a compact Costa Rican rainforest retreat where exposed brick, warm timber and clerestory glazing open the room to the surrounding trees.",
