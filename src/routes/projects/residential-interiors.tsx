@@ -8,6 +8,7 @@ import formalDining from "@/assets/residential-interiors-formal-dining.jpg.asset
 import openLiving from "@/assets/residential-interiors-open-living.jpg.asset.json";
 import scenicLiving from "@/assets/residential-interiors-scenic-living.jpg.asset.json";
 import scenicLivingMotion from "@/assets/residential-interiors-scenic-living-motion.webm.asset.json";
+import openLivingMotion from "@/assets/residential-interiors-open-living-motion.webm.asset.json";
 import formalDiningMotion from "@/assets/residential-interiors-formal-dining-motion.webm.asset.json";
 import warmBedroom from "@/assets/residential-interiors-warm-bedroom.jpg.asset.json";
 import warmBedroomMotion from "@/assets/residential-interiors-warm-bedroom-motion.webm.asset.json";
@@ -84,6 +85,7 @@ const groups: CollectionGroup[] = [
       },
       {
         src: openLiving.url,
+        video: openLivingMotion.url,
         alt: "Open-plan living, sitting and dining room with bronze screen and dark stone floor",
         caption:
           "Open living — a bronze screen gently separates the intimate sitting area from the larger lounge and dining zones.",
