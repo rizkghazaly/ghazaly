@@ -6,6 +6,7 @@ import mandaraReceptionDining from "@/assets/mandara-reception-dining.jpg.asset.
 import mandaraMajlis from "@/assets/mandara-majlis.jpg.asset.json";
 import mandaraFormalSalon from "@/assets/mandara-formal-salon.jpg.asset.json";
 import mandaraStairHall from "@/assets/mandara-stair-hall.jpg.asset.json";
+import mandaraArchedThreshold from "@/assets/mandara-villa-arched-threshold.jpg.asset.json";
 import mandaraStoneLounge from "@/assets/mandara-stone-lounge.jpg.asset.json";
 import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset.json";
 import mandaraMajlisMotion from "@/assets/mandara-majlis-motion.webm.asset.json";
@@ -72,6 +73,12 @@ const gallery: GalleryItem[] = [
     alt: "Mandara Villa stair hall with patterned risers, carved wood panels and red drapery",
     caption:
       "Stair hall — patterned risers, carved panels and concealed lighting turn circulation into a crafted architectural sequence.",
+  },
+  {
+    image: mandaraArchedThreshold.url,
+    alt: "Mandara Villa carved horseshoe arch with openwork screen framing the stone-vaulted lounge beyond",
+    caption:
+      "Carved threshold — a horseshoe arch framed by openwork screens and gilded friezes opens the reception hall onto the vaulted stone lounge.",
   },
   {
     image: mandaraStoneLounge.url,
