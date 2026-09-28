@@ -166,6 +166,8 @@ const facts = [
 
 function MandaraVilla() {
   const [hero, ...rest] = gallery;
+  const thresholdItem = rest.find((item) => item.image === mandaraArchedThreshold.url);
+  const gridItems = rest.filter((item) => item !== thresholdItem);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   if (!hero) return null;
 
@@ -180,6 +182,8 @@ function MandaraVilla() {
     ...rest.map((item) => ({ src: item.image, alt: item.alt, caption: item.caption })),
   ];
   const openLightbox = (index: number) => setLightboxIndex(index);
+  const openRestItem = (item: GalleryItem) =>
+    openLightbox(2 + rest.findIndex((candidate) => candidate.image === item.image));
 
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
@@ -314,14 +318,14 @@ function MandaraVilla() {
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-24 pt-16 lg:pt-24">
         <p className="section-index mb-8">Gallery</p>
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-          {rest.map((item, itemIndex) => (
+          {gridItems.map((item) => (
             <figure key={item.image} className="group glass rounded-[26px] p-2.5">
               {item.video ? (
                 <MotionPreview
                   image={item.image}
                   video={item.video}
                   alt={item.alt}
-                  onOpen={() => openLightbox(2 + itemIndex)}
+                  onOpen={() => openRestItem(item)}
                 />
               ) : (
                 <div className="overflow-hidden rounded-[18px]">
@@ -329,7 +333,7 @@ function MandaraVilla() {
                     src={item.image}
                     alt={item.alt}
                     loading="lazy"
-                    onClick={() => openLightbox(2 + itemIndex)}
+                    onClick={() => openRestItem(item)}
                     className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                   />
                 </div>
@@ -340,6 +344,23 @@ function MandaraVilla() {
             </figure>
           ))}
         </div>
+
+        {thresholdItem ? (
+          <figure className="group glass mx-auto mt-8 max-w-[640px] rounded-[26px] p-2.5">
+            <div className="overflow-hidden rounded-[18px]">
+              <img
+                src={thresholdItem.image}
+                alt={thresholdItem.alt}
+                loading="lazy"
+                onClick={() => openRestItem(thresholdItem)}
+                className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+              />
+            </div>
+            <figcaption className="px-3 pb-3 pt-4 text-center text-sm leading-6 text-muted-foreground">
+              {thresholdItem.caption}
+            </figcaption>
+          </figure>
+        ) : null}
       </section>
 
       <Lightbox
