@@ -166,6 +166,8 @@ const facts = [
 
 function MandaraVilla() {
   const [hero, ...rest] = gallery;
+  const thresholdItem = rest.find((item) => item.image === mandaraArchedThreshold.url);
+  const gridItems = rest.filter((item) => item !== thresholdItem);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   if (!hero) return null;
 
@@ -180,6 +182,8 @@ function MandaraVilla() {
     ...rest.map((item) => ({ src: item.image, alt: item.alt, caption: item.caption })),
   ];
   const openLightbox = (index: number) => setLightboxIndex(index);
+  const openRestItem = (item: GalleryItem) =>
+    openLightbox(2 + rest.findIndex((candidate) => candidate.image === item.image));
 
   return (
     <main className="site-shell relative min-h-screen overflow-hidden bg-background text-foreground">
