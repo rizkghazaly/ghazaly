@@ -6,6 +6,7 @@ import mandaraReceptionDining from "@/assets/mandara-reception-dining.jpg.asset.
 import mandaraMajlis from "@/assets/mandara-majlis.jpg.asset.json";
 import mandaraFormalSalon from "@/assets/mandara-formal-salon.jpg.asset.json";
 import mandaraStairHall from "@/assets/mandara-stair-hall.jpg.asset.json";
+import mandaraArchedThreshold from "@/assets/mandara-villa-arched-threshold.jpg.asset.json";
 import mandaraStoneLounge from "@/assets/mandara-stone-lounge.jpg.asset.json";
 import mandaraGroundFloorPlan from "@/assets/mandara-ground-floor-plan.jpg.asset.json";
 import mandaraMajlisMotion from "@/assets/mandara-majlis-motion.webm.asset.json";
