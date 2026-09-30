@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import exteriorSteps from "@/assets/san-carlos-cottage-exterior-steps.jpg.asset.json";
 import twinCabins from "@/assets/san-carlos-cottage-twin-cabins.jpg.asset.json";
+import twinCabinsMotion from "@/assets/san-carlos-twin-cabins-motion.webm.asset.json";
 import terrace from "@/assets/san-carlos-cottage-terrace.jpg.asset.json";
 import studioInterior from "@/assets/san-carlos-cottage-studio-interior.jpg.asset.json";
 import sanCarlosBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
@@ -36,11 +37,13 @@ export const Route = createFileRoute("/projects/san-carlos-cottage")({
   component: SanCarlosCottage,
 });
 
+type GalleryItem = LightboxItem & { video?: string };
+
 type Group = {
   number: string;
   title: string;
   introduction: string;
-  items: LightboxItem[];
+  items: GalleryItem[];
 };
 
 const groups: Group[] = [
@@ -59,6 +62,7 @@ const groups: Group[] = [
       {
         src: twinCabins.url,
         alt: "Two cabins with sheltering roofs stepping down a hillside with a connecting stair",
+        video: twinCabinsMotion.url,
         caption:
           "Twin pavilions — the retreat steps down the site as separate cabins, each lifted on its own base and connected by the garden stair.",
       },
@@ -112,6 +116,7 @@ type MotionPreviewProps = {
   video: string;
   alt: string;
   onOpen: () => void;
+  featured?: boolean;
 };
 
 function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
