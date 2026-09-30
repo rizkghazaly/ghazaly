@@ -93,6 +93,7 @@ const groups: Group[] = [
       {
         src: sanCarlosBedroom.url,
         alt: "Bedroom with full-height glazing, clerestory windows and a stone feature wall facing the jungle",
+        video: sanCarlosBedroomMotion.url,
         caption:
           "Bedroom — full-height glazing and a band of clerestory windows bring the surrounding jungle directly into the room.",
       },
