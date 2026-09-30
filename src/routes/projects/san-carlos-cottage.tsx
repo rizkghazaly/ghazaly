@@ -7,6 +7,7 @@ import exteriorStepsMotion from "@/assets/san-carlos-exterior-steps-motion.webm.
 import twinCabins from "@/assets/san-carlos-cottage-twin-cabins.jpg.asset.json";
 import twinCabinsMotion from "@/assets/san-carlos-twin-cabins-motion.webm.asset.json";
 import terrace from "@/assets/san-carlos-cottage-terrace.jpg.asset.json";
+import terraceMotion from "@/assets/san-carlos-terrace-motion.webm.asset.json";
 import studioInterior from "@/assets/san-carlos-cottage-studio-interior.jpg.asset.json";
 import sanCarlosBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
 import generalPlan from "@/assets/san-carlos-cottage-general-plan.jpg.asset.json";
@@ -71,6 +72,7 @@ const groups: Group[] = [
       {
         src: terrace.url,
         alt: "Shaded terrace with timber railing opening to sliding glazing and a flowering garden",
+        video: terraceMotion.url,
         caption:
           "Terrace — sliding glazing opens the studio completely to a shaded deck framed by the flowering garden.",
       },
