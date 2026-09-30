@@ -9,6 +9,7 @@ import twinCabinsMotion from "@/assets/san-carlos-twin-cabins-motion.webm.asset.
 import terrace from "@/assets/san-carlos-cottage-terrace.jpg.asset.json";
 import terraceMotion from "@/assets/san-carlos-terrace-motion.webm.asset.json";
 import studioInterior from "@/assets/san-carlos-cottage-studio-interior.jpg.asset.json";
+import studioInteriorMotion from "@/assets/san-carlos-studio-interior-motion.webm.asset.json";
 import sanCarlosBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
 import generalPlan from "@/assets/san-carlos-cottage-general-plan.jpg.asset.json";
 import kitchenAlcove from "@/assets/san-carlos-cottage-kitchen-alcove.jpg.asset.json";
@@ -87,6 +88,7 @@ const groups: Group[] = [
       {
         src: studioInterior.url,
         alt: "Studio interior with stone feature wall, exposed timber roof structure and window desk",
+        video: studioInteriorMotion.url,
         caption:
           "Studio interior — a stone feature wall and the exposed roof structure give the compact room warmth and character.",
       },
