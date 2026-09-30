@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import exteriorSteps from "@/assets/san-carlos-cottage-exterior-steps.jpg.asset.json";
+import exteriorStepsMotion from "@/assets/san-carlos-exterior-steps-motion.webm.asset.json";
 import twinCabins from "@/assets/san-carlos-cottage-twin-cabins.jpg.asset.json";
 import twinCabinsMotion from "@/assets/san-carlos-twin-cabins-motion.webm.asset.json";
 import terrace from "@/assets/san-carlos-cottage-terrace.jpg.asset.json";
@@ -56,6 +57,7 @@ const groups: Group[] = [
       {
         src: exteriorSteps.url,
         alt: "Dark clad cottage with a wide timber roof reached by floating stone steps on a green hillside",
+        video: exteriorStepsMotion.url,
         caption:
           "Approach — a floating stone stair climbs the slope to the entrance while the wide timber roof shelters the dark clad volume below.",
       },
