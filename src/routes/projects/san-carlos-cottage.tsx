@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import exteriorSteps from "@/assets/san-carlos-cottage-exterior-steps.jpg.asset.json";
 import twinCabins from "@/assets/san-carlos-cottage-twin-cabins.jpg.asset.json";
+import twinCabinsMotion from "@/assets/san-carlos-twin-cabins-motion.webm.asset.json";
 import terrace from "@/assets/san-carlos-cottage-terrace.jpg.asset.json";
 import studioInterior from "@/assets/san-carlos-cottage-studio-interior.jpg.asset.json";
 import sanCarlosBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
@@ -36,11 +37,13 @@ export const Route = createFileRoute("/projects/san-carlos-cottage")({
   component: SanCarlosCottage,
 });
 
+type GalleryItem = LightboxItem & { video?: string };
+
 type Group = {
   number: string;
   title: string;
   introduction: string;
-  items: LightboxItem[];
+  items: GalleryItem[];
 };
 
 const groups: Group[] = [
@@ -59,6 +62,7 @@ const groups: Group[] = [
       {
         src: twinCabins.url,
         alt: "Two cabins with sheltering roofs stepping down a hillside with a connecting stair",
+        video: twinCabinsMotion.url,
         caption:
           "Twin pavilions — the retreat steps down the site as separate cabins, each lifted on its own base and connected by the garden stair.",
       },
@@ -112,9 +116,10 @@ type MotionPreviewProps = {
   video: string;
   alt: string;
   onOpen: () => void;
+  featured?: boolean;
 };
 
-function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
+function MotionPreview({ image, video, alt, onOpen, featured = false }: MotionPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -155,7 +160,7 @@ function MotionPreview({ image, video, alt, onOpen }: MotionPreviewProps) {
         onClick={onOpen}
         onPause={() => setPlaying(false)}
         onPlay={() => setPlaying(true)}
-        className="aspect-[16/9] h-auto w-full cursor-zoom-in rounded-[18px] object-cover"
+        className={`${featured ? "aspect-[16/9]" : "aspect-[4/3]"} h-auto w-full cursor-zoom-in rounded-[18px] object-cover`}
       />
       <Button
         type="button"
@@ -288,13 +293,22 @@ function SanCarlosCottage() {
                 <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
                   {group.items.map((item, itemIndex) => (
                     <figure key={item.src} className="group glass rounded-[26px] p-2.5">
-                      <img
-                        src={item.src}
-                        alt={item.alt}
-                        loading="lazy"
-                        onClick={() => setLightboxIndex(groupOffset + itemIndex)}
-                        className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                      />
+                      {item.video ? (
+                        <MotionPreview
+                          image={item.src}
+                          video={item.video}
+                          alt={item.alt}
+                          onOpen={() => setLightboxIndex(groupOffset + itemIndex)}
+                        />
+                      ) : (
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          loading="lazy"
+                          onClick={() => setLightboxIndex(groupOffset + itemIndex)}
+                          className="aspect-[4/3] w-full cursor-zoom-in rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      )}
                       <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
                     </figure>
                   ))}
