@@ -269,11 +269,11 @@ function JoffreysCoffee() {
           Joffrey&apos;s Coffee &amp; Tea Company
         </h1>
         <p className="mt-6 max-w-3xl text-[15px] leading-7 text-muted-foreground">
-          Joffrey&apos;s operates more than 50 specialty coffee outlets and a local roastery across Saudi Arabia through the AlGhazzawi Group&apos;s exclusive regional franchise. These three branches show my work developing café environments from plans and design visualization through renovation and completion.
+          Joffrey&apos;s operates more than 50 specialty coffee outlets and a local roastery across Saudi Arabia through the AlGhazzawi Group&apos;s exclusive regional franchise. These four branches show my work developing café environments from plans and design visualization through renovation and completion.
         </p>
         <dl className="mt-10 grid max-w-4xl grid-cols-1 gap-6 border-t border-border pt-8 sm:grid-cols-3">
           <div><dt className="stat-label mt-0">Client</dt><dd className="mt-2 text-sm text-foreground/90">Joffrey&apos;s Coffee &amp; Tea Company</dd></div>
-          <div><dt className="stat-label mt-0">Branches shown</dt><dd className="mt-2 text-sm text-foreground/90">Jeddah · Al Ehsa · Dammam</dd></div>
+          <div><dt className="stat-label mt-0">Branches shown</dt><dd className="mt-2 text-sm text-foreground/90">Jeddah · Al Ehsa · Dammam · Millennium</dd></div>
           <div><dt className="stat-label mt-0">Scope</dt><dd className="mt-2 text-sm text-foreground/90">Plans, interiors &amp; exterior renovation</dd></div>
         </dl>
       </section>
