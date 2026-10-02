@@ -187,6 +187,51 @@ const branches: Branch[] = [
       },
     ],
   },
+  {
+    number: "04",
+    title: "Millennium Business Centre Café",
+    location: "Jeddah, Saudi Arabia",
+    description:
+      "A renovation proposal for the existing café in the Millennium Business Centre, developed with the AlGhazzawi Group. The design elevates the branch into a more refined hospitality setting: perforated brass columns and screens define intimate dining pockets, layered ceiling coves and ring lights carry a warm rhythm overhead, and a brass-and-marble bar with a backlit wine cellar anchors the room as its signature element.",
+    facts: [
+      { label: "Location", value: "Jeddah, Saudi Arabia" },
+      { label: "Scope", value: "Renovation proposal for the existing café" },
+      { label: "Presentation", value: "Architectural renders" },
+      { label: "Type", value: "Specialty coffee shop & dining lounge" },
+    ],
+    groups: [
+      {
+        label: "Renovation proposal",
+        columns: 2,
+        items: [
+          {
+            src: millenniumBarLounge.url,
+            alt: "Interior render of the Millennium Business Centre café bar with brass counter, marble top and backlit wine cellar",
+            caption:
+              "Bar & lounge — a perforated brass column, marble-topped brass bar and backlit wine cellar anchor the seating hall.",
+          },
+          {
+            src: millenniumDiningHall.url,
+            alt: "Dining hall render with brass ceiling coves, blue velvet and cognac leather seating",
+            caption:
+              "Dining hall — draped brass coves and globe pendants hang over velvet and leather seating divided by openwork brass screens.",
+          },
+          {
+            src: millenniumScreenBanquette.url,
+            alt: "Close-up render of perforated brass screens framing a leather banquette dining table",
+            caption:
+              "Dining pocket — perforated brass screens frame each banquette table beneath a triptych of marble artwork.",
+          },
+          {
+            src: millenniumDiningWide.url,
+            alt: "Wide interior render of the renovated café with ring chandeliers and brass lattice screens",
+            caption:
+              "The room in full — concentric ring chandeliers and a field of brass lattice screens organize the dining floor.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const lightboxItems: LightboxItem[] = branches.flatMap((branch) => [
