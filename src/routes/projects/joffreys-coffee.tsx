@@ -280,7 +280,7 @@ function JoffreysCoffee() {
 
       {branches.map((branch, branchIndex) => {
         const branchOffset = itemOffset;
-        itemOffset += 1 + branch.groups.reduce((total, group) => total + group.items.length, 0);
+        itemOffset += (branch.plan ? 1 : 0) + branch.groups.reduce((total, group) => total + group.items.length, 0);
 
         return (
           <section key={branch.title} className="relative z-10 border-t border-border">
@@ -299,18 +299,20 @@ function JoffreysCoffee() {
                     ))}
                   </dl>
                 </div>
-                <figure>
-                  <div className="glass overflow-hidden rounded-[26px] p-2.5 sm:p-3">
-                    <img
-                      src={branch.plan.src}
-                      alt={branch.plan.alt}
-                      loading={branchIndex === 0 ? "eager" : "lazy"}
-                      onClick={() => setLightboxIndex(branchOffset)}
-                      className="mx-auto h-auto max-h-[560px] w-auto max-w-full cursor-zoom-in rounded-[18px] object-contain"
-                    />
-                  </div>
-                  <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{branch.plan.caption}</figcaption>
-                </figure>
+                {branch.plan ? (
+                  <figure>
+                    <div className="glass overflow-hidden rounded-[26px] p-2.5 sm:p-3">
+                      <img
+                        src={branch.plan.src}
+                        alt={branch.plan.alt}
+                        loading={branchIndex === 0 ? "eager" : "lazy"}
+                        onClick={() => setLightboxIndex(branchOffset)}
+                        className="mx-auto h-auto max-h-[560px] w-auto max-w-full cursor-zoom-in rounded-[18px] object-contain"
+                      />
+                    </div>
+                    <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{branch.plan.caption}</figcaption>
+                  </figure>
+                ) : null}
               </div>
 
               {branch.groups.map((group, groupIndex) => {
@@ -335,7 +337,7 @@ function JoffreysCoffee() {
                               src={item.src}
                               alt={item.alt}
                               loading="lazy"
-                              onClick={() => setLightboxIndex(branchOffset + 1 + groupOffset + itemIndex)}
+                              onClick={() => setLightboxIndex(branchOffset + (branch.plan ? 1 : 0) + groupOffset + itemIndex)}
                               className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                             />
                           </div>
