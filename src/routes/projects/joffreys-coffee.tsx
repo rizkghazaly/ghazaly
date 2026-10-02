@@ -51,7 +51,7 @@ type Branch = {
   location: string;
   description: string;
   facts: Array<{ label: string; value: string }>;
-  plan: LightboxItem;
+  plan?: LightboxItem;
   groups: Array<{ label: string; items: BranchItem[]; columns?: number }>;
 };
 
@@ -235,7 +235,7 @@ const branches: Branch[] = [
 ];
 
 const lightboxItems: LightboxItem[] = branches.flatMap((branch) => [
-  branch.plan,
+  ...(branch.plan ? [branch.plan] : []),
   ...branch.groups.flatMap((group) => group.items),
 ]);
 
