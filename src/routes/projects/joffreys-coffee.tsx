@@ -14,6 +14,10 @@ import alEhsaInteriorTwo from "@/assets/joffreys-al-ehsa-interior-two.jpg.asset.
 import rivieraPlan from "@/assets/joffreys-riviera-plan.jpg.asset.json";
 import rivieraFacade from "@/assets/joffreys-riviera-facade.jpg.asset.json";
 import rivieraInterior from "@/assets/joffreys-riviera-interior.jpg.asset.json";
+import millenniumBarLounge from "@/assets/joffreys-millennium-bar-lounge.jpg.asset.json";
+import millenniumDiningHall from "@/assets/joffreys-millennium-dining-hall.jpg.asset.json";
+import millenniumScreenBanquette from "@/assets/joffreys-millennium-screen-banquette.jpg.asset.json";
+import millenniumDiningWide from "@/assets/joffreys-millennium-dining-wide.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
