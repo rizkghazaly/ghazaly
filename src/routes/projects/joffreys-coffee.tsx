@@ -14,6 +14,10 @@ import alEhsaInteriorTwo from "@/assets/joffreys-al-ehsa-interior-two.jpg.asset.
 import rivieraPlan from "@/assets/joffreys-riviera-plan.jpg.asset.json";
 import rivieraFacade from "@/assets/joffreys-riviera-facade.jpg.asset.json";
 import rivieraInterior from "@/assets/joffreys-riviera-interior.jpg.asset.json";
+import millenniumBarLounge from "@/assets/joffreys-millennium-bar-lounge.jpg.asset.json";
+import millenniumDiningHall from "@/assets/joffreys-millennium-dining-hall.jpg.asset.json";
+import millenniumScreenBanquette from "@/assets/joffreys-millennium-screen-banquette.jpg.asset.json";
+import millenniumDiningWide from "@/assets/joffreys-millennium-dining-wide.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -24,13 +28,13 @@ export const Route = createFileRoute("/projects/joffreys-coffee")({
       {
         name: "description",
         content:
-          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa and Dammam, Saudi Arabia, presented through plans, design renders and completed interiors.",
+          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa, Dammam and the Millennium Business Centre in Saudi Arabia, presented through plans, design renders and completed interiors.",
       },
       { property: "og:title", content: "Joffrey’s Coffee & Tea Company — Ghazaly" },
       {
         property: "og:description",
         content:
-          "Three Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
+          "Four Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -47,7 +51,7 @@ type Branch = {
   location: string;
   description: string;
   facts: Array<{ label: string; value: string }>;
-  plan: LightboxItem;
+  plan?: LightboxItem;
   groups: Array<{ label: string; items: BranchItem[]; columns?: number }>;
 };
 
@@ -183,10 +187,55 @@ const branches: Branch[] = [
       },
     ],
   },
+  {
+    number: "04",
+    title: "Millennium Business Centre Café",
+    location: "Jeddah, Saudi Arabia",
+    description:
+      "A renovation proposal for the existing café in the Millennium Business Centre, developed with the AlGhazzawi Group. The design elevates the branch into a more refined hospitality setting: perforated brass columns and screens define intimate dining pockets, layered ceiling coves and ring lights carry a warm rhythm overhead, and a brass-and-marble bar with a backlit wine cellar anchors the room as its signature element.",
+    facts: [
+      { label: "Location", value: "Jeddah, Saudi Arabia" },
+      { label: "Scope", value: "Renovation proposal for the existing café" },
+      { label: "Presentation", value: "Architectural renders" },
+      { label: "Type", value: "Specialty coffee shop & dining lounge" },
+    ],
+    groups: [
+      {
+        label: "Renovation proposal",
+        columns: 2,
+        items: [
+          {
+            src: millenniumBarLounge.url,
+            alt: "Interior render of the Millennium Business Centre café bar with brass counter, marble top and backlit wine cellar",
+            caption:
+              "Bar & lounge — a perforated brass column, marble-topped brass bar and backlit wine cellar anchor the seating hall.",
+          },
+          {
+            src: millenniumDiningHall.url,
+            alt: "Dining hall render with brass ceiling coves, blue velvet and cognac leather seating",
+            caption:
+              "Dining hall — draped brass coves and globe pendants hang over velvet and leather seating divided by openwork brass screens.",
+          },
+          {
+            src: millenniumScreenBanquette.url,
+            alt: "Close-up render of perforated brass screens framing a leather banquette dining table",
+            caption:
+              "Dining pocket — perforated brass screens frame each banquette table beneath a triptych of marble artwork.",
+          },
+          {
+            src: millenniumDiningWide.url,
+            alt: "Wide interior render of the renovated café with ring chandeliers and brass lattice screens",
+            caption:
+              "The room in full — concentric ring chandeliers and a field of brass lattice screens organize the dining floor.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const lightboxItems: LightboxItem[] = branches.flatMap((branch) => [
-  branch.plan,
+  ...(branch.plan ? [branch.plan] : []),
   ...branch.groups.flatMap((group) => group.items),
 ]);
 
@@ -220,23 +269,23 @@ function JoffreysCoffee() {
           Joffrey&apos;s Coffee &amp; Tea Company
         </h1>
         <p className="mt-6 max-w-3xl text-[15px] leading-7 text-muted-foreground">
-          Joffrey&apos;s operates more than 50 specialty coffee outlets and a local roastery across Saudi Arabia through the AlGhazzawi Group&apos;s exclusive regional franchise. These three branches show my work developing café environments from plans and design visualization through renovation and completion.
+          Joffrey&apos;s operates more than 50 specialty coffee outlets and a local roastery across Saudi Arabia through the AlGhazzawi Group&apos;s exclusive regional franchise. These four branches show my work developing café environments from plans and design visualization through renovation and completion.
         </p>
         <dl className="mt-10 grid max-w-4xl grid-cols-1 gap-6 border-t border-border pt-8 sm:grid-cols-3">
           <div><dt className="stat-label mt-0">Client</dt><dd className="mt-2 text-sm text-foreground/90">Joffrey&apos;s Coffee &amp; Tea Company</dd></div>
-          <div><dt className="stat-label mt-0">Branches shown</dt><dd className="mt-2 text-sm text-foreground/90">Jeddah · Al Ehsa · Dammam</dd></div>
+          <div><dt className="stat-label mt-0">Branches shown</dt><dd className="mt-2 text-sm text-foreground/90">Jeddah · Al Ehsa · Dammam · Millennium</dd></div>
           <div><dt className="stat-label mt-0">Scope</dt><dd className="mt-2 text-sm text-foreground/90">Plans, interiors &amp; exterior renovation</dd></div>
         </dl>
       </section>
 
       {branches.map((branch, branchIndex) => {
         const branchOffset = itemOffset;
-        itemOffset += 1 + branch.groups.reduce((total, group) => total + group.items.length, 0);
+        itemOffset += (branch.plan ? 1 : 0) + branch.groups.reduce((total, group) => total + group.items.length, 0);
 
         return (
           <section key={branch.title} className="relative z-10 border-t border-border">
             <div className="mx-auto max-w-[1200px] px-6 py-16 lg:py-24">
-              <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16">
+              <div className={branch.plan ? "grid items-start gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16" : ""}>
                 <div>
                   <p className="section-index">{branch.number} — {branch.location}</p>
                   <h2 className="mt-3 max-w-lg font-serif text-3xl font-light sm:text-4xl">{branch.title}</h2>
@@ -250,18 +299,20 @@ function JoffreysCoffee() {
                     ))}
                   </dl>
                 </div>
-                <figure>
-                  <div className="glass overflow-hidden rounded-[26px] p-2.5 sm:p-3">
-                    <img
-                      src={branch.plan.src}
-                      alt={branch.plan.alt}
-                      loading={branchIndex === 0 ? "eager" : "lazy"}
-                      onClick={() => setLightboxIndex(branchOffset)}
-                      className="mx-auto h-auto max-h-[560px] w-auto max-w-full cursor-zoom-in rounded-[18px] object-contain"
-                    />
-                  </div>
-                  <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{branch.plan.caption}</figcaption>
-                </figure>
+                {branch.plan ? (
+                  <figure>
+                    <div className="glass overflow-hidden rounded-[26px] p-2.5 sm:p-3">
+                      <img
+                        src={branch.plan.src}
+                        alt={branch.plan.alt}
+                        loading={branchIndex === 0 ? "eager" : "lazy"}
+                        onClick={() => setLightboxIndex(branchOffset)}
+                        className="mx-auto h-auto max-h-[560px] w-auto max-w-full cursor-zoom-in rounded-[18px] object-contain"
+                      />
+                    </div>
+                    <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{branch.plan.caption}</figcaption>
+                  </figure>
+                ) : null}
               </div>
 
               {branch.groups.map((group, groupIndex) => {
@@ -286,7 +337,7 @@ function JoffreysCoffee() {
                               src={item.src}
                               alt={item.alt}
                               loading="lazy"
-                              onClick={() => setLightboxIndex(branchOffset + 1 + groupOffset + itemIndex)}
+                              onClick={() => setLightboxIndex(branchOffset + (branch.plan ? 1 : 0) + groupOffset + itemIndex)}
                               className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                             />
                           </div>
