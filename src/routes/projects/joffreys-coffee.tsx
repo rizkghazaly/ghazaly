@@ -285,7 +285,7 @@ function JoffreysCoffee() {
         return (
           <section key={branch.title} className="relative z-10 border-t border-border">
             <div className="mx-auto max-w-[1200px] px-6 py-16 lg:py-24">
-              <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16">
+              <div className={branch.plan ? "grid items-start gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-16" : ""}>
                 <div>
                   <p className="section-index">{branch.number} — {branch.location}</p>
                   <h2 className="mt-3 max-w-lg font-serif text-3xl font-light sm:text-4xl">{branch.title}</h2>
