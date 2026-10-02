@@ -28,13 +28,13 @@ export const Route = createFileRoute("/projects/joffreys-coffee")({
       {
         name: "description",
         content:
-          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa and Dammam, Saudi Arabia, presented through plans, design renders and completed interiors.",
+          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa, Dammam and the Millennium Business Centre in Saudi Arabia, presented through plans, design renders and completed interiors.",
       },
       { property: "og:title", content: "Joffrey’s Coffee & Tea Company — Ghazaly" },
       {
         property: "og:description",
         content:
-          "Three Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
+          "Four Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
