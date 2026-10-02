@@ -18,6 +18,7 @@ import millenniumBarLounge from "@/assets/joffreys-millennium-bar-lounge.jpg.ass
 import millenniumDiningHall from "@/assets/joffreys-millennium-dining-hall.jpg.asset.json";
 import millenniumScreenBanquette from "@/assets/joffreys-millennium-screen-banquette.jpg.asset.json";
 import millenniumDiningWide from "@/assets/joffreys-millennium-dining-wide.jpg.asset.json";
+import millenniumPlan from "@/assets/joffreys-millennium-plan.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -199,6 +200,12 @@ const branches: Branch[] = [
       { label: "Presentation", value: "Architectural renders" },
       { label: "Type", value: "Specialty coffee shop & dining lounge" },
     ],
+    plan: {
+      src: millenniumPlan.url,
+      alt: "General layout plan of the Joffrey’s café in the Millennium Business Centre, Jeddah",
+      caption:
+        "General plan — a sweeping timber route and bridge tie the open seating field to the kitchen, service areas and the mezzanine escalator and elevator.",
+    },
     groups: [
       {
         label: "Renovation proposal",
