@@ -19,6 +19,8 @@ import millenniumDiningHall from "@/assets/joffreys-millennium-dining-hall.jpg.a
 import millenniumScreenBanquette from "@/assets/joffreys-millennium-screen-banquette.jpg.asset.json";
 import millenniumDiningWide from "@/assets/joffreys-millennium-dining-wide.jpg.asset.json";
 import millenniumPlan from "@/assets/joffreys-millennium-plan.jpg.asset.json";
+import airportKioskOne from "@/assets/joffreys-airport-kiosk-one.jpg.asset.json";
+import airportKioskTwo from "@/assets/joffreys-airport-kiosk-two.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -29,13 +31,13 @@ export const Route = createFileRoute("/projects/joffreys-coffee")({
       {
         name: "description",
         content:
-          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa, Dammam and the Millennium Business Centre in Saudi Arabia, presented through plans, design renders and completed interiors.",
+          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa, Dammam, the Millennium Business Centre and a kiosk proposal for King Khalid International Airport in Riyadh, presented through plans, design renders and completed interiors.",
       },
       { property: "og:title", content: "Joffrey’s Coffee & Tea Company — Ghazaly" },
       {
         property: "og:description",
         content:
-          "Four Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
+          "Five Saudi Arabia projects developed from spatial planning and visualization through renovation, completed interiors and an airport kiosk proposal.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
