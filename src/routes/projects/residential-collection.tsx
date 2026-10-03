@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, MoveHorizontal } from "lucide-react";
 
 import faytroonAerial from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import faytroonPool from "@/assets/faytroon-residential-pool.jpg.asset.json";
@@ -9,6 +9,7 @@ import zebdelGarden from "@/assets/zebdel-al-mays-garden.jpg.asset.json";
 import zebdelSunset from "@/assets/zebdel-al-mays-sunset.jpg.asset.json";
 import zebdelPlan from "@/assets/zebdel-al-mays-plan.jpg.asset.json";
 import studioFront from "@/assets/studio-residence-front.jpg.asset.json";
+import studioDay from "@/assets/studio-residence-day.jpg.asset.json";
 import studioCorner from "@/assets/studio-residence-corner.jpg.asset.json";
 import studioPlan from "@/assets/studio-residence-plan.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
@@ -43,7 +44,7 @@ type ResidentialProject = {
   description: string;
   facts: Array<{ label: string; value: string }>;
   plan: LightboxItem;
-  renders: LightboxItem[];
+  renders: Array<LightboxItem & { day?: { src: string; alt: string } }>;
 };
 
 const projects: ResidentialProject[] = [
@@ -133,13 +134,112 @@ const projects: ResidentialProject[] = [
       {
         src: studioCorner.url,
         alt: "Sunset corner view of the Studio Apartment Residence and Facilities in Dubai",
-        caption: "Corner view — layered balconies and roof terraces animate the residence at sunset.",
+        caption: "Corner view — drag the handle to slide between the sunset and daytime settings.",
+        day: {
+          src: studioDay.url,
+          alt: "Daytime corner view of the Studio Apartment Residence and Facilities in Dubai",
+        },
       },
     ],
   },
 ];
 
 const lightboxItems: LightboxItem[] = projects.flatMap((project) => [project.plan, ...project.renders]);
+
+function CompareSlider({
+  night,
+  day,
+  onOpen,
+}: {
+  night: LightboxItem;
+  day: { src: string; alt: string };
+  onOpen: () => void;
+}) {
+  const [position, setPosition] = useState(50);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const draggingRef = useRef(false);
+  const movedRef = useRef(false);
+
+  const updateFromClientX = (clientX: number) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect || rect.width === 0) return;
+    const next = ((clientX - rect.left) / rect.width) * 100;
+    setPosition(Math.min(100, Math.max(0, next)));
+  };
+
+  useEffect(() => {
+    const onMove = (event: PointerEvent) => {
+      if (!draggingRef.current) return;
+      movedRef.current = true;
+      updateFromClientX(event.clientX);
+    };
+    const onEnd = () => {
+      draggingRef.current = false;
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onEnd);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onEnd);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      role="slider"
+      aria-label="Compare night and day renders — drag to reveal"
+      aria-valuenow={Math.round(position)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      tabIndex={0}
+      className="relative aspect-[16/9] w-full cursor-ew-resize touch-pan-y overflow-hidden rounded-[18px] bg-surface select-none"
+      onPointerDown={(event) => {
+        draggingRef.current = true;
+        updateFromClientX(event.clientX);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "ArrowLeft") setPosition((value) => Math.max(0, value - 5));
+        if (event.key === "ArrowRight") setPosition((value) => Math.min(100, value + 5));
+        if (event.key === "Enter") onOpen();
+      }}
+      onClick={() => {
+        if (!movedRef.current) onOpen();
+        movedRef.current = false;
+      }}
+    >
+      <img
+        src={day.src}
+        alt={day.alt}
+        draggable={false}
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      />
+      <img
+        src={night.src}
+        alt={night.alt}
+        draggable={false}
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+      />
+      <div
+        className="pointer-events-none absolute inset-y-0 w-px bg-foreground/80"
+        style={{ left: `${position}%` }}
+      />
+      <div
+        className="pointer-events-none absolute top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/70 text-foreground backdrop-blur-sm"
+        style={{ left: `${position}%` }}
+      >
+        <MoveHorizontal size={16} aria-hidden="true" />
+      </div>
+      <span className="pointer-events-none absolute left-3 top-3 rounded-full bg-background/60 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-foreground backdrop-blur-sm">
+        Night
+      </span>
+      <span className="pointer-events-none absolute right-3 top-3 rounded-full bg-background/60 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-foreground backdrop-blur-sm">
+        Day
+      </span>
+    </div>
+  );
+}
 
 function ResidentialCollection() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -217,13 +317,17 @@ function ResidentialCollection() {
                 {project.renders.map((render, renderIndex) => (
                   <figure key={render.src} className="group glass rounded-[26px] p-2.5">
                     <div className="overflow-hidden rounded-[18px]">
-                      <img
-                        src={render.src}
-                        alt={render.alt}
-                        loading="lazy"
-                        onClick={() => setLightboxIndex(lightboxOffset + renderIndex + 1)}
-                        className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
-                      />
+                      {render.day ? (
+                        <CompareSlider night={render} day={render.day} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
+                      ) : (
+                        <img
+                          src={render.src}
+                          alt={render.alt}
+                          loading="lazy"
+                          onClick={() => setLightboxIndex(lightboxOffset + renderIndex + 1)}
+                          className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                        />
+                      )}
                     </div>
                     <figcaption className="px-3 pb-3 pt-4 text-sm leading-6 text-muted-foreground">{render.caption}</figcaption>
                   </figure>
