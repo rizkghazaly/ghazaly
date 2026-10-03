@@ -241,6 +241,38 @@ const branches: Branch[] = [
       },
     ],
   },
+  {
+    number: "05",
+    title: "King Khalid International Airport Kiosks",
+    location: "Riyadh, Saudi Arabia",
+    description:
+      "A bidding proposal for Joffrey's coffee kiosks inside King Khalid International Airport in Riyadh. The compact kiosk pairs a curved pastry display with a slim service counter beneath a bronze canopy, framed by fluted brass columns and an illuminated coffee-cup emblem — a self-contained outlet that brings the brand into the departures hall while a screened seating enclosure offers travelers a place to pause.",
+    facts: [
+      { label: "Location", value: "King Khalid International Airport, Riyadh" },
+      { label: "Scope", value: "Kiosk design & bidding proposal" },
+      { label: "Presentation", value: "Architectural renders" },
+      { label: "Type", value: "Airport coffee kiosk" },
+    ],
+    groups: [
+      {
+        label: "Kiosk design proposal",
+        items: [
+          {
+            src: airportKioskOne.url,
+            alt: "Render of the Joffrey's airport kiosk in the Riyadh departures hall with bronze canopy and seating enclosure",
+            caption:
+              "Departures hall — the bronze kiosk with fluted brass columns stands beside a screened seating enclosure and flight information boards.",
+          },
+          {
+            src: airportKioskTwo.url,
+            alt: "Render of the Joffrey's airport kiosk with pastry display case and slim service counter",
+            caption:
+              "Kiosk detail — a curved pastry display, coffee bar and glowing columns give the compact outlet a full café presence.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const lightboxItems: LightboxItem[] = branches.flatMap((branch) => [
