@@ -21,6 +21,7 @@ import millenniumDiningWide from "@/assets/joffreys-millennium-dining-wide.jpg.a
 import millenniumPlan from "@/assets/joffreys-millennium-plan.jpg.asset.json";
 import airportKioskOne from "@/assets/joffreys-airport-kiosk-one.jpg.asset.json";
 import airportKioskTwo from "@/assets/joffreys-airport-kiosk-two.jpg.asset.json";
+import airportKioskPlan from "@/assets/joffreys-airport-kiosk-plan.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -250,9 +251,15 @@ const branches: Branch[] = [
     facts: [
       { label: "Location", value: "King Khalid International Airport, Riyadh" },
       { label: "Scope", value: "Kiosk design & bidding proposal" },
-      { label: "Presentation", value: "Architectural renders" },
+      { label: "Presentation", value: "Plan & architectural renders" },
       { label: "Type", value: "Airport coffee kiosk" },
     ],
+    plan: {
+      src: airportKioskPlan.url,
+      alt: "Top-view layout plan of the Joffrey’s airport kiosk at King Khalid International Airport, Riyadh",
+      caption:
+        "General plan — a screened seating area with four tables sits beside the bronze canopy housing the pastry display, barista station, service counter and back-of-house equipment.",
+    },
     groups: [
       {
         label: "Kiosk design proposal",
