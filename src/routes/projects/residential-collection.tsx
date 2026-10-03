@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowUpRight, MoveHorizontal } from "lucide-react";
 
 import faytroonAerial from "@/assets/faytroon-residential-aerial.jpg.asset.json";
+import faytroonAerialNight from "@/assets/faytroon-residential-aerial-night.jpg.asset.json";
 import faytroonPool from "@/assets/faytroon-residential-pool.jpg.asset.json";
 import faytroonPlan from "@/assets/faytroon-residential-plan.jpg.asset.json";
 import zebdelGarden from "@/assets/zebdel-al-mays-garden.jpg.asset.json";
@@ -44,7 +45,7 @@ type ResidentialProject = {
   description: string;
   facts: Array<{ label: string; value: string }>;
   plan: LightboxItem;
-  renders: Array<LightboxItem & { day?: { src: string; alt: string } }>;
+  renders: Array<LightboxItem & { day?: { src: string; alt: string }; night?: { src: string; alt: string } }>;
 };
 
 const projects: ResidentialProject[] = [
@@ -69,7 +70,11 @@ const projects: ResidentialProject[] = [
       {
         src: faytroonAerial.url,
         alt: "Aerial view of Faytroon Residential Project 1 with stone walls, timber terraces and pool",
-        caption: "Aerial view — interlocking volumes frame private terraces and the pool garden.",
+        caption: "Aerial view — drag the handle to slide between the daytime and dusk settings.",
+        night: {
+          src: faytroonAerialNight.url,
+          alt: "Night aerial view of Faytroon Residential Project 1 with warm lighting, glowing pool and dusk landscape",
+        },
       },
       {
         src: faytroonPool.url,
@@ -319,6 +324,8 @@ function ResidentialCollection() {
                     <div className="overflow-hidden rounded-[18px]">
                       {render.day ? (
                         <CompareSlider night={render} day={render.day} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
+                      ) : render.night ? (
+                        <CompareSlider night={render.night} day={render} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
                       ) : (
                         <img
                           src={render.src}
