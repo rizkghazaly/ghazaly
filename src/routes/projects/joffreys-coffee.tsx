@@ -19,6 +19,8 @@ import millenniumDiningHall from "@/assets/joffreys-millennium-dining-hall.jpg.a
 import millenniumScreenBanquette from "@/assets/joffreys-millennium-screen-banquette.jpg.asset.json";
 import millenniumDiningWide from "@/assets/joffreys-millennium-dining-wide.jpg.asset.json";
 import millenniumPlan from "@/assets/joffreys-millennium-plan.jpg.asset.json";
+import airportKioskOne from "@/assets/joffreys-airport-kiosk-one.jpg.asset.json";
+import airportKioskTwo from "@/assets/joffreys-airport-kiosk-two.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -29,13 +31,13 @@ export const Route = createFileRoute("/projects/joffreys-coffee")({
       {
         name: "description",
         content:
-          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa, Dammam and the Millennium Business Centre in Saudi Arabia, presented through plans, design renders and completed interiors.",
+          "Café branch design for Joffrey’s Coffee & Tea Company in Jeddah, Al Ehsa, Dammam, the Millennium Business Centre and a kiosk proposal for King Khalid International Airport in Riyadh, presented through plans, design renders and completed interiors.",
       },
       { property: "og:title", content: "Joffrey’s Coffee & Tea Company — Ghazaly" },
       {
         property: "og:description",
         content:
-          "Four Saudi Arabia café branches developed from spatial planning and visualization through renovation and completed interiors.",
+          "Five Saudi Arabia projects developed from spatial planning and visualization through renovation, completed interiors and an airport kiosk proposal.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -239,6 +241,38 @@ const branches: Branch[] = [
       },
     ],
   },
+  {
+    number: "05",
+    title: "King Khalid International Airport Kiosks",
+    location: "Riyadh, Saudi Arabia",
+    description:
+      "A bidding proposal for Joffrey's coffee kiosks inside King Khalid International Airport in Riyadh. The compact kiosk pairs a curved pastry display with a slim service counter beneath a bronze canopy, framed by fluted brass columns and an illuminated coffee-cup emblem — a self-contained outlet that brings the brand into the departures hall while a screened seating enclosure offers travelers a place to pause.",
+    facts: [
+      { label: "Location", value: "King Khalid International Airport, Riyadh" },
+      { label: "Scope", value: "Kiosk design & bidding proposal" },
+      { label: "Presentation", value: "Architectural renders" },
+      { label: "Type", value: "Airport coffee kiosk" },
+    ],
+    groups: [
+      {
+        label: "Kiosk design proposal",
+        items: [
+          {
+            src: airportKioskOne.url,
+            alt: "Render of the Joffrey's airport kiosk in the Riyadh departures hall with bronze canopy and seating enclosure",
+            caption:
+              "Departures hall — the bronze kiosk with fluted brass columns stands beside a screened seating enclosure and flight information boards.",
+          },
+          {
+            src: airportKioskTwo.url,
+            alt: "Render of the Joffrey's airport kiosk with pastry display case and slim service counter",
+            caption:
+              "Kiosk detail — a curved pastry display, coffee bar and glowing columns give the compact outlet a full café presence.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const lightboxItems: LightboxItem[] = branches.flatMap((branch) => [
@@ -276,11 +310,11 @@ function JoffreysCoffee() {
           Joffrey&apos;s Coffee &amp; Tea Company
         </h1>
         <p className="mt-6 max-w-3xl text-[15px] leading-7 text-muted-foreground">
-          Joffrey&apos;s operates more than 50 specialty coffee outlets and a local roastery across Saudi Arabia through the AlGhazzawi Group&apos;s exclusive regional franchise. These four branches show my work developing café environments from plans and design visualization through renovation and completion.
+          Joffrey&apos;s operates more than 50 specialty coffee outlets and a local roastery across Saudi Arabia through the AlGhazzawi Group&apos;s exclusive regional franchise. These five projects show my work developing café environments from plans and design visualization through renovation, completion and bidding proposals.
         </p>
         <dl className="mt-10 grid max-w-4xl grid-cols-1 gap-6 border-t border-border pt-8 sm:grid-cols-3">
           <div><dt className="stat-label mt-0">Client</dt><dd className="mt-2 text-sm text-foreground/90">Joffrey&apos;s Coffee &amp; Tea Company</dd></div>
-          <div><dt className="stat-label mt-0">Branches shown</dt><dd className="mt-2 text-sm text-foreground/90">Jeddah · Al Ehsa · Dammam · Millennium</dd></div>
+          <div><dt className="stat-label mt-0">Branches shown</dt><dd className="mt-2 text-sm text-foreground/90">Jeddah · Al Ehsa · Dammam · Millennium · Riyadh</dd></div>
           <div><dt className="stat-label mt-0">Scope</dt><dd className="mt-2 text-sm text-foreground/90">Plans, interiors &amp; exterior renovation</dd></div>
         </dl>
       </section>
