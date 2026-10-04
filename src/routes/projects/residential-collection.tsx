@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowUpRight, MoveHorizontal } from "lucide-react";
+import { useState } from "react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import faytroonAerial from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import faytroonAerialNight from "@/assets/faytroon-residential-aerial-night.jpg.asset.json";
@@ -79,7 +79,7 @@ const projects: ResidentialProject[] = [
       {
         src: faytroonAerial.url,
         alt: "Aerial view of Faytroon Residential Project 1 with stone walls, timber terraces and pool",
-        caption: "Aerial view — drag the handle to slide between the daytime and dusk settings.",
+        caption: "Aerial view — switch between day and dusk to see the terraces and pool glow after dark.",
         night: {
           src: faytroonAerialNight.url,
           alt: "Night aerial view of Faytroon Residential Project 1 with warm lighting, glowing pool and dusk landscape",
@@ -148,7 +148,7 @@ const projects: ResidentialProject[] = [
       {
         src: studioCorner.url,
         alt: "Sunset corner view of the Studio Apartment Residence and Facilities in Dubai",
-        caption: "Corner view — drag the handle to slide between the sunset and daytime settings.",
+        caption: "Corner view — switch between the sunset and daytime settings of the same facade.",
         day: {
           src: studioDay.url,
           alt: "Daytime corner view of the Studio Apartment Residence and Facilities in Dubai",
