@@ -12,6 +12,8 @@ import zebdelPlan from "@/assets/zebdel-al-mays-plan.jpg.asset.json";
 import studioFront from "@/assets/studio-residence-front.jpg.asset.json";
 import studioDay from "@/assets/studio-residence-day.jpg.asset.json";
 import studioCorner from "@/assets/studio-residence-corner.jpg.asset.json";
+import studioStreet from "@/assets/studio-residence-street.jpg.asset.json";
+import studioGardenBlock from "@/assets/studio-residence-garden-block.jpg.asset.json";
 import studioPlan from "@/assets/studio-residence-plan.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -144,6 +146,16 @@ const projects: ResidentialProject[] = [
           src: studioDay.url,
           alt: "Daytime corner view of the Studio Apartment Residence and Facilities in Dubai",
         },
+      },
+      {
+        src: studioStreet.url,
+        alt: "Sunlit street elevation of the Studio Apartment Residence and Facilities with repeating balconies and a rooftop pergola",
+        caption: "Street elevation — repeating balconies, warm timber reveals and a rooftop pergola give the building a sunny, hospitable face.",
+      },
+      {
+        src: studioGardenBlock.url,
+        alt: "Garden-side view of the Studio Apartment Residence with cream facade panels and glass balustrades above a planted street",
+        caption: "Garden elevation — calm cream panels and glass balustrades step the block down toward a planted, informal street edge.",
       },
     ],
   },
@@ -285,7 +297,9 @@ function ResidentialCollection() {
       </section>
 
       {projects.map((project, projectIndex) => {
-        const lightboxOffset = projectIndex * 3;
+        const lightboxOffset = projects
+          .slice(0, projectIndex)
+          .reduce((sum, item) => sum + 1 + item.renders.length, 0);
         return (
           <section key={project.title} className="relative z-10 border-t border-border">
             <div className="mx-auto max-w-[1200px] px-6 py-16 lg:py-24">
