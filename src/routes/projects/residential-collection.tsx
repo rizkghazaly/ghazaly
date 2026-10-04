@@ -13,6 +13,7 @@ import studioFront from "@/assets/studio-residence-front.jpg.asset.json";
 import studioDay from "@/assets/studio-residence-day.jpg.asset.json";
 import studioCorner from "@/assets/studio-residence-corner.jpg.asset.json";
 import studioStreet from "@/assets/studio-residence-street.jpg.asset.json";
+import studioStreetNight from "@/assets/studio-residence-street-night.jpg.asset.json";
 import studioGardenBlock from "@/assets/studio-residence-garden-block.jpg.asset.json";
 import studioPlan from "@/assets/studio-residence-plan.jpg.asset.json";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
@@ -47,7 +48,13 @@ type ResidentialProject = {
   description: string;
   facts: Array<{ label: string; value: string }>;
   plan: LightboxItem;
-  renders: Array<LightboxItem & { day?: { src: string; alt: string }; night?: { src: string; alt: string } }>;
+  renders: Array<
+    LightboxItem & {
+      day?: { src: string; alt: string };
+      night?: { src: string; alt: string };
+      toggleNight?: { src: string; alt: string };
+    }
+  >;
 };
 
 const projects: ResidentialProject[] = [
@@ -150,7 +157,11 @@ const projects: ResidentialProject[] = [
       {
         src: studioStreet.url,
         alt: "Sunlit street elevation of the Studio Apartment Residence and Facilities with repeating balconies and a rooftop pergola",
-        caption: "Street elevation — repeating balconies, warm timber reveals and a rooftop pergola give the building a sunny, hospitable face.",
+        caption: "Street elevation — switch between day and night to see warm balcony lighting bring the facade to life.",
+        toggleNight: {
+          src: studioStreetNight.url,
+          alt: "Night street elevation of the Studio Apartment Residence with illuminated balconies and rooftop pergola",
+        },
       },
       {
         src: studioGardenBlock.url,
@@ -162,6 +173,55 @@ const projects: ResidentialProject[] = [
 ];
 
 const lightboxItems: LightboxItem[] = projects.flatMap((project) => [project.plan, ...project.renders]);
+
+function DayNightToggle({
+  day,
+  night,
+  onOpen,
+}: {
+  day: LightboxItem;
+  night: { src: string; alt: string };
+  onOpen: () => void;
+}) {
+  const [isNight, setIsNight] = useState(false);
+  return (
+    <div className="relative w-full overflow-hidden rounded-[18px]">
+      <button type="button" onClick={onOpen} className="block w-full cursor-zoom-in" aria-label="Open enlarged view">
+        <img src={day.src} alt={day.alt} loading="lazy" className="h-auto w-full rounded-[18px] object-contain" />
+        <img
+          src={night.src}
+          alt={night.alt}
+          loading="lazy"
+          aria-hidden={!isNight}
+          className="pointer-events-none absolute inset-0 h-full w-full rounded-[18px] object-cover transition-opacity duration-700 ease-out"
+          style={{ opacity: isNight ? 1 : 0 }}
+        />
+      </button>
+      <div
+        role="group"
+        aria-label="Switch between day and night view"
+        className="absolute right-3 top-3 flex rounded-full border border-border bg-background/60 p-1 backdrop-blur-md"
+      >
+        {(["Day", "Night"] as const).map((label) => {
+          const active = (label === "Night") === isNight;
+          return (
+            <button
+              key={label}
+              type="button"
+              aria-pressed={active}
+              onClick={() => setIsNight(label === "Night")}
+              className={`rounded-full px-3.5 py-1 text-[10px] uppercase tracking-[0.18em] transition-colors ${
+                active ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 function CompareSlider({
   night,
@@ -336,7 +396,9 @@ function ResidentialCollection() {
                 {project.renders.map((render, renderIndex) => (
                   <figure key={render.src} className="group glass rounded-[26px] p-2.5">
                     <div className="overflow-hidden rounded-[18px]">
-                      {render.day ? (
+                      {render.toggleNight ? (
+                        <DayNightToggle day={render} night={render.toggleNight} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
+                      ) : render.day ? (
                         <CompareSlider night={render} day={render.day} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
                       ) : render.night ? (
                         <CompareSlider night={render.night} day={render} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
