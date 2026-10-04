@@ -6,6 +6,7 @@ import faytroonAerial from "@/assets/faytroon-residential-aerial.jpg.asset.json"
 import faytroonAerialNight from "@/assets/faytroon-residential-aerial-night.jpg.asset.json";
 import faytroonPool from "@/assets/faytroon-residential-pool.jpg.asset.json";
 import faytroonPlan from "@/assets/faytroon-residential-plan.jpg.asset.json";
+import zebdelGardenNight from "@/assets/zebdel-al-mays-garden-night.jpg.asset.json";
 import zebdelGarden from "@/assets/zebdel-al-mays-garden.jpg.asset.json";
 import zebdelSunset from "@/assets/zebdel-al-mays-sunset.jpg.asset.json";
 import zebdelPlan from "@/assets/zebdel-al-mays-plan.jpg.asset.json";
@@ -113,7 +114,11 @@ const projects: ResidentialProject[] = [
       {
         src: zebdelGarden.url,
         alt: "Garden view of Zebdel Al Mays Villa with pale stone facade, arched veranda and red tiled roof",
-        caption: "Garden elevation — a deep arched veranda forms the villa’s central outdoor room.",
+        caption: "Garden elevation — switch between day and night to see the arcades and terraces glow under the moonlit sky.",
+        toggleNight: {
+          src: zebdelGardenNight.url,
+          alt: "Night garden view of Zebdel Al Mays Villa with warm lighting on the arches, balconies and terraces",
+        },
       },
       {
         src: zebdelSunset.url,
