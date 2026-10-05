@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import faytroonAerial from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import faytroonAerialNight from "@/assets/faytroon-residential-aerial-night.jpg.asset.json";
+import faytroonPoolNight from "@/assets/faytroon-pool-night.jpg.asset.json";
 import faytroonPool from "@/assets/faytroon-residential-pool.jpg.asset.json";
 import faytroonPlan from "@/assets/faytroon-residential-plan.jpg.asset.json";
 import zebdelGardenNight from "@/assets/zebdel-al-mays-garden-night.jpg.asset.json";
@@ -89,7 +90,11 @@ const projects: ResidentialProject[] = [
       {
         src: faytroonPool.url,
         alt: "Pool courtyard of Faytroon Residential Project 1 with stone and timber facades",
-        caption: "Pool court — layered stone walls and timber cladding create a warm, sheltered outdoor room.",
+        caption: "Pool court — switch between day and night to see the loungers, umbrellas and pool glow after dark.",
+        toggleNight: {
+          src: faytroonPoolNight.url,
+          alt: "Night view of the Faytroon Residential Project 1 pool courtyard with lit stone walls, umbrellas and glowing pool",
+        },
       },
     ],
   },
