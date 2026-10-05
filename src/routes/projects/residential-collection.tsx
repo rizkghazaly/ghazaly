@@ -210,7 +210,7 @@ function DayNightToggle({
       <div
         role="group"
         aria-label="Switch between day and night view"
-        className="absolute right-3 top-3 flex gap-0.5 rounded-full border border-white/25 bg-black/55 p-0.5 shadow-lg shadow-black/60 backdrop-blur-md"
+        className="absolute right-3 top-3 flex gap-0.5 rounded-full border border-white/25 bg-black/55 p-1 shadow-lg shadow-black/60 backdrop-blur-md"
       >
         {(["Day", "Night"] as const).map((label) => {
           const active = (label === "Night") === isNight;
@@ -221,15 +221,16 @@ function DayNightToggle({
               type="button"
               aria-pressed={active}
               onClick={() => setIsNight(label === "Night")}
-              className={`flex items-center gap-1 rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.14em] transition-colors ${
+              className={`flex items-center gap-1.5 rounded-full px-[15px] py-[7px] text-[11.5px] uppercase tracking-[0.16em] transition-colors ${
                 active ? "bg-white font-medium text-black shadow-sm" : "text-white/85 hover:text-white"
               }`}
             >
-              <Icon size={12} strokeWidth={2.25} aria-hidden="true" />
+              <Icon size={14} strokeWidth={2.25} aria-hidden="true" />
               {label}
             </button>
           );
         })}
+
 
       </div>
     </div>
