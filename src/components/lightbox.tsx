@@ -111,13 +111,13 @@ export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
             alt={item.alt}
             className="glass max-h-[78vh] w-auto max-w-full rounded-[22px] object-contain p-2"
           />
-          {item.toggleNight ? (
+          {item.toggleNight || item.day ? (
             <>
               <img
-                src={item.toggleNight.src}
-                alt={item.toggleNight.alt}
+                src={(item.toggleNight ?? item.day)!.src}
+                alt={(item.toggleNight ?? item.day)!.alt}
                 className="pointer-events-none absolute inset-2 h-[calc(100%-16px)] w-[calc(100%-16px)] rounded-[22px] object-cover transition-opacity duration-700 ease-out"
-                style={{ opacity: isNight ? 1 : 0 }}
+                style={{ opacity: item.toggleNight ? (isNight ? 1 : 0) : isNight ? 0 : 1 }}
               />
               <div
                 role="group"
@@ -145,6 +145,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
               </div>
             </>
           ) : null}
+
         </div>
         {item.caption ? (
           <figcaption className="mt-4 max-w-2xl text-center text-sm leading-6 text-muted-foreground">
