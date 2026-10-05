@@ -90,7 +90,11 @@ const projects: ResidentialProject[] = [
       {
         src: faytroonPool.url,
         alt: "Pool courtyard of Faytroon Residential Project 1 with stone and timber facades",
-        caption: "Pool court — layered stone walls and timber cladding create a warm, sheltered outdoor room.",
+        caption: "Pool court — switch between day and night to see the loungers, umbrellas and pool glow after dark.",
+        toggleNight: {
+          src: faytroonPoolNight.url,
+          alt: "Night view of the Faytroon Residential Project 1 pool courtyard with lit stone walls, umbrellas and glowing pool",
+        },
       },
     ],
   },
