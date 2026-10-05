@@ -6,7 +6,9 @@ export type LightboxItem = {
   alt: string;
   caption?: string;
   toggleNight?: { src: string; alt: string };
+  day?: { src: string; alt: string };
 };
+
 
 type LightboxProps = {
   items: LightboxItem[];
