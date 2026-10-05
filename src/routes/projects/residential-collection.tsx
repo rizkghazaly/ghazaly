@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Moon, Sun } from "lucide-react";
 
 import faytroonAerial from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import faytroonAerialNight from "@/assets/faytroon-residential-aerial-night.jpg.asset.json";
@@ -210,20 +210,22 @@ function DayNightToggle({
       <div
         role="group"
         aria-label="Switch between day and night view"
-        className="absolute right-3 top-3 flex rounded-full border border-border bg-background/60 p-1 backdrop-blur-md"
+        className="absolute right-3 top-3 flex gap-0.5 rounded-full border border-white/25 bg-black/55 p-1 shadow-lg shadow-black/60 backdrop-blur-md"
       >
         {(["Day", "Night"] as const).map((label) => {
           const active = (label === "Night") === isNight;
+          const Icon = label === "Day" ? Sun : Moon;
           return (
             <button
               key={label}
               type="button"
               aria-pressed={active}
               onClick={() => setIsNight(label === "Night")}
-              className={`rounded-full px-3.5 py-1 text-[10px] uppercase tracking-[0.18em] transition-colors ${
-                active ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
+              className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11px] uppercase tracking-[0.16em] transition-colors ${
+                active ? "bg-white font-medium text-black shadow-sm" : "text-white/85 hover:text-white"
               }`}
             >
+              <Icon size={13} strokeWidth={2.25} aria-hidden="true" />
               {label}
             </button>
           );
