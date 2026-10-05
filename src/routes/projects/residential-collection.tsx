@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import faytroonAerial from "@/assets/faytroon-residential-aerial.jpg.asset.json";
 import faytroonAerialNight from "@/assets/faytroon-residential-aerial-night.jpg.asset.json";
+import faytroonPoolNight from "@/assets/faytroon-pool-night.jpg.asset.json";
 import faytroonPool from "@/assets/faytroon-residential-pool.jpg.asset.json";
 import faytroonPlan from "@/assets/faytroon-residential-plan.jpg.asset.json";
 import zebdelGardenNight from "@/assets/zebdel-al-mays-garden-night.jpg.asset.json";
