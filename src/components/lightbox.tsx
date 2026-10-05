@@ -1,11 +1,16 @@
-import { useCallback, useEffect } from "react";
-import { X } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { Moon, Sun, X } from "lucide-react";
 
 export type LightboxItem = {
   src: string;
   alt: string;
   caption?: string;
+  toggleNight?: { src: string; alt: string };
+  night?: { src: string; alt: string };
+  day?: { src: string; alt: string };
 };
+
+
 
 type LightboxProps = {
   items: LightboxItem[];
@@ -17,6 +22,13 @@ type LightboxProps = {
 export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
   const open = index !== null && index >= 0 && index < items.length;
   const item = open ? items[index] : null;
+  const [isNight, setIsNight] = useState(false);
+
+  // Reset the day/night view whenever the visitor navigates to another image.
+  useEffect(() => {
+    setIsNight(false);
+  }, [index, item?.src]);
+
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
@@ -93,19 +105,65 @@ export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
 
       <figure
         onClick={(event) => event.stopPropagation()}
-        className="flex max-h-full max-w-6xl cursor-default flex-col items-center"
+        className="relative flex max-h-full max-w-6xl cursor-default flex-col items-center"
       >
-        <img
-          src={item.src}
-          alt={item.alt}
-          className="glass max-h-[78vh] w-auto max-w-full rounded-[22px] object-contain p-2"
-        />
+        <div className="relative">
+          <img
+            src={item.src}
+            alt={item.alt}
+            className="glass max-h-[78vh] w-auto max-w-full rounded-[22px] object-contain p-2"
+          />
+          {(() => {
+            const altView = item.toggleNight ?? item.night ?? item.day;
+            if (!altView) return null;
+            const baseIsDay = !item.day; // only the day-pair item keeps a night base image
+            const showAlt = baseIsDay ? isNight : !isNight;
+
+            return (
+              <>
+                <img
+                  src={altView.src}
+                  alt={altView.alt}
+                  className="pointer-events-none absolute inset-2 h-[calc(100%-16px)] w-[calc(100%-16px)] rounded-[22px] object-cover transition-opacity duration-700 ease-out"
+                  style={{ opacity: showAlt ? 1 : 0 }}
+                />
+                <div
+                  role="group"
+                  aria-label="Switch between day and night view"
+                  className="absolute right-5 top-5 z-10 flex gap-0.5 rounded-full border border-white/25 bg-black/55 p-1 shadow-lg shadow-black/60 backdrop-blur-md"
+                >
+                  {(["Day", "Night"] as const).map((label) => {
+                    const active = (label === "Night") === isNight;
+                    const Icon = label === "Day" ? Sun : Moon;
+                    return (
+                      <button
+                        key={label}
+                        type="button"
+                        aria-pressed={active}
+                        onClick={() => setIsNight(label === "Night")}
+                        className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11px] uppercase tracking-[0.16em] transition-colors ${
+                          active ? "bg-white font-medium text-black shadow-sm" : "text-white/85 hover:text-white"
+                        }`}
+                      >
+                        <Icon size={13} strokeWidth={2.25} aria-hidden="true" />
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </>
+            );
+          })()}
+
+
+        </div>
         {item.caption ? (
           <figcaption className="mt-4 max-w-2xl text-center text-sm leading-6 text-muted-foreground">
             {item.caption}
           </figcaption>
         ) : null}
       </figure>
+
     </div>
   );
 }
