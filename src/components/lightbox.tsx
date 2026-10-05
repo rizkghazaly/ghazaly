@@ -1,10 +1,11 @@
-import { useCallback, useEffect } from "react";
-import { X } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { Moon, Sun, X } from "lucide-react";
 
 export type LightboxItem = {
   src: string;
   alt: string;
   caption?: string;
+  toggleNight?: { src: string; alt: string };
 };
 
 type LightboxProps = {
@@ -17,6 +18,13 @@ type LightboxProps = {
 export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
   const open = index !== null && index >= 0 && index < items.length;
   const item = open ? items[index] : null;
+  const [isNight, setIsNight] = useState(false);
+
+  // Reset the day/night view whenever the visitor navigates to another image.
+  useEffect(() => {
+    setIsNight(false);
+  }, [index, item?.src]);
+
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
