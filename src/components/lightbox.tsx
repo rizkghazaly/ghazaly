@@ -116,8 +116,9 @@ export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
           {(() => {
             const altView = item.toggleNight ?? item.night ?? item.day;
             if (!altView) return null;
-            const baseIsNight = Boolean(item.day); // base render is a night view when a day pair exists
-            const showAlt = item.toggleNight ? isNight : baseIsNight ? !isNight : false;
+            const baseIsDay = !item.day; // only the day-pair item keeps a night base image
+            const showAlt = baseIsDay ? isNight : !isNight;
+
             return (
               <>
                 <img
