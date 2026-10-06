@@ -194,7 +194,7 @@ function DayNightToggle({
 }: {
   day: LightboxItem;
   night: { src: string; alt: string };
-  defaultNight?: boolean;
+  defaultNight?: boolean | undefined;
   onOpen: () => void;
 }) {
   const [isNight, setIsNight] = useState(defaultNight);
