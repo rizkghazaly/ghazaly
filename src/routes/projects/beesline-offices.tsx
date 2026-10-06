@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import beeslineReception from "@/assets/beesline-reception.jpg.asset.json";
 import beeslineReceptionMotion from "@/assets/beesline-reception-motion.webm.asset.json";
+import beeslineOpenOfficeMotion from "@/assets/beesline-open-office-motion.webm.asset.json";
 import beeslineOpenOffice from "@/assets/beesline-open-office.jpg.asset.json";
 import beeslineBoardroom from "@/assets/beesline-boardroom.jpg.asset.json";
 import beeslineGeneralPlan from "@/assets/beesline-general-plan.jpg.asset.json";
@@ -43,6 +44,7 @@ const gallery = [
   },
   {
     image: beeslineOpenOffice.url,
+    video: beeslineOpenOfficeMotion.url,
     alt: "Light-filled Beesline open office with marble desks, timber joinery and lounge seating",
     caption: "Open office — generous daylight, natural finishes and informal seating create a calm working environment.",
   },
@@ -265,7 +267,11 @@ function BeeslineOffices() {
           {rest.map((item, itemIndex) => (
             <figure key={item.image} className="group">
               <div className="glass overflow-hidden rounded-[26px] p-2.5">
-                <img src={item.image} alt={item.alt} loading="lazy" onClick={() => setLightboxIndex(2 + itemIndex)} className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]" />
+                {item.video ? (
+                  <MotionPreview image={item.image} video={item.video} alt={item.alt} onOpen={() => setLightboxIndex(2 + itemIndex)} />
+                ) : (
+                  <img src={item.image} alt={item.alt} loading="lazy" onClick={() => setLightboxIndex(2 + itemIndex)} className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]" />
+                )}
               </div>
               <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
             </figure>
