@@ -8,6 +8,7 @@ export type LightboxItem = {
   toggleNight?: { src: string; alt: string };
   night?: { src: string; alt: string };
   day?: { src: string; alt: string };
+  defaultNight?: boolean;
 };
 
 
@@ -26,8 +27,8 @@ export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
 
   // Reset the day/night view whenever the visitor navigates to another image.
   useEffect(() => {
-    setIsNight(false);
-  }, [index, item?.src]);
+    setIsNight(Boolean(item?.defaultNight));
+  }, [index, item?.src, item?.defaultNight]);
 
 
   const handleKeyDown = useCallback(
