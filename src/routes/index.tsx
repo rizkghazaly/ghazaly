@@ -9,6 +9,7 @@ import petalTower from "@/assets/petal-tower.jpg.asset.json";
 import cbcHero from "@/assets/cbc-3.jpg.asset.json";
 import senegalTower from "@/assets/senegal-tower-street.jpg.asset.json";
 import beeslineOffices from "@/assets/beesline-reception.jpg.asset.json";
+import beeslineOfficesMotion from "@/assets/beesline-reception-motion.webm.asset.json";
 import mandaraVilla from "@/assets/mandara-reception-dining.jpg.asset.json";
 import mandaraVillaMotion from "@/assets/mandara-reception-dining-motion.webm.asset.json";
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
@@ -158,6 +159,7 @@ const interiorProjects: ProjectEntry[] = [
     description:
       "A refined new workplace for the homegrown Lebanese skincare brand, balancing warm timber, pale stone and sculptural details with bright, flexible spaces for focused and collaborative work.",
     image: beeslineOffices.url,
+    video: beeslineOfficesMotion.url,
     alt: "Beesline office reception with sculptural timber seating and a luminous display wall",
     href: "/projects/beesline-offices",
   },
