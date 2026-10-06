@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import beeslineReception from "@/assets/beesline-reception.jpg.asset.json";
+import beeslineReceptionMotion from "@/assets/beesline-reception-motion.webm.asset.json";
 import beeslineOpenOffice from "@/assets/beesline-open-office.jpg.asset.json";
 import beeslineBoardroom from "@/assets/beesline-boardroom.jpg.asset.json";
 import beeslineGeneralPlan from "@/assets/beesline-general-plan.jpg.asset.json";
@@ -10,6 +11,7 @@ import beeslinePrivateOffice from "@/assets/beesline-private-office.jpg.asset.js
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/projects/beesline-offices")({
   head: () => ({
@@ -67,6 +69,62 @@ const facts = [
   { label: "Sector", value: "Office interior" },
   { label: "Brand", value: "Natural skincare & cosmetics" },
 ];
+
+function MotionPreview({ image, video, alt, onOpen }: { image: string; video: string; alt: string; onOpen: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const play = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  const pause = (reset = false) => {
+    const element = videoRef.current;
+    if (!element) return;
+    element.pause();
+    if (reset) element.currentTime = 0;
+    setPlaying(false);
+  };
+
+  const toggle = () => {
+    if (playing) pause();
+    else void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  return (
+    <div className="relative overflow-hidden rounded-[18px]" onMouseEnter={play} onMouseLeave={() => pause(true)} data-motion-preview>
+      <video
+        ref={videoRef}
+        src={video}
+        poster={image}
+        aria-label={`${alt} — animated preview`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        onClick={onOpen}
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+        className="aspect-[16/9] h-auto w-full cursor-zoom-in rounded-[18px] object-cover"
+      />
+      <Button
+        type="button"
+        variant="secondary"
+        size="icon"
+        aria-label={playing ? "Pause animation" : "Play animation"}
+        title={playing ? "Pause animation" : "Play animation"}
+        onClick={(event) => {
+          event.stopPropagation();
+          toggle();
+        }}
+        className="glass absolute bottom-3 right-3 z-10 rounded-full md:opacity-0 md:transition-opacity md:group-hover:opacity-100 md:focus-visible:opacity-100"
+      >
+        {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+      </Button>
+    </div>
+  );
+}
 
 function BeeslineOffices() {
   const [hero, ...rest] = gallery;
@@ -129,8 +187,8 @@ function BeeslineOffices() {
       </section>
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-10">
-        <div className="glass relative overflow-hidden rounded-[26px] p-2.5">
-          <img src={hero.image} alt={hero.alt} fetchPriority="high" onClick={() => setLightboxIndex(0)} className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain" />
+        <div className="group glass relative overflow-hidden rounded-[26px] p-2.5">
+          <MotionPreview image={hero.image} video={beeslineReceptionMotion.url} alt={hero.alt} onOpen={() => setLightboxIndex(0)} />
         </div>
         <p className="mt-4 text-sm text-muted-foreground">{hero.caption}</p>
       </section>
