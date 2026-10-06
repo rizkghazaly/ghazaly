@@ -55,6 +55,7 @@ type ResidentialProject = {
       day?: { src: string; alt: string };
       night?: { src: string; alt: string };
       toggleNight?: { src: string; alt: string };
+      defaultNight?: boolean;
     }
   >;
 };
@@ -82,6 +83,7 @@ const projects: ResidentialProject[] = [
         src: faytroonAerial.url,
         alt: "Aerial view of Faytroon Residential Project 1 with stone walls, timber terraces and pool",
         caption: "Aerial view — switch between day and dusk to see the terraces and pool glow after dark.",
+        defaultNight: true,
         night: {
           src: faytroonAerialNight.url,
           alt: "Night aerial view of Faytroon Residential Project 1 with warm lighting, glowing pool and dusk landscape",
@@ -187,13 +189,15 @@ const lightboxItems: LightboxItem[] = projects.flatMap((project) => [project.pla
 function DayNightToggle({
   day,
   night,
+  defaultNight = false,
   onOpen,
 }: {
   day: LightboxItem;
   night: { src: string; alt: string };
+  defaultNight?: boolean | undefined;
   onOpen: () => void;
 }) {
-  const [isNight, setIsNight] = useState(false);
+  const [isNight, setIsNight] = useState(defaultNight);
   return (
     <div className="relative w-full overflow-hidden rounded-[18px]">
       <button type="button" onClick={onOpen} className="block w-full cursor-zoom-in" aria-label="Open enlarged view">
@@ -317,11 +321,11 @@ function ResidentialCollection() {
                   <figure key={render.src} className="group glass rounded-[26px] p-2.5">
                     <div className="overflow-hidden rounded-[18px]">
                       {render.toggleNight ? (
-                        <DayNightToggle day={render} night={render.toggleNight} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
+                        <DayNightToggle day={render} night={render.toggleNight} defaultNight={render.defaultNight} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
                       ) : render.day ? (
-                        <DayNightToggle day={render.day} night={render} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
+                        <DayNightToggle day={render.day} night={render} defaultNight={render.defaultNight} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
                       ) : render.night ? (
-                        <DayNightToggle day={render} night={render.night} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
+                        <DayNightToggle day={render} night={render.night} defaultNight={render.defaultNight} onOpen={() => setLightboxIndex(lightboxOffset + renderIndex + 1)} />
                       ) : (
                         <img
                           src={render.src}
