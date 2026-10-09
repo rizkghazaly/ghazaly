@@ -223,13 +223,21 @@ function SenegalTower() {
           {rest.map((item, itemIndex) => (
             <figure key={item.image} className="group">
               <div className="glass overflow-hidden rounded-[26px] p-2.5">
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  loading="lazy"
-                  onClick={() => setLightboxIndex(1 + itemIndex)}
-                  className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
-                />
+                {item.toggleNight ? (
+                  <DayNightToggle
+                    day={{ src: item.image, alt: item.alt }}
+                    night={item.toggleNight}
+                    onOpen={() => setLightboxIndex(1 + itemIndex)}
+                  />
+                ) : (
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    onClick={() => setLightboxIndex(1 + itemIndex)}
+                    className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                  />
+                )}
               </div>
               <figcaption className="mt-4 text-sm leading-6 text-muted-foreground">{item.caption}</figcaption>
             </figure>
