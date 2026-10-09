@@ -208,6 +208,12 @@ const heroSlides: HeroSlide[] = [
     title: "Residential Interiors",
     caption: "Compact living study",
   },
+  {
+    image: joffreysTownCenter.url,
+    alt: "Completed Joffrey’s Town Center café seating area with concrete wall and suspended lighting",
+    title: "Joffrey's Town Center",
+    caption: "Completed café interior",
+  },
 ];
 
 function HeroShowcase() {
