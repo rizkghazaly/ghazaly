@@ -167,7 +167,15 @@ const interiorProjects: ProjectEntry[] = [
   },
 ];
 
-const heroSlides = [
+type HeroSlide = {
+  image: string;
+  video?: string;
+  alt: string;
+  title: string;
+  caption: string;
+};
+
+const heroSlides: HeroSlide[] = [
   {
     image: petalTower.url,
     alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
@@ -191,6 +199,13 @@ const heroSlides = [
     alt: "Beesline open workspace with natural timber desks and soft daylight",
     title: "Beesline Offices",
     caption: "Skincare brand workspace",
+  },
+  {
+    image: compactLiving.url,
+    video: compactLivingMotion.url,
+    alt: "Compact sitting room connected to a walnut and marble kitchen",
+    title: "Residential Interiors",
+    caption: "Compact living study",
   },
 ];
 
