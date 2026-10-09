@@ -59,12 +59,72 @@ const gallery = [
   },
 ];
 
+type GalleryItem = {
+  image: string;
+  alt: string;
+  caption: string;
+  toggleNight?: { src: string; alt: string };
+};
+
 const facts = [
   { label: "Location", value: "Senegal" },
   { label: "Partner", value: "Jean Deeb" },
   { label: "Sector", value: "Construction" },
   { label: "Year", value: "2020" },
 ];
+
+function DayNightToggle({
+  day,
+  night,
+  defaultNight = false,
+  onOpen,
+}: {
+  day: { src: string; alt: string };
+  night: { src: string; alt: string };
+  defaultNight?: boolean | undefined;
+  onOpen: () => void;
+}) {
+  const [isNight, setIsNight] = useState(defaultNight);
+  return (
+    <div className="relative w-full overflow-hidden rounded-[18px]">
+      <button type="button" onClick={onOpen} className="block w-full cursor-zoom-in" aria-label="Open enlarged view">
+        <img src={day.src} alt={day.alt} loading="lazy" className="h-auto w-full rounded-[18px] object-contain" />
+        <img
+          src={night.src}
+          alt={night.alt}
+          loading="lazy"
+          aria-hidden={!isNight}
+          className="pointer-events-none absolute inset-0 h-full w-full rounded-[18px] object-cover transition-opacity duration-700 ease-out"
+          style={{ opacity: isNight ? 1 : 0 }}
+        />
+      </button>
+      <div
+        role="group"
+        aria-label="Switch between day and night view"
+        className="absolute right-3 top-3 flex gap-0.5 rounded-full border border-white/25 bg-black/55 p-1 shadow-lg shadow-black/60 backdrop-blur-md"
+      >
+        {(["Day", "Night"] as const).map((label) => {
+          const active = (label === "Night") === isNight;
+          const Icon = label === "Day" ? Sun : Moon;
+          return (
+            <button
+              key={label}
+              type="button"
+              aria-pressed={active}
+              onClick={() => setIsNight(label === "Night")}
+              className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11px] uppercase tracking-[0.16em] transition-colors ${
+                active ? "bg-white font-medium text-black shadow-sm" : "text-white/85 hover:text-white"
+              }`}
+            >
+              <Icon size={13} strokeWidth={2.25} aria-hidden="true" />
+              {label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 function SenegalTower() {
   const [hero, ...rest] = gallery;
@@ -75,6 +135,7 @@ function SenegalTower() {
     src: item.image,
     alt: item.alt,
     caption: item.caption,
+    ...(item.toggleNight ? { toggleNight: item.toggleNight } : {}),
   }));
 
   return (
