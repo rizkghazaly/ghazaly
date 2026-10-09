@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Moon, Sun } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import senegalStreet from "@/assets/senegal-tower-street.jpg.asset.json";
 import senegalCorner from "@/assets/senegal-tower-corner.jpg.asset.json";
+import senegalCornerNight from "@/assets/senegal-tower-corner-night.jpg.asset.json";
 import senegalFacade from "@/assets/senegal-tower-facade.jpg.asset.json";
 import senegalAerial from "@/assets/senegal-tower-aerial.jpg.asset.json";
 
