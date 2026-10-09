@@ -41,7 +41,11 @@ const gallery = [
   {
     image: senegalCorner.url,
     alt: "Low-angle corner view of Senegal Tower with planted balconies and vertical screens",
-    caption: "Corner perspective — deep balconies, planted edges and vertical screens animate the elevations.",
+    caption: "Corner perspective — switch between day and night to see the layered facade glow after dark.",
+    toggleNight: {
+      src: senegalCornerNight.url,
+      alt: "Night corner view of Senegal Tower with warm lighting, planted balconies and a moonlit street",
+    },
   },
   {
     image: senegalFacade.url,
