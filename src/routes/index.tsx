@@ -19,6 +19,8 @@ import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
 import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import residentialInteriorsMotion from "@/assets/residential-interiors-living-dining-motion.webm.asset.json";
+import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
+import compactLivingMotion from "@/assets/residential-interiors-compact-living-motion.webm.asset.json";
 import sanCarlosCottageBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
 import sanCarlosCottageMotion from "@/assets/san-carlos-bedroom-motion.webm.asset.json";
 
@@ -165,7 +167,15 @@ const interiorProjects: ProjectEntry[] = [
   },
 ];
 
-const heroSlides = [
+type HeroSlide = {
+  image: string;
+  video?: string;
+  alt: string;
+  title: string;
+  caption: string;
+};
+
+const heroSlides: HeroSlide[] = [
   {
     image: petalTower.url,
     alt: "Tower clad in thousands of overlapping bronze and silver petals on a city corner",
@@ -190,39 +200,91 @@ const heroSlides = [
     title: "Beesline Offices",
     caption: "Skincare brand workspace",
   },
+  {
+    image: compactLiving.url,
+    video: compactLivingMotion.url,
+    alt: "Compact sitting room connected to a walnut and marble kitchen",
+    title: "Residential Interiors",
+    caption: "Compact living study",
+  },
 ];
 
 function HeroShowcase() {
   const [active, setActive] = useState(0);
+  const hoveredRef = useRef(false);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
     const id = window.setInterval(() => {
-      setActive((current) => (current + 1) % heroSlides.length);
+      if (!hoveredRef.current) {
+        setActive((current) => (current + 1) % heroSlides.length);
+      }
     }, 4000);
     return () => window.clearInterval(id);
   }, []);
 
   const slide = heroSlides[active] ?? heroSlides[0]!;
 
+  const playActiveVideo = () => {
+    hoveredRef.current = true;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const element = videoRefs.current[active];
+    void element?.play();
+  };
+
+  const pauseActiveVideo = () => {
+    hoveredRef.current = false;
+    const element = videoRefs.current[active];
+    if (element) {
+      element.pause();
+      element.currentTime = 0;
+    }
+  };
+
   return (
     <div className="hero-visual relative mx-auto w-full max-w-[520px] lg:mx-0">
       <div className="prism absolute -inset-1.5 rounded-[28px] opacity-80" aria-hidden="true" />
       <div className="glass relative rounded-[26px] p-2.5">
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px]">
-          {heroSlides.map((item, index) => (
-            <img
-              key={item.title}
-              src={item.image}
-              alt={item.alt}
-              width={1088}
-              height={1360}
-              fetchPriority={index === 0 ? "high" : "auto"}
-              aria-hidden={index !== active}
-              className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out ${
-                index === active ? "scale-100 opacity-100" : "scale-[1.04] opacity-0"
-              }`}
-            />
-          ))}
+        <div
+          className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px]"
+          onMouseEnter={playActiveVideo}
+          onMouseLeave={pauseActiveVideo}
+          data-motion-preview
+        >
+          {heroSlides.map((item, index) =>
+            item.video ? (
+              <video
+                key={item.title}
+                ref={(el) => {
+                  videoRefs.current[index] = el;
+                }}
+                src={item.video}
+                poster={item.image}
+                aria-label={item.alt}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden={index !== active}
+                className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out ${
+                  index === active ? "scale-100 opacity-100" : "scale-[1.04] opacity-0"
+                }`}
+              />
+            ) : (
+              <img
+                key={item.title}
+                src={item.image}
+                alt={item.alt}
+                width={1088}
+                height={1360}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                aria-hidden={index !== active}
+                className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out ${
+                  index === active ? "scale-100 opacity-100" : "scale-[1.04] opacity-0"
+                }`}
+              />
+            ),
+          )}
         </div>
       </div>
       <div className="glass absolute -bottom-6 -left-5 hidden rounded-2xl px-5 py-4 sm:block">
