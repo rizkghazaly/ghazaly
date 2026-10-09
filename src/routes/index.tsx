@@ -19,6 +19,8 @@ import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
 import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import residentialInteriorsMotion from "@/assets/residential-interiors-living-dining-motion.webm.asset.json";
+import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
+import compactLivingMotion from "@/assets/residential-interiors-compact-living-motion.webm.asset.json";
 import sanCarlosCottageBedroom from "@/assets/san-carlos-cottage-bedroom-jungle.jpg.asset.json";
 import sanCarlosCottageMotion from "@/assets/san-carlos-bedroom-motion.webm.asset.json";
 
