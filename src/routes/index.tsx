@@ -17,6 +17,7 @@ import residentialCollection from "@/assets/faytroon-residential-aerial.jpg.asse
 import bathroomShowroom from "@/assets/showroom-main.jpg.asset.json";
 import showroomMainMotion from "@/assets/showroom-main-motion.webm.asset.json";
 import joffreysCoffee from "@/assets/joffreys-town-center-completed-two.jpg.asset.json";
+import joffreysTownCenter from "@/assets/joffreys-town-center-completed-one.jpg.asset.json";
 import residentialInteriors from "@/assets/residential-interiors-living-dining.jpg.asset.json";
 import residentialInteriorsMotion from "@/assets/residential-interiors-living-dining-motion.webm.asset.json";
 import compactLiving from "@/assets/residential-interiors-compact-living.jpg.asset.json";
