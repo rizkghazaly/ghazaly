@@ -9,6 +9,7 @@ import beeslineOpenOffice from "@/assets/beesline-open-office.jpg.asset.json";
 import beeslineBoardroom from "@/assets/beesline-boardroom.jpg.asset.json";
 import beeslineGeneralPlan from "@/assets/beesline-general-plan.jpg.asset.json";
 import beeslinePrivateOffice from "@/assets/beesline-private-office.jpg.asset.json";
+import beeslinePrivateOfficeMotion from "@/assets/beesline-private-office-motion.webm.asset.json";
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
@@ -55,6 +56,7 @@ const gallery = [
   },
   {
     image: beeslinePrivateOffice.url,
+    video: beeslinePrivateOfficeMotion.url,
     alt: "Beesline private office with a carved timber bench and botanical wall artwork",
     caption: "Private office — sculptural joinery and nature-inspired artwork bring softness to an executive setting.",
   },
