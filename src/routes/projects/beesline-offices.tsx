@@ -11,6 +11,7 @@ import beeslineGeneralPlan from "@/assets/beesline-general-plan.jpg.asset.json";
 import beeslinePrivateOffice from "@/assets/beesline-private-office.jpg.asset.json";
 import beeslinePrivateOfficeMotion from "@/assets/beesline-private-office-motion.webm.asset.json";
 import beeslineWorkspace from "@/assets/beesline-workspace.jpg.asset.json";
+import beeslineWorkspaceMotion from "@/assets/beesline-workspace-motion.webm.asset.json";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { Button } from "@/components/ui/button";
@@ -62,6 +63,7 @@ const gallery = [
   },
   {
     image: beeslineWorkspace.url,
+    video: beeslineWorkspaceMotion.url,
     alt: "Contemporary Beesline workspace with stone surfaces, illuminated shelving and collaborative seating",
     caption: "Collaborative workspace — layered lighting and open shelving balance practical work areas with a residential sense of comfort.",
   },
