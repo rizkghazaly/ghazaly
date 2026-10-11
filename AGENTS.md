@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Enlarged-view videos are opt-in through `LightboxItem.video` and start only on explicit play; keep unselected gallery items photo-only during trials.
