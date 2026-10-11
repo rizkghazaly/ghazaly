@@ -67,27 +67,18 @@ function LightboxVideo({ src, alt }: { src: string; alt: string }) {
           <Button variant="secondary" size="icon" className="glass rounded-full" aria-label="Show photo" title="Show photo" onClick={showPhoto}>
             <Image aria-hidden="true" />
           </Button>
-          <Button variant="secondary" size="icon" className="glass rounded-full" aria-label="Pause video" title="Pause video" onClick={() => void togglePlayback()}>
-            <Pause aria-hidden="true" />
-          </Button>
         </div>
-      ) : (
-        <div className="pointer-events-none absolute inset-2 z-10 flex flex-col items-center justify-center gap-3">
-          <button
-            type="button"
-            aria-label="Play video"
-            title="Play the short video"
-            onClick={() => void togglePlayback()}
-            className="group pointer-events-auto relative flex h-16 w-16 items-center justify-center rounded-full bg-white text-black shadow-2xl shadow-black/60 transition-transform duration-200 hover:scale-105 sm:h-[72px] sm:w-[72px]"
-          >
-            <span aria-hidden="true" className="absolute inset-0 rounded-full bg-white/50 animate-ping" style={{ animationDuration: "2.4s" }} />
-            <Play aria-hidden="true" className="relative ml-1 h-7 w-7 fill-current sm:h-8 sm:w-8" strokeWidth={1.5} />
-          </button>
-          <span className="pointer-events-none rounded-full border border-white/25 bg-black/60 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.16em] text-white shadow-lg shadow-black/50 backdrop-blur-md">
-            Play video
-          </span>
-        </div>
-      )}
+      ) : null}
+      <button
+        type="button"
+        aria-label={playing ? "Pause video" : "Play video"}
+        title={playing ? "Pause the video" : "Play the short video"}
+        onClick={() => void togglePlayback()}
+        className="absolute bottom-6 right-6 z-10 flex items-center gap-1.5 rounded-full border border-white/25 bg-black/60 px-3.5 py-2 text-[11px] uppercase tracking-[0.16em] text-white shadow-lg shadow-black/50 backdrop-blur-md transition-colors hover:bg-black/75"
+      >
+        {playing ? <Pause size={13} strokeWidth={2.25} aria-hidden="true" /> : <Play size={13} strokeWidth={2.25} aria-hidden="true" />}
+        {playing ? "Pause" : "Play video"}
+      </button>
     </>
   );
 }
