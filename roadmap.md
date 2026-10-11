@@ -11,4 +11,4 @@
 - [x] Add the three-project Residential Collection with plans, renders and supplied area details.
 - [x] Add the two-branch Joffrey’s Coffee project with plans, design renders and completed photographs.
 - [x] Add the multi-country Residential Interiors Collection with ten client-specific design renders.
-- Rework lightbox play button: small corner pill (not centered, not big) - in progress
+- [x] Rework lightbox play button: small corner pill (not centered, not big)
