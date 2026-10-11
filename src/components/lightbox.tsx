@@ -62,16 +62,23 @@ function LightboxVideo({ src, alt }: { src: string; alt: string }) {
         onEnded={showPhoto}
         className={`absolute inset-2 h-[calc(100%-16px)] w-[calc(100%-16px)] rounded-[22px] bg-background object-contain ${visible ? "" : "hidden"}`}
       />
-      <div className="absolute right-5 top-5 z-10 flex gap-2">
-        {visible ? (
+      {visible ? (
+        <div className="absolute right-5 top-5 z-10 flex gap-2">
           <Button variant="secondary" size="icon" className="glass rounded-full" aria-label="Show photo" title="Show photo" onClick={showPhoto}>
             <Image aria-hidden="true" />
           </Button>
-        ) : null}
-        <Button variant="secondary" size="icon" className="glass rounded-full" aria-label={playing ? "Pause video" : "Play video"} title={playing ? "Pause video" : "Play video"} onClick={() => void togglePlayback()}>
-          {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
-        </Button>
-      </div>
+        </div>
+      ) : null}
+      <button
+        type="button"
+        aria-label={playing ? "Pause video" : "Play video"}
+        title={playing ? "Pause the video" : "Play the short video"}
+        onClick={() => void togglePlayback()}
+        className="absolute bottom-6 right-6 z-10 flex items-center gap-1.5 rounded-full border border-white/25 bg-black/60 px-3.5 py-2 text-[11px] uppercase tracking-[0.16em] text-white shadow-lg shadow-black/50 backdrop-blur-md transition-colors hover:bg-black/75"
+      >
+        {playing ? <Pause size={13} strokeWidth={2.25} aria-hidden="true" /> : <Play size={13} strokeWidth={2.25} aria-hidden="true" />}
+        {playing ? "Pause" : "Play video"}
+      </button>
     </>
   );
 }
