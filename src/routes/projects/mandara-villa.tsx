@@ -179,7 +179,12 @@ function MandaraVilla() {
       caption:
         "Ground-floor organization — the villa, formal approach and surrounding outdoor areas presented as a complete composition.",
     },
-    ...rest.map((item) => ({ src: item.image, alt: item.alt, caption: item.caption })),
+    ...rest.map((item) => ({
+      src: item.image,
+      alt: item.alt,
+      caption: item.caption,
+      ...(item.video ? { video: item.video } : {}),
+    })),
   ];
   const openLightbox = (index: number) => setLightboxIndex(index);
   const openRestItem = (item: GalleryItem) =>
