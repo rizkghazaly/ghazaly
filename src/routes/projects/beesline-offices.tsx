@@ -144,9 +144,14 @@ function BeeslineOffices() {
       "Ground-floor organization — the complete office program and its relationship to the central collaborative spaces.",
   };
   const lightboxItems: LightboxItem[] = [
-    { src: hero.image, alt: hero.alt, caption: hero.caption },
+    { src: hero.image, alt: hero.alt, caption: hero.caption, video: beeslineReceptionMotion.url },
     planItem,
-    ...rest.map((item) => ({ src: item.image, alt: item.alt, caption: item.caption })),
+    ...rest.map((item) => ({
+      src: item.image,
+      alt: item.alt,
+      caption: item.caption,
+      ...(item.video ? { video: item.video } : {}),
+    })),
   ];
 
   return (
