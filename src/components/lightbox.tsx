@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import { Moon, Sun, X } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Image, Moon, Pause, Play, Sun, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export type LightboxItem = {
   src: string;
@@ -9,6 +10,7 @@ export type LightboxItem = {
   night?: { src: string; alt: string };
   day?: { src: string; alt: string };
   defaultNight?: boolean;
+  video?: string;
 };
 
 
@@ -19,6 +21,60 @@ type LightboxProps = {
   onClose: () => void;
   onNavigate?: (index: number) => void;
 };
+
+function LightboxVideo({ src, alt }: { src: string; alt: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [visible, setVisible] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  const showPhoto = () => {
+    videoRef.current?.pause();
+    setVisible(false);
+  };
+
+  const togglePlayback = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (playing) {
+      video.pause();
+      return;
+    }
+    setVisible(true);
+    try {
+      await video.play();
+    } catch {
+      setVisible(false);
+    }
+  };
+
+  return (
+    <>
+      <video
+        ref={videoRef}
+        src={src}
+        aria-label={`${alt} — short video`}
+        muted
+        playsInline
+        controls={visible}
+        preload="none"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onEnded={showPhoto}
+        className={`absolute inset-2 h-[calc(100%-16px)] w-[calc(100%-16px)] rounded-[22px] bg-background object-contain ${visible ? "" : "hidden"}`}
+      />
+      <div className="absolute right-5 top-5 z-10 flex gap-2">
+        {visible ? (
+          <Button variant="secondary" size="icon" className="glass rounded-full" aria-label="Show photo" title="Show photo" onClick={showPhoto}>
+            <Image aria-hidden="true" />
+          </Button>
+        ) : null}
+        <Button variant="secondary" size="icon" className="glass rounded-full" aria-label={playing ? "Pause video" : "Play video"} title={playing ? "Pause video" : "Play video"} onClick={() => void togglePlayback()}>
+          {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+        </Button>
+      </div>
+    </>
+  );
+}
 
 export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
   const open = index !== null && index >= 0 && index < items.length;
@@ -114,6 +170,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: LightboxProps) {
             alt={item.alt}
             className="glass max-h-[78vh] w-auto max-w-full rounded-[22px] object-contain p-2"
           />
+          {item.video ? <LightboxVideo key={item.src} src={item.video} alt={item.alt} /> : null}
           {(() => {
             const altView = item.toggleNight ?? item.night ?? item.day;
             if (!altView) return null;
