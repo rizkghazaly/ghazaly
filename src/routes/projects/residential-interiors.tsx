@@ -173,10 +173,9 @@ const groups: CollectionGroup[] = [
   },
 ];
 
-// Trial enlarged-view playback on the selected layered reception-room photo only.
-const lightboxItems: LightboxItem[] = groups.flatMap((group) => group.items).map(({ video, ...item }, index) =>
-  index === 0 && video ? { ...item, video } : item,
-);
+const lightboxItems: LightboxItem[] = groups
+  .flatMap((group) => group.items)
+  .map(({ video, ...item }) => (video ? { ...item, video } : item));
 
 type MotionPreviewProps = {
   image: string;
