@@ -238,6 +238,7 @@ export function BuildScene({ p }: { p: number }) {
   const workerEl = (() => {
     if (p >= 18.5 && p < 22.5) {
       const f = floors[blocksK];
+      if (!f) return null;
       const u = easeInOut(t(18.5 + blocksK * (4 / 3), 18.5 + (blocksK + 1) * (4 / 3)));
       const rowsF = u * 8;
       const frac = rowsF - Math.floor(rowsF);
@@ -246,11 +247,13 @@ export function BuildScene({ p }: { p: number }) {
     }
     if (p >= 24.5 && p < 26.3) {
       const f = floors[plasterK];
+      if (!f) return null;
       const u = easeInOut(stagger(p, 24.5, 26.3, plasterK, 3));
       return <Worker x={f.x0 + 20 + u * (f.x1 - f.x0 - 30)} y={f.yb} time={p} tool="trowel" />;
     }
     if (p >= 26.3 && p < 28.5) {
       const f = floors[paintK];
+      if (!f) return null;
       const u = easeInOut(stagger(p, 26.3, 28.5, paintK, 3));
       return <Worker x={f.x0 + 20 + u * (f.x1 - f.x0 - 30)} y={f.yb} time={p} tool="roller" />;
     }
@@ -412,6 +415,7 @@ export function BuildScene({ p }: { p: number }) {
         const colU = easeOut(t(ws, ws + 1.1));
         const formwork = colU > 0 ? 1 - t(ws + 1.1, ws + 1.7) : 0;
         const slab = slabs[k];
+        if (!slab) return null;
         const pourU = easeInOut(t(ws + 0.9, ws + 2.0));
         const propsOp = t(ws + 0.8, ws + 1.1) * (1 - t(ws + 2.4, ws + 2.9));
         const W = f.x1 - f.x0;

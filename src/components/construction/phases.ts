@@ -27,7 +27,8 @@ export const DURATION = 38;
 
 export const phaseAt = (t: number) => {
   for (let i = PHASES.length - 1; i >= 0; i--) {
-    if (t >= PHASES[i].start) return i;
+    const phase = PHASES[i];
+    if (phase && t >= phase.start) return i;
   }
   return 0;
 };
