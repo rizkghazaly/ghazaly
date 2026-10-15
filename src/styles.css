@@ -392,3 +392,14 @@
   --construction-highlight-4: color(srgb 1.00000 0.98431 0.90196);
   --construction-highlight-5: color(srgb 1.00000 1.00000 1.00000);
 }
+
+.construction-stage {
+  max-width: 1100px;
+  margin-inline: auto;
+  background: var(--construction-sky);
+  --construction-sky: oklch(0.9 0.025 230);
+}
+.dark .construction-stage {
+  --construction-sky: oklch(0.33 0.014 250);
+}
+.construction-scene .sway { transform-origin: center bottom; }
