@@ -271,7 +271,6 @@ function PrizesPage() {
             </span>
           </Link>
           <div className="flex items-center gap-3">
-            <Link to="/about" className="text-link">About</Link>
             <ThemeToggle />
             <Link to="/" className="text-link">
               <ArrowLeft size={14} className="mr-1 inline" aria-hidden="true" /> Portfolio
