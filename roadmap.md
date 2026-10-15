@@ -12,3 +12,5 @@
 - [x] Add the two-branch Joffrey’s Coffee project with plans, design renders and completed photographs.
 - [x] Add the multi-country Residential Interiors Collection with ten client-specific design renders.
 - [x] Rework lightbox play button: small corner pill (not centered, not big)
+- [ ] Add About page with the uploaded automatic house construction animation and link it beside Portfolio and Prizes.
+- [ ] Verify About animation, controls, navigation and both screen sizes.
