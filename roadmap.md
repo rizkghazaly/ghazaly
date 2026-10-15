@@ -1,7 +1,7 @@
 - [x] Review prize PDF and recover its evidence links.
 - [x] Add a dedicated Prizes page linked in portfolio navigation.
 - [x] Complete the day/night switch on both project pages.
-- [ ] Verify all pages and both themes on desktop and mobile.
+- [x] Verify all pages and both themes on desktop and mobile.
 - [x] Add Senegal Tower to Selected Projects with a dedicated four-render project page.
 
 - [x] Add medium circular badges to matching prize rows, starting with DECENTRAPEPE World and CyberSiren.
@@ -12,3 +12,5 @@
 - [x] Add the two-branch Joffrey’s Coffee project with plans, design renders and completed photographs.
 - [x] Add the multi-country Residential Interiors Collection with ten client-specific design renders.
 - [x] Rework lightbox play button: small corner pill (not centered, not big)
+- [x] Add About page with the uploaded automatic house construction animation and link it beside Portfolio and Prizes.
+- [x] Verify About animation, controls, navigation and both screen sizes.
