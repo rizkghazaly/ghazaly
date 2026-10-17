@@ -268,6 +268,10 @@
 }
 @media (max-width: 639px) {
   .house-animation { width: 115%; margin-left: -8%; margin-top: 8px; }
+  .about-copy { padding-top: 32px; }
+  .about-copy h1 { font-size: 42px; }
+  .about-copy p { margin-top: 14px; line-height: 1.8; }
+  .about-copy > div { margin-top: 16px; padding-top: 16px; }
   .site-shell > header > div { flex-wrap: wrap; gap: 10px; padding-top: 12px; padding-bottom: 12px; }
 }
 .hero-visual { animation: rise 900ms 120ms cubic-bezier(.2,.7,.2,1) both; }

@@ -27,7 +27,7 @@ for (const character of site.name.toUpperCase()) {
   }
   const glyph = GLYPHS[character];
   const width = glyph?.width ?? 32;
-  LETTERS.push({ character, x: advance, width, path: glyph?.path });
+  LETTERS.push({ character, x: advance, width, ...(glyph ? { path: glyph.path } : {}) });
   advance += width + 8;
 }
 

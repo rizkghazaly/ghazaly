@@ -17,7 +17,7 @@ export type FloorDef = {
   paint: string;
 };
 
-export const floors: FloorDef[] = [
+export const floors: [FloorDef, FloorDef, FloorDef] = [
   { i: 0, yb: 598, yt: 498, x0: 300, x1: 800, cols: [300, 542, 784], paint: "var(--house-chalk)" },
   { i: 1, yb: 486, yt: 386, x0: 300, x1: 860, cols: [300, 580, 844], paint: "var(--house-glass-deep)" },
   { i: 2, yb: 374, yt: 274, x0: 360, x1: 800, cols: [360, 580, 784], paint: "var(--house-chalk)" },
@@ -25,7 +25,7 @@ export const floors: FloorDef[] = [
 
 export type SlabDef = { id: string; y: number; x0: number; x1: number };
 // slab k+1 sits on top of floor k
-export const slabs: SlabDef[] = [
+export const slabs: [SlabDef, SlabDef, SlabDef] = [
   { id: "s1", y: 486, x0: 286, x1: 874 },
   { id: "s2", y: 374, x0: 286, x1: 874 },
   { id: "roof", y: 262, x0: 346, x1: 814 },

@@ -27,7 +27,7 @@ const Frame = memo(function Frame() {
     <g>
       <path d={path} stroke="var(--house-stone-deep)" strokeWidth={1.5} fill="none" />
       {[550, 430, 310].map((y) => (
-        <rect key={y} x={poles[0] - 6} y={y - 2} width={poles[poles.length - 1] - poles[0] + 12} height={4} fill="var(--house-timber-light)" opacity={0.9} />
+        <rect key={y} x={270} y={y - 2} width={628} height={4} fill="var(--house-timber-light)" opacity={0.9} />
       ))}
     </g>
   );
