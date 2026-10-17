@@ -400,9 +400,11 @@ function Index() {
           <nav aria-label="Primary navigation" className="hidden items-center gap-8 text-[13px] font-medium text-muted-foreground md:flex">
             <a href="#work" className="text-foreground transition-colors hover:text-primary">Portfolio</a>
             <Link to="/prizes" className="transition-colors hover:text-foreground">Prizes</Link>
+            <Link to="/about" className="transition-colors hover:text-foreground">About Me</Link>
           </nav>
           <div className="flex items-center gap-2.5">
             <Link to="/prizes" className="text-link md:hidden">Prizes</Link>
+            <Link to="/about" className="text-link md:hidden">About Me</Link>
             <ThemeToggle />
             <a className="button-dark" href="#contact">Contact <ArrowUpRight size={14} aria-hidden="true" /></a>
           </div>

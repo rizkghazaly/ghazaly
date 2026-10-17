@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as PrizesRouteImport } from './routes/prizes'
 import { Route as ProjectsBathroomShowroomRouteImport } from './routes/projects/bathroom-showroom'
 import { Route as ProjectsBeeslineOfficesRouteImport } from './routes/projects/beesline-offices'
@@ -25,6 +26,11 @@ import { Route as ProjectsSenegalTowerRouteImport } from './routes/projects/sene
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrizesRoute = PrizesRouteImport.update({
@@ -91,6 +97,7 @@ const ProjectsSenegalTowerRoute = ProjectsSenegalTowerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/prizes': typeof PrizesRoute
   '/projects/bathroom-showroom': typeof ProjectsBathroomShowroomRoute
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/prizes': typeof PrizesRoute
   '/projects/bathroom-showroom': typeof ProjectsBathroomShowroomRoute
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
@@ -120,6 +128,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/prizes': typeof PrizesRoute
   '/projects/bathroom-showroom': typeof ProjectsBathroomShowroomRoute
   '/projects/beesline-offices': typeof ProjectsBeeslineOfficesRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/prizes'
     | '/projects/bathroom-showroom'
     | '/projects/beesline-offices'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/prizes'
     | '/projects/bathroom-showroom'
     | '/projects/beesline-offices'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/prizes'
     | '/projects/bathroom-showroom'
     | '/projects/beesline-offices'
@@ -179,6 +191,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   PrizesRoute: typeof PrizesRoute
   ProjectsBathroomShowroomRoute: typeof ProjectsBathroomShowroomRoute
   ProjectsBeeslineOfficesRoute: typeof ProjectsBeeslineOfficesRoute
@@ -199,6 +212,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/prizes': {
@@ -283,6 +303,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   PrizesRoute: PrizesRoute,
   ProjectsBathroomShowroomRoute: ProjectsBathroomShowroomRoute,
   ProjectsBeeslineOfficesRoute: ProjectsBeeslineOfficesRoute,
