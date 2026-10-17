@@ -12,3 +12,5 @@
 - [x] Add the two-branch Joffrey’s Coffee project with plans, design renders and completed photographs.
 - [x] Add the multi-country Residential Interiors Collection with ten client-specific design renders.
 - [x] Rework lightbox play button: small corner pill (not centered, not big)
+- [ ] Add About Me navigation and a seamless supplied house-building animation with Rizk Ghazaly's name.
+- [ ] Add concise credentials/services and verify the About page in both themes on desktop and mobile.
