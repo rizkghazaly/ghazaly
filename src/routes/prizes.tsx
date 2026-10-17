@@ -270,12 +270,12 @@ function PrizesPage() {
               Architecture
             </span>
           </Link>
-          <div className="flex items-center gap-3">
+          <nav aria-label="Primary navigation" className="flex flex-wrap items-center justify-end gap-3 text-xs font-medium text-muted-foreground sm:gap-6">
+            <Link to="/" className="hover:text-foreground">Portfolio</Link>
+            <Link to="/prizes" aria-current="page" className="text-foreground">Prizes</Link>
+            <Link to="/about" className="hover:text-foreground">About Me</Link>
             <ThemeToggle />
-            <Link to="/" className="text-link">
-              <ArrowLeft size={14} className="mr-1 inline" aria-hidden="true" /> Portfolio
-            </Link>
-          </div>
+          </nav>
         </div>
       </header>
 

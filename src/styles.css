@@ -99,6 +99,26 @@
   --sidebar-border: oklch(0.25 0.02 266 / 12%);
   --sidebar-ring: oklch(0.55 0.06 255);
   --surface: oklch(0.965 0.005 262);
+  --house-ink: oklch(0.26 0.012 260);
+  --house-stone-deep: oklch(0.39 0.008 260);
+  --house-stone-mid: oklch(0.57 0.009 260);
+  --house-stone-light: oklch(0.74 0.008 260);
+  --house-stone-pale: oklch(0.89 0.005 260);
+  --house-chalk: oklch(0.95 0.003 260);
+  --house-leaf-deep: oklch(0.39 0.035 155);
+  --house-leaf-mid: oklch(0.52 0.04 155);
+  --house-leaf-light: oklch(0.65 0.045 155);
+  --house-glass-deep: oklch(0.3 0.025 245);
+  --house-glass-mid: oklch(0.5 0.035 245);
+  --house-glass-light: oklch(0.76 0.035 245);
+  --house-light: oklch(0.89 0.035 85);
+  --house-metal-deep: oklch(0.48 0.025 85);
+  --house-metal-mid: oklch(0.63 0.03 85);
+  --house-metal-light: oklch(0.77 0.03 85);
+  --house-accent: oklch(0.62 0.035 85);
+  --house-timber-deep: oklch(0.36 0.015 75);
+  --house-timber-mid: oklch(0.48 0.02 75);
+  --house-timber-light: oklch(0.62 0.025 75);
 
   --glass-bg: linear-gradient(155deg, oklch(1 0 0 / 78%), oklch(1 0 0 / 52%));
   --glass-border: oklch(0.25 0.02 266 / 10%);
@@ -143,6 +163,12 @@
   --sidebar-border: oklch(1 0 0 / 12%);
   --sidebar-ring: oklch(0.68 0.05 255);
   --surface: oklch(0.185 0.013 266);
+  --house-ink: oklch(0.3 0.012 260);
+  --house-stone-deep: oklch(0.42 0.008 260);
+  --house-stone-mid: oklch(0.56 0.009 260);
+  --house-stone-light: oklch(0.7 0.008 260);
+  --house-stone-pale: oklch(0.82 0.005 260);
+  --house-chalk: oklch(0.88 0.003 260);
 
   --glass-bg: linear-gradient(155deg, oklch(1 0 0 / 9%), oklch(1 0 0 / 3.5%));
   --glass-border: oklch(1 0 0 / 14%);
@@ -231,6 +257,19 @@
 .ambient-three { width: 24rem; height: 24rem; left: 44%; top: 34%; background: var(--ambient-three-bg); }
 
 .hero-copy { animation: rise 800ms cubic-bezier(.2,.7,.2,1) both; }
+.about-introduction { min-height: 730px; }
+.about-copy { pointer-events: none; }
+.about-copy a { pointer-events: auto; }
+.house-animation { position: absolute; right: -30px; bottom: 0; width: 76%; height: 640px; }
+@media (max-width: 1023px) {
+  .about-introduction { min-height: auto; }
+  .house-animation { position: relative; right: auto; width: 100%; height: auto; aspect-ratio: 1100 / 680; margin-top: -30px; }
+  .about-copy { pointer-events: auto; }
+}
+@media (max-width: 639px) {
+  .house-animation { width: 115%; margin-left: -8%; margin-top: 8px; }
+  .site-shell > header > div { flex-wrap: wrap; gap: 10px; padding-top: 12px; padding-bottom: 12px; }
+}
 .hero-visual { animation: rise 900ms 120ms cubic-bezier(.2,.7,.2,1) both; }
 @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
