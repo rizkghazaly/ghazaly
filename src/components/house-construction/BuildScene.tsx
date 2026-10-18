@@ -13,6 +13,7 @@ import {
   windows,
   woodPanel,
 } from "./constants";
+import { Backdrop } from "./Backdrop";
 import { Crane } from "./Crane";
 import { Excavator } from "./Excavator";
 import { Garden } from "./Garden";
@@ -21,7 +22,7 @@ import { Signature } from "./Signature";
 import { Window } from "./Window";
 import { Worker } from "./Worker";
 import { clamp, easeInOut, easeOut, mixColor, rng, seg, stagger } from "./helpers";
-
+import { DURATION, SIGNATURE_END } from "./phases";
 
 const xl = (y: number) => PIT_X0 + (y - G) * PIT_SLOPE;
 const xr = (y: number) => PIT_X1 - (y - G) * PIT_SLOPE;
@@ -36,15 +37,15 @@ const Soil = memo(function Soil() {
       y: G + 20 + r() * 200,
       rx: 2 + r() * 6,
       ry: 1.5 + r() * 4,
-      c: r() > 0.5 ? "var(--house-stone-mid)" : "var(--house-timber-deep)",
+      c: r() > 0.5 ? "#a8957f" : "#4a2f1d",
       o: 0.25 + r() * 0.3,
     }));
   })();
   return (
     <g>
-      <rect x={0} y={G} width={1100} height={110} fill="url(#soilGrad)" />
-      <path d={`M-1500 ${G + 58} Q-1000 ${G + 48} -500 ${G + 60} T500 ${G + 56} T1500 ${G + 60} T2500 ${G + 54}`} stroke="var(--house-ink)" strokeOpacity={0.25} strokeWidth={2} fill="none" />
-      <path d={`M-1500 ${G + 112} Q-1000 ${G + 124} -500 ${G + 110} T500 ${G + 116} T1500 ${G + 108} T2500 ${G + 118}`} stroke="var(--house-ink)" strokeOpacity={0.3} strokeWidth={2} fill="none" />
+      <rect x={-1500} y={G} width={4000} height={1400} fill="url(#soilGrad)" />
+      <path d={`M-1500 ${G + 58} Q-1000 ${G + 48} -500 ${G + 60} T500 ${G + 56} T1500 ${G + 60} T2500 ${G + 54}`} stroke="#3b2414" strokeOpacity={0.25} strokeWidth={2} fill="none" />
+      <path d={`M-1500 ${G + 112} Q-1000 ${G + 124} -500 ${G + 110} T500 ${G + 116} T1500 ${G + 108} T2500 ${G + 118}`} stroke="#3b2414" strokeOpacity={0.3} strokeWidth={2} fill="none" />
       {stones.map((s, i) => (
         <ellipse key={i} cx={s.x} cy={s.y} rx={s.rx} ry={s.ry} fill={s.c} opacity={s.o} />
       ))}
@@ -92,9 +93,9 @@ const Rocks = memo(function Rocks({ inside }: { inside: boolean }) {
     <g>
       {list.map((r) => (
         <g key={r.x}>
-          <ellipse cx={r.x} cy={G} rx={r.w + 3} ry={2} fill="var(--house-ink)" opacity={0.15} />
-          <path d={`M${r.x - r.w} ${G} Q${r.x - r.w} ${G - r.h} ${r.x - 2} ${G - r.h - 1} Q${r.x + r.w} ${G - r.h} ${r.x + r.w} ${G} Z`} fill="var(--house-stone-light)" />
-          <path d={`M${r.x - r.w + 3} ${G - 2} Q${r.x - r.w + 4} ${G - r.h + 1} ${r.x - 2} ${G - r.h}`} stroke="var(--house-stone-light)" strokeWidth={1.4} fill="none" />
+          <ellipse cx={r.x} cy={G} rx={r.w + 3} ry={2} fill="#000" opacity={0.15} />
+          <path d={`M${r.x - r.w} ${G} Q${r.x - r.w} ${G - r.h} ${r.x - 2} ${G - r.h - 1} Q${r.x + r.w} ${G - r.h} ${r.x + r.w} ${G} Z`} fill="#a19e95" />
+          <path d={`M${r.x - r.w + 3} ${G - 2} Q${r.x - r.w + 4} ${G - r.h + 1} ${r.x - 2} ${G - r.h}`} stroke="#c9c6bd" strokeWidth={1.4} fill="none" />
         </g>
       ))}
     </g>
@@ -103,17 +104,17 @@ const Rocks = memo(function Rocks({ inside }: { inside: boolean }) {
 
 const BlockPattern = ({ id, y }: { id: string; y: number }) => (
   <pattern id={id} patternUnits="userSpaceOnUse" x={0} y={y} width={50} height={25}>
-    <rect width={50} height={25} fill="var(--house-stone-mid)" />
-    <rect x={0.7} y={0.7} width={24} height={11.1} fill="var(--house-stone-light)" />
-    <rect x={25.7} y={0.7} width={23.6} height={11.1} fill="var(--house-stone-light)" />
-    <rect x={13.2} y={13.2} width={24} height={11.1} fill="var(--house-stone-light)" />
-    <rect x={38.2} y={13.2} width={24} height={11.1} fill="var(--house-stone-light)" />
-    <rect x={-11.8} y={13.2} width={24} height={11.1} fill="var(--house-stone-light)" />
-    <rect x={0.7} y={0.7} width={24} height={2} fill="var(--house-stone-pale)" opacity={0.7} />
-    <rect x={25.7} y={0.7} width={23.6} height={2} fill="var(--house-stone-pale)" opacity={0.7} />
-    <rect x={13.2} y={13.2} width={24} height={2} fill="var(--house-stone-pale)" opacity={0.7} />
-    <rect x={38.2} y={13.2} width={24} height={2} fill="var(--house-stone-pale)" opacity={0.7} />
-    <rect x={-11.8} y={13.2} width={24} height={2} fill="var(--house-stone-pale)" opacity={0.7} />
+    <rect width={50} height={25} fill="#8d8a82" />
+    <rect x={0.7} y={0.7} width={24} height={11.1} fill="#bdbab2" />
+    <rect x={25.7} y={0.7} width={23.6} height={11.1} fill="#afaca4" />
+    <rect x={13.2} y={13.2} width={24} height={11.1} fill="#b2afa7" />
+    <rect x={38.2} y={13.2} width={24} height={11.1} fill="#bcb9b1" />
+    <rect x={-11.8} y={13.2} width={24} height={11.1} fill="#bcb9b1" />
+    <rect x={0.7} y={0.7} width={24} height={2} fill="#d1cec7" opacity={0.7} />
+    <rect x={25.7} y={0.7} width={23.6} height={2} fill="#d1cec7" opacity={0.7} />
+    <rect x={13.2} y={13.2} width={24} height={2} fill="#d1cec7" opacity={0.7} />
+    <rect x={38.2} y={13.2} width={24} height={2} fill="#d1cec7" opacity={0.7} />
+    <rect x={-11.8} y={13.2} width={24} height={2} fill="#d1cec7" opacity={0.7} />
   </pattern>
 );
 
@@ -121,51 +122,51 @@ const Defs = memo(function Defs() {
   return (
     <defs>
       <radialGradient id="sunGlow">
-        <stop offset="0" stopColor="var(--house-chalk)" stopOpacity={0.95} />
-        <stop offset="0.35" stopColor="var(--house-light)" stopOpacity={0.4} />
-        <stop offset="1" stopColor="var(--house-light)" stopOpacity={0} />
+        <stop offset="0" stopColor="#fff6cf" stopOpacity={0.95} />
+        <stop offset="0.35" stopColor="#ffe9a8" stopOpacity={0.4} />
+        <stop offset="1" stopColor="#ffe9a8" stopOpacity={0} />
       </radialGradient>
       <radialGradient id="lampGlow">
-        <stop offset="0" stopColor="var(--house-light)" stopOpacity={0.9} />
-        <stop offset="1" stopColor="var(--house-light)" stopOpacity={0} />
+        <stop offset="0" stopColor="#ffe9a0" stopOpacity={0.9} />
+        <stop offset="1" stopColor="#ffe9a0" stopOpacity={0} />
       </radialGradient>
       <radialGradient id="warmGlow">
-        <stop offset="0" stopColor="var(--house-light)" stopOpacity={0.85} />
-        <stop offset="1" stopColor="var(--house-light)" stopOpacity={0} />
+        <stop offset="0" stopColor="#ffcf7a" stopOpacity={0.85} />
+        <stop offset="1" stopColor="#ffcf7a" stopOpacity={0} />
       </radialGradient>
       <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="var(--house-stone-pale)" stopOpacity={0} />
-        <stop offset="1" stopColor="var(--house-stone-pale)" stopOpacity={0.4} />
+        <stop offset="0" stopColor="#ffffff" stopOpacity={0} />
+        <stop offset="1" stopColor="#ffffff" stopOpacity={0.4} />
       </linearGradient>
-      <linearGradient id="soilGrad" gradientUnits="userSpaceOnUse" x1="0" y1={G} x2="0" y2={G + 100}>
-        <stop offset="0" stopColor="var(--house-timber-mid)" />
-        <stop offset="0.4" stopColor="var(--house-timber-mid)" />
-        <stop offset="0.75" stopColor="var(--house-timber-deep)" />
-        <stop offset="1" stopColor="var(--background)" />
+      <linearGradient id="soilGrad" gradientUnits="userSpaceOnUse" x1="0" y1={G} x2="0" y2={G + 190}>
+        <stop offset="0" stopColor="#8d6343" />
+        <stop offset="0.4" stopColor="#74503a" />
+        <stop offset="0.75" stopColor="#5c3d29" />
+        <stop offset="1" stopColor="#47301f" />
       </linearGradient>
       <linearGradient id="pitGrad" gradientUnits="userSpaceOnUse" x1="0" y1={G} x2="0" y2={G + PIT_DEPTH}>
-        <stop offset="0" stopColor="var(--house-timber-deep)" />
-        <stop offset="1" stopColor="var(--house-ink)" />
+        <stop offset="0" stopColor="#523826" />
+        <stop offset="1" stopColor="#35241a" />
       </linearGradient>
       <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="var(--house-glass-light)" />
-        <stop offset="0.55" stopColor="var(--house-glass-light)" />
-        <stop offset="1" stopColor="var(--house-glass-mid)" />
+        <stop offset="0" stopColor="#c6e7f1" />
+        <stop offset="0.55" stopColor="#7fb3c6" />
+        <stop offset="1" stopColor="#4d86a0" />
       </linearGradient>
       <linearGradient id="wallShade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="var(--house-ink)" stopOpacity={0.12} />
-        <stop offset="0.25" stopColor="var(--house-ink)" stopOpacity={0} />
-        <stop offset="1" stopColor="var(--house-ink)" stopOpacity={0.1} />
+        <stop offset="0" stopColor="#000" stopOpacity={0.12} />
+        <stop offset="0.25" stopColor="#000" stopOpacity={0} />
+        <stop offset="1" stopColor="#000" stopOpacity={0.1} />
       </linearGradient>
       <linearGradient id="slabShadow" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="var(--house-ink)" stopOpacity={0.34} />
-        <stop offset="1" stopColor="var(--house-ink)" stopOpacity={0} />
+        <stop offset="0" stopColor="#000" stopOpacity={0.34} />
+        <stop offset="1" stopColor="#000" stopOpacity={0} />
       </linearGradient>
       <pattern id="wood" patternUnits="userSpaceOnUse" width={9} height={12}>
-        <rect width={9} height={12} fill="var(--house-timber-mid)" />
-        <rect width={1.6} height={12} fill="var(--house-timber-mid)" />
-        <rect x={5} width={0.8} height={12} fill="var(--house-timber-light)" opacity={0.7} />
-        <rect y={6} x={2} width={3} height={0.8} fill="var(--house-timber-mid)" opacity={0.5} />
+        <rect width={9} height={12} fill="#b07a4d" />
+        <rect width={1.6} height={12} fill="#8b5a35" />
+        <rect x={5} width={0.8} height={12} fill="#c99362" opacity={0.7} />
+        <rect y={6} x={2} width={3} height={0.8} fill="#8b5a35" opacity={0.5} />
       </pattern>
       <BlockPattern id="blk-0" y={floors[0].yb} />
       <BlockPattern id="blk-1" y={floors[1].yb} />
@@ -194,6 +195,7 @@ const solarX = [560, 630, 700];
 
 export function BuildScene({ p }: { p: number }) {
   const t = (a: number, b: number) => seg(p, a, b);
+  const gold = t(20, DURATION);
   const lawn = t(32.5, 34.2);
 
   /* excavation + pit */
@@ -215,7 +217,7 @@ export function BuildScene({ p }: { p: number }) {
   const pour = easeInOut(t(10.5, 11.8));
   const pourTop = G + PIT_DEPTH * (1 - pour);
   const cure = t(11.8, 14);
-  const concreteColor = mixColor("var(--house-stone-mid)", "var(--house-stone-light)", cure);
+  const concreteColor = mixColor("#7c7b76", "#a9a8a2", cure);
   const plinthU = easeInOut(t(11.6, 12.5));
 
   /* survey */
@@ -230,14 +232,13 @@ export function BuildScene({ p }: { p: number }) {
 
   const interior = easeInOut(t(30.5, 32.3));
 
-  const grass = mixColor("var(--house-metal-mid)", "var(--house-leaf-mid)", lawn);
-  const tuftColor = mixColor("var(--house-metal-mid)", "var(--house-leaf-mid)", lawn);
+  const grass = mixColor("#c4b87f", "#68a04b", lawn);
+  const tuftColor = mixColor("#a99a5a", "#4f8f3d", lawn);
   const lawnTuftColor = tuftColor;
 
   const workerEl = (() => {
     if (p >= 18.5 && p < 22.5) {
       const f = floors[blocksK];
-      if (!f) return null;
       const u = easeInOut(t(18.5 + blocksK * (4 / 3), 18.5 + (blocksK + 1) * (4 / 3)));
       const rowsF = u * 8;
       const frac = rowsF - Math.floor(rowsF);
@@ -246,13 +247,11 @@ export function BuildScene({ p }: { p: number }) {
     }
     if (p >= 24.5 && p < 26.3) {
       const f = floors[plasterK];
-      if (!f) return null;
       const u = easeInOut(stagger(p, 24.5, 26.3, plasterK, 3));
       return <Worker x={f.x0 + 20 + u * (f.x1 - f.x0 - 30)} y={f.yb} time={p} tool="trowel" />;
     }
     if (p >= 26.3 && p < 28.5) {
       const f = floors[paintK];
-      if (!f) return null;
       const u = easeInOut(stagger(p, 26.3, 28.5, paintK, 3));
       return <Worker x={f.x0 + 20 + u * (f.x1 - f.x0 - 30)} y={f.yb} time={p} tool="roller" />;
     }
@@ -262,10 +261,10 @@ export function BuildScene({ p }: { p: number }) {
   return (
     <g>
       <Defs />
-
+      <Backdrop p={p} />
 
       {/* blueprint ghost + dimensions */}
-      <g fill="none" stroke="var(--muted-foreground)" strokeLinecap="butt">
+      <g fill="none" stroke="#12203a" strokeLinecap="butt">
         <g opacity={0.38 * (1 - t(19, 24))} strokeWidth={1.2}>
           {ghostRects.map((r, i) => (
             <path
@@ -282,15 +281,15 @@ export function BuildScene({ p }: { p: number }) {
           <path d="M246 262 V610 M238 262 H254 M238 610 H254" pathLength={1} strokeDasharray="1" strokeDashoffset={1 - easeInOut(t(3.2, 4.4))} />
         </g>
       </g>
-      <g opacity={0.7 * t(3.8, 4.4) * (1 - t(5.0, 6.0))} fill="var(--house-ink)" fontFamily="Manrope, sans-serif" fontSize={12} textAnchor="middle">
+      <g opacity={0.7 * t(3.8, 4.4) * (1 - t(5.0, 6.0))} fill="#12203a" fontFamily="Manrope, sans-serif" fontSize={12} textAnchor="middle">
         <text x={580} y={204}>14.0 m</text>
         <text transform="translate(234 440) rotate(-90)">10.4 m</text>
       </g>
 
       {/* ground */}
       <Soil />
-      <rect x={0} y={G - 0.5} width={1100} height={9} fill={grass} />
-      <rect x={0} y={G - 0.5} width={1100} height={1.6} fill="var(--house-ink)" opacity={0.12} />
+      <rect x={-1500} y={G - 0.5} width={4000} height={9} fill={grass} />
+      <rect x={-1500} y={G - 0.5} width={4000} height={1.6} fill="#000" opacity={0.12} />
       <g stroke={tuftColor}>
         <Tufts d={outsideTufts} />
       </g>
@@ -307,17 +306,17 @@ export function BuildScene({ p }: { p: number }) {
         <g opacity={stakeGone}>
           {[268, 550, 832].map((x, i) => (
             <g key={x} transform={`translate(${x} ${G}) scale(1 ${survey})`}>
-              <rect x={-2.2} y={-32} width={4.4} height={32} fill="var(--house-metal-mid)" />
-              <rect x={-2.2} y={-32} width={4.4} height={7} fill="var(--house-accent)" />
+              <rect x={-2.2} y={-32} width={4.4} height={32} fill="#c9a36b" />
+              <rect x={-2.2} y={-32} width={4.4} height={7} fill="#f0562a" />
               <path
                 d={`M2 -29 q8 ${Math.sin(p * 6 + i) * 2 + 2} 15 ${Math.sin(p * 6 + i) * 3 + 3} q-8 ${Math.sin(p * 6 + i) * 2 + 3} -15 3 Z`}
-                fill="var(--house-accent)"
+                fill="#ff9d4d"
               />
             </g>
           ))}
           <path
             d={`M268 ${G - 20} H832`}
-            stroke="var(--house-accent)"
+            stroke="#f0562a"
             strokeWidth={1.3}
             pathLength={1}
             strokeDasharray="1"
@@ -325,15 +324,15 @@ export function BuildScene({ p }: { p: number }) {
           />
           {/* tripod + instrument */}
           <g transform={`translate(190 ${G}) scale(1 ${survey})`}>
-            <path d="M0 -48 L-18 0 M0 -48 L0 0 M0 -48 L18 0" stroke="var(--house-stone-deep)" strokeWidth={2.4} strokeLinecap="round" />
-            <rect x={-8} y={-64} width={16} height={16} rx={3} fill="var(--house-metal-mid)" />
-            <rect x={-4} y={-61} width={8} height={5} fill="var(--house-stone-deep)" />
-            <rect x={8} y={-60} width={8} height={4} rx={1} fill="var(--house-stone-deep)" />
+            <path d="M0 -48 L-18 0 M0 -48 L0 0 M0 -48 L18 0" stroke="#3d424b" strokeWidth={2.4} strokeLinecap="round" />
+            <rect x={-8} y={-64} width={16} height={16} rx={3} fill="#f2b600" />
+            <rect x={-4} y={-61} width={8} height={5} fill="#3d424b" />
+            <rect x={8} y={-60} width={8} height={4} rx={1} fill="#3d424b" />
           </g>
           {/* ranging pole */}
           <g transform={`translate(700 ${G}) scale(1 ${survey})`}>
             {[0, 1, 2, 3, 4].map((i) => (
-              <rect key={i} x={-1.6} y={-60 + i * 12} width={3.2} height={12} fill={i % 2 ? "var(--house-chalk)" : "var(--house-accent)"} />
+              <rect key={i} x={-1.6} y={-60 + i * 12} width={3.2} height={12} fill={i % 2 ? "#f4efe5" : "#e0452e"} />
             ))}
           </g>
         </g>
@@ -346,14 +345,14 @@ export function BuildScene({ p }: { p: number }) {
             points={`${PIT_X0},${G} ${PIT_X1},${G} ${xr(pitY)},${pitY} ${xl(pitY)},${pitY}`}
             fill="url(#pitGrad)"
           />
-          <path d={`M${PIT_X0} ${G} L${xl(pitY)} ${pitY} M${PIT_X1} ${G} L${xr(pitY)} ${pitY}`} stroke="var(--house-ink)" strokeWidth={2} />
-          <rect x={xl(pitY)} y={pitY - 4} width={xr(pitY) - xl(pitY)} height={4} fill="var(--house-timber-mid)" />
+          <path d={`M${PIT_X0} ${G} L${xl(pitY)} ${pitY} M${PIT_X1} ${G} L${xr(pitY)} ${pitY}`} stroke="#2a1c12" strokeWidth={2} />
+          <rect x={xl(pitY)} y={pitY - 4} width={xr(pitY) - xl(pitY)} height={4} fill="#654a35" />
         </g>
       )}
 
       {/* rebar in the pit */}
       {rebarMesh > 0 && (
-        <g fill="none" stroke="var(--house-accent)" strokeLinecap="round">
+        <g fill="none" stroke="#d9783a" strokeLinecap="round">
           <path d={meshD} strokeWidth={2.2} pathLength={1} strokeDasharray="1" strokeDashoffset={1 - rebarMesh} />
           {starters > 0.001 && cols0.map((cx) =>
             [cx - 5, cx + 5].map((x) => (
@@ -377,9 +376,9 @@ export function BuildScene({ p }: { p: number }) {
             points={`${xl(pourTop)},${pourTop} ${xr(pourTop)},${pourTop} ${xr(G + PIT_DEPTH)},${G + PIT_DEPTH} ${xl(G + PIT_DEPTH)},${G + PIT_DEPTH}`}
             fill={concreteColor}
           />
-          <rect x={xl(pourTop)} y={pourTop} width={xr(pourTop) - xl(pourTop)} height={2} fill="var(--house-stone-pale)" opacity={0.18} />
+          <rect x={xl(pourTop)} y={pourTop} width={xr(pourTop) - xl(pourTop)} height={2} fill="#fff" opacity={0.18} />
           {cure < 1 && (
-            <path d={`M${xl(pourTop) + 20} ${pourTop + 8} H${xr(pourTop) - 20}`} stroke="var(--house-stone-pale)" strokeOpacity={0.12} strokeWidth={2} />
+            <path d={`M${xl(pourTop) + 20} ${pourTop + 8} H${xr(pourTop) - 20}`} stroke="#fff" strokeOpacity={0.12} strokeWidth={2} />
           )}
         </g>
       )}
@@ -389,10 +388,10 @@ export function BuildScene({ p }: { p: number }) {
         <g>
           <path
             d={`M188 ${G} Q206 ${G - pileH * 0.95} 226 ${G - pileH} Q248 ${G - pileH * 0.75} 264 ${G} Z`}
-            fill="var(--house-timber-mid)"
+            fill="#7d5a3c"
           />
-          <path d={`M226 ${G - pileH} Q248 ${G - pileH * 0.75} 264 ${G} L236 ${G} Z`} fill="var(--house-timber-deep)" opacity={0.7} />
-          <path d={`M200 ${G - 2} Q212 ${G - pileH * 0.7} 224 ${G - pileH + 2}`} stroke="var(--house-timber-mid)" strokeWidth={2} fill="none" opacity={0.7} />
+          <path d={`M226 ${G - pileH} Q248 ${G - pileH * 0.75} 264 ${G} L236 ${G} Z`} fill="#5f4129" opacity={0.7} />
+          <path d={`M200 ${G - 2} Q212 ${G - pileH * 0.7} 224 ${G - pileH + 2}`} stroke="#a37c58" strokeWidth={2} fill="none" opacity={0.7} />
         </g>
       )}
 
@@ -403,9 +402,9 @@ export function BuildScene({ p }: { p: number }) {
       {/* plinth / ground slab */}
       {plinthU > 0 && (
         <g>
-          <rect x={plinth.x0} y={plinth.y} width={(plinth.x1 - plinth.x0) * plinthU} height={SLAB_H} fill="var(--house-stone-light)" />
-          <rect x={plinth.x0} y={plinth.y} width={(plinth.x1 - plinth.x0) * plinthU} height={2} fill="var(--house-stone-light)" />
-          <rect x={plinth.x0} y={plinth.y + SLAB_H - 2} width={(plinth.x1 - plinth.x0) * plinthU} height={2} fill="var(--house-stone-mid)" />
+          <rect x={plinth.x0} y={plinth.y} width={(plinth.x1 - plinth.x0) * plinthU} height={SLAB_H} fill="#b4b2ab" />
+          <rect x={plinth.x0} y={plinth.y} width={(plinth.x1 - plinth.x0) * plinthU} height={2} fill="#d0cec7" />
+          <rect x={plinth.x0} y={plinth.y + SLAB_H - 2} width={(plinth.x1 - plinth.x0) * plinthU} height={2} fill="#8f8e88" />
         </g>
       )}
 
@@ -414,7 +413,6 @@ export function BuildScene({ p }: { p: number }) {
         const colU = easeOut(t(ws, ws + 1.1));
         const formwork = colU > 0 ? 1 - t(ws + 1.1, ws + 1.7) : 0;
         const slab = slabs[k];
-        if (!slab) return null;
         const pourU = easeInOut(t(ws + 0.9, ws + 2.0));
         const propsOp = t(ws + 0.8, ws + 1.1) * (1 - t(ws + 2.4, ws + 2.9));
         const W = f.x1 - f.x0;
@@ -435,7 +433,7 @@ export function BuildScene({ p }: { p: number }) {
           <g key={f.i}>
             {/* shoring props under the slab */}
             {propsOp > 0.01 && (
-              <g stroke="var(--house-timber-light)" strokeWidth={2.6} opacity={propsOp}>
+              <g stroke="#b88a5a" strokeWidth={2.6} opacity={propsOp}>
                 {Array.from({ length: Math.floor((slab.x1 - slab.x0 - 20) / 66) + 1 }).map((_, i) => {
                   const x = slab.x0 + 18 + i * 66;
                   return <line key={i} x1={x} y1={f.yt} x2={x} y2={f.yb} />;
@@ -446,7 +444,7 @@ export function BuildScene({ p }: { p: number }) {
 
             {/* rebar stubs sticking out of the slab */}
             {nextCols && pourU > 0.9 && (
-              <g stroke="var(--house-accent)" strokeWidth={2.2} strokeLinecap="round">
+              <g stroke="#d9783a" strokeWidth={2.2} strokeLinecap="round">
                 {nextCols.map((c) => (
                   <g key={c}>
                     <line x1={c + 4} y1={slab.y} x2={c + 4} y2={slab.y - 26} />
@@ -462,11 +460,11 @@ export function BuildScene({ p }: { p: number }) {
                 const H = (f.yb - f.yt) * colU;
                 return (
                   <g key={cx}>
-                    <rect x={cx} y={f.yb - H} width={16} height={H} fill="var(--house-stone-light)" />
-                    <rect x={cx + 12} y={f.yb - H} width={4} height={H} fill="var(--house-stone-mid)" />
-                    <rect x={cx} y={f.yb - H} width={2} height={H} fill="var(--house-stone-light)" />
+                    <rect x={cx} y={f.yb - H} width={16} height={H} fill="#a9a8a2" />
+                    <rect x={cx + 12} y={f.yb - H} width={4} height={H} fill="#8f8e88" />
+                    <rect x={cx} y={f.yb - H} width={2} height={H} fill="#c9c7c0" />
                     {formwork > 0.01 && (
-                      <rect x={cx - 3} y={f.yb - H} width={22} height={H} fill="url(#wood)" opacity={0.92 * formwork} stroke="var(--house-timber-mid)" strokeWidth={1} />
+                      <rect x={cx - 3} y={f.yb - H} width={22} height={H} fill="url(#wood)" opacity={0.92 * formwork} stroke="#7a4f2c" strokeWidth={1} />
                     )}
                   </g>
                 );
@@ -487,8 +485,8 @@ export function BuildScene({ p }: { p: number }) {
             {/* plaster */}
             {plaster > 0 && (
               <g>
-                <rect x={f.x0} y={f.yt} width={W * plaster} height={f.yb - f.yt} fill="var(--house-stone-pale)" />
-                {plaster < 1 && <rect x={f.x0 + W * plaster - 3} y={f.yt} width={3} height={f.yb - f.yt} fill="var(--house-stone-pale)" opacity={0.55} />}
+                <rect x={f.x0} y={f.yt} width={W * plaster} height={f.yb - f.yt} fill="#d4cfc4" />
+                {plaster < 1 && <rect x={f.x0 + W * plaster - 3} y={f.yt} width={3} height={f.yb - f.yt} fill="#fff" opacity={0.55} />}
               </g>
             )}
 
@@ -496,7 +494,7 @@ export function BuildScene({ p }: { p: number }) {
             {paint > 0 && (
               <g>
                 <rect x={f.x0} y={f.yt} width={W * paint} height={f.yb - f.yt} fill={f.paint} />
-                {paint < 1 && <rect x={f.x0 + W * paint - 4} y={f.yt} width={4} height={f.yb - f.yt} fill="var(--house-stone-pale)" opacity={0.35} />}
+                {paint < 1 && <rect x={f.x0 + W * paint - 4} y={f.yt} width={4} height={f.yb - f.yt} fill="#fff" opacity={0.35} />}
                 <rect x={f.x0} y={f.yt} width={W * paint} height={f.yb - f.yt} fill="url(#wallShade)" />
               </g>
             )}
@@ -509,11 +507,11 @@ export function BuildScene({ p }: { p: number }) {
             {/* slab */}
             {pourU > 0 && (
               <g>
-                <rect x={slab.x0} y={slab.y} width={(slab.x1 - slab.x0) * pourU} height={SLAB_H} fill="var(--house-stone-light)" />
-                <rect x={slab.x0} y={slab.y} width={(slab.x1 - slab.x0) * pourU} height={2} fill="var(--house-stone-light)" />
-                <rect x={slab.x0} y={slab.y + SLAB_H - 2} width={(slab.x1 - slab.x0) * pourU} height={2} fill="var(--house-stone-mid)" />
+                <rect x={slab.x0} y={slab.y} width={(slab.x1 - slab.x0) * pourU} height={SLAB_H} fill="#b4b2ab" />
+                <rect x={slab.x0} y={slab.y} width={(slab.x1 - slab.x0) * pourU} height={2} fill="#d0cec7" />
+                <rect x={slab.x0} y={slab.y + SLAB_H - 2} width={(slab.x1 - slab.x0) * pourU} height={2} fill="#8f8e88" />
                 {pourU < 1 && (
-                  <rect x={slab.x0 + (slab.x1 - slab.x0) * pourU - 5} y={slab.y} width={5} height={SLAB_H} fill="var(--house-stone-mid)" />
+                  <rect x={slab.x0 + (slab.x1 - slab.x0) * pourU - 5} y={slab.y} width={5} height={SLAB_H} fill="#7d7c77" />
                 )}
               </g>
             )}
@@ -537,14 +535,14 @@ export function BuildScene({ p }: { p: number }) {
               if (s <= 0) return null;
               return (
                 <g key={x} transform={`translate(${x} ${roof.y - 10 - (1 - s) * 30})`} opacity={s}>
-                  <polygon points="0,0 54,0 62,-22 8,-22" fill="var(--house-glass-deep)" stroke="var(--house-stone-light)" strokeWidth={1.4} />
-                  <path d="M18 0 L26 -22 M36 0 L44 -22 M4 -11 H58" stroke="var(--house-glass-mid)" strokeWidth={0.9} />
-                  <path d="M10 -20 L50 -20" stroke="var(--house-stone-pale)" strokeOpacity={0.25} strokeWidth={1} />
+                  <polygon points="0,0 54,0 62,-22 8,-22" fill="#1d3557" stroke="#9aa3b0" strokeWidth={1.4} />
+                  <path d="M18 0 L26 -22 M36 0 L44 -22 M4 -11 H58" stroke="#4a6fa5" strokeWidth={0.9} />
+                  <path d="M10 -20 L50 -20" stroke="#fff" strokeOpacity={0.25} strokeWidth={1} />
                 </g>
               );
             })}
-            <rect x={rx0} y={roof.y - 10} width={rw * pw} height={10} fill="var(--house-glass-deep)" />
-            <rect x={rx0} y={roof.y - 10} width={rw * pw} height={2} fill="var(--house-glass-mid)" />
+            <rect x={rx0} y={roof.y - 10} width={rw * pw} height={10} fill="#2d3b4f" />
+            <rect x={rx0} y={roof.y - 10} width={rw * pw} height={2} fill="#4a5b75" />
             {Array.from({ length: 40 }).map((_, i) => {
               const s = easeOut(t(23.2 + (i / 40) * 0.8, 23.8 + (i / 40) * 0.8));
               if (s <= 0) return null;
@@ -554,7 +552,7 @@ export function BuildScene({ p }: { p: number }) {
                   cx={rx0 + 8 + i * 11.4}
                   cy={roof.y - 12}
                   r={5.2 * s}
-                  fill={i % 3 === 0 ? "var(--house-leaf-mid)" : i % 3 === 1 ? "var(--house-leaf-mid)" : "var(--house-leaf-mid)"}
+                  fill={i % 3 === 0 ? "#4c8a4a" : i % 3 === 1 ? "#63a85d" : "#7ab56a"}
                 />
               );
             })}
@@ -603,12 +601,12 @@ export function BuildScene({ p }: { p: number }) {
         if (a <= 0) return null;
         return (
           <g opacity={Math.min(1, a * 4)}>
-            <rect x={door.x - 4} y={door.y - 4} width={door.w + 8} height={door.h + 4} fill="var(--house-ink)" />
-            <rect x={door.x} y={door.y} width={door.w} height={door.h} fill="var(--house-glass-deep)" />
+            <rect x={door.x - 4} y={door.y - 4} width={door.w + 8} height={door.h + 4} fill="#1c2733" />
+            <rect x={door.x} y={door.y} width={door.w} height={door.h} fill="#2b3a4d" />
             <g transform={`translate(${door.x} ${door.y}) scale(${Math.max(0.02, a)} 1)`}>
-              <rect width={door.w} height={door.h} fill="var(--house-accent)" />
-              <rect x={6} y={8} width={9} height={door.h - 22} fill={mixColor("var(--house-glass-light)", "var(--house-light)", interior)} />
-              <rect x={door.w - 12} y={door.h / 2 - 3} width={3} height={14} rx={1.5} fill="var(--house-metal-mid)" />
+              <rect width={door.w} height={door.h} fill="#c8553d" />
+              <rect x={6} y={8} width={9} height={door.h - 22} fill={mixColor("#bfe0ea", "#ffe3a1", interior)} />
+              <rect x={door.w - 12} y={door.h / 2 - 3} width={3} height={14} rx={1.5} fill="#e9b44c" />
               <rect x={0} y={0} width={door.w} height={door.h} fill="url(#wallShade)" />
             </g>
           </g>
@@ -628,11 +626,11 @@ export function BuildScene({ p }: { p: number }) {
           <g opacity={a}>
             {panels.map((pn) => (
               <g key={pn.x0}>
-                <rect x={pn.x0} y={y - 34} width={pn.x1 - pn.x0} height={34} fill="var(--house-glass-light)" fillOpacity={0.35} stroke="var(--house-ink)" strokeWidth={1.2} />
-                <path d={`M${pn.x0 + 18} ${y} V${y - 34} M${pn.x0 + 36} ${y} V${y - 34}`} stroke="var(--house-stone-pale)" strokeOpacity={0.4} strokeWidth={1} />
-                <rect x={pn.x0 - 1} y={y - 36} width={pn.x1 - pn.x0 + 2} height={3} fill="var(--house-ink)" />
-                <rect x={pn.x0 - 1} y={y - 36} width={3} height={36} fill="var(--house-ink)" />
-                <rect x={pn.x1 - 2} y={y - 36} width={3} height={36} fill="var(--house-ink)" />
+                <rect x={pn.x0} y={y - 34} width={pn.x1 - pn.x0} height={34} fill="#bfe3ee" fillOpacity={0.35} stroke="#1c2733" strokeWidth={1.2} />
+                <path d={`M${pn.x0 + 18} ${y} V${y - 34} M${pn.x0 + 36} ${y} V${y - 34}`} stroke="#fff" strokeOpacity={0.4} strokeWidth={1} />
+                <rect x={pn.x0 - 1} y={y - 36} width={pn.x1 - pn.x0 + 2} height={3} fill="#1c2733" />
+                <rect x={pn.x0 - 1} y={y - 36} width={3} height={36} fill="#1c2733" />
+                <rect x={pn.x1 - 2} y={y - 36} width={3} height={36} fill="#1c2733" />
               </g>
             ))}
           </g>
@@ -645,8 +643,84 @@ export function BuildScene({ p }: { p: number }) {
       <Crane p={p} />
       <Garden p={p} />
 
+      {/* final reveal */}
+      {/* callouts removed for minimal embed */}
 
+      {/* golden hour wash */}
+      <rect x={-1500} y={-600} width={4000} height={1800} fill="#ff9a4d" opacity={gold * 0.1} style={{ pointerEvents: "none" }} />
     </g>
   );
 }
 
+/* ---------- finishing flourish: sparkles, callouts, viewfinder ---------- */
+
+function Star({ x, y, s, delay }: { x: number; y: number; s: number; delay: number }) {
+  return (
+    <path
+      className="twinkle"
+      style={{ animationDelay: `${delay}s` }}
+      transform={`translate(${x} ${y}) scale(${s})`}
+      d="M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z"
+      fill="#fffbe6"
+    />
+  );
+}
+
+function Pill({ x, y, text, side }: { x: number; y: number; text: string; side: "l" | "r" }) {
+  const w = 112;
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <rect width={w} height={26} rx={13} fill="#12203a" />
+      <circle cx={side === "l" ? 14 : 14} cy={13} r={4} fill="#e9b44c" />
+      <text x={26} y={17} fill="#f6f1e7" fontSize={10.5} fontFamily="Manrope, sans-serif" letterSpacing={0.8}>
+        {text}
+      </text>
+    </g>
+  );
+}
+
+function FinalTouches({ p }: { p: number }) {
+  const sp = easeOut(seg(p, SIGNATURE_END + 0.4, SIGNATURE_END + 1.2));
+  const co = easeOut(seg(p, SIGNATURE_END + 0.8, SIGNATURE_END + 1.6));
+  const vf = easeOut(seg(p, SIGNATURE_END + 1.2, SIGNATURE_END + 2));
+  if (sp <= 0 && co <= 0 && vf <= 0) return null;
+  const blink = Math.sin(p * 5) > 0 ? 1 : 0.2;
+  const bx0 = 248;
+  const bx1 = 892;
+  const by0 = 226;
+  const by1 = 638;
+  const L = 26;
+  return (
+    <g>
+      <g opacity={sp}>
+        <Star x={522} y={512} s={1.1} delay={0} />
+        <Star x={765} y={296} s={0.9} delay={0.6} />
+        <Star x={846} y={402} s={1.2} delay={1.1} />
+        <Star x={372} y={290} s={0.8} delay={0.3} />
+        <Star x={560} y={400} s={0.9} delay={1.5} />
+      </g>
+
+      <g opacity={co}>
+        <path d="M206 343 L300 420" stroke="#12203a" strokeWidth={1.4} strokeDasharray="3 3" />
+        <circle cx={300} cy={420} r={3.5} fill="#12203a" />
+        <Pill x={96} y={330} text="3D EXTERIOR" side="l" />
+        <path d="M884 313 L762 330" stroke="#12203a" strokeWidth={1.4} strokeDasharray="3 3" />
+        <circle cx={762} cy={330} r={3.5} fill="#12203a" />
+        <Pill x={880} y={300} text="3D INTERIOR" side="r" />
+      </g>
+
+      <g opacity={vf} stroke="#12203a" strokeWidth={2} fill="none" strokeLinecap="round">
+        <path d={`M${bx0} ${by0 + L} V${by0} H${bx0 + L}`} />
+        <path d={`M${bx1 - L} ${by0} H${bx1} V${by0 + L}`} />
+        <path d={`M${bx0} ${by1 - L} V${by1} H${bx0 + L}`} />
+        <path d={`M${bx1 - L} ${by1} H${bx1} V${by1 - L}`} />
+        <g stroke="none" fill="#12203a" fontFamily="Manrope, sans-serif" fontSize={10}>
+          <text x={bx0 + 8} y={by0 + 18}>RENDER · 4K · 100%</text>
+          <text x={bx1 - 8} y={by1 - 10} textAnchor="end">F/2.8 · 24mm</text>
+          <circle cx={bx1 - 66} cy={by0 + 14} r={3.6} fill="#e0452e" opacity={blink} />
+          <text x={bx1 - 8} y={by0 + 18} textAnchor="end">REC</text>
+        </g>
+      </g>
+    </g>
+  );
+}

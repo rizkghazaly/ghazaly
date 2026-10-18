@@ -61,28 +61,28 @@ const jibPath = (() => {
 const CraneBody = memo(function CraneBody() {
   const apexY = CRANE_TOP - 40;
   return (
-    <g stroke="var(--house-metal-mid)" strokeWidth={2.2} fill="none" strokeLinecap="round">
+    <g stroke="#f0b429" strokeWidth={2.2} fill="none" strokeLinecap="round">
       <path d={towerPath} />
       <path d={jibPath} strokeWidth={1.8} />
       {/* A frame + pendants */}
       <path d={`M${CRANE_X - 14} ${JIB_Y - 8} L${CRANE_X} ${apexY} L${CRANE_X + 14} ${JIB_Y - 8}`} />
-      <path d={`M${CRANE_X} ${apexY} L330 ${JIB_Y - 8} M${CRANE_X} ${apexY} L985 ${JIB_Y - 8}`} strokeWidth={1.2} stroke="var(--house-metal-deep)" />
+      <path d={`M${CRANE_X} ${apexY} L330 ${JIB_Y - 8} M${CRANE_X} ${apexY} L985 ${JIB_Y - 8}`} strokeWidth={1.2} stroke="#c58f1a" />
       {/* slewing unit + cab */}
-      <rect x={CRANE_X - 20} y={JIB_Y + 8} width={40} height={10} fill="var(--house-metal-deep)" stroke="none" />
-      <rect x={CRANE_X - 42} y={JIB_Y + 6} width={20} height={20} rx={2} fill="var(--house-metal-mid)" stroke="none" />
-      <rect x={CRANE_X - 39} y={JIB_Y + 9} width={13} height={10} fill="var(--house-glass-light)" stroke="none" />
+      <rect x={CRANE_X - 20} y={JIB_Y + 8} width={40} height={10} fill="#d99c00" stroke="none" />
+      <rect x={CRANE_X - 42} y={JIB_Y + 6} width={20} height={20} rx={2} fill="#f2b600" stroke="none" />
+      <rect x={CRANE_X - 39} y={JIB_Y + 9} width={13} height={10} fill="#9fd3e6" stroke="none" />
       {/* counterweights */}
       <g stroke="none">
-        <rect x={956} y={JIB_Y + 8} width={30} height={30} fill="var(--house-stone-mid)" />
-        <rect x={956} y={JIB_Y + 8} width={30} height={10} fill="var(--house-stone-light)" />
-        <rect x={956} y={JIB_Y + 24} width={30} height={2} fill="var(--house-stone-mid)" />
+        <rect x={956} y={JIB_Y + 8} width={30} height={30} fill="#7a808c" />
+        <rect x={956} y={JIB_Y + 8} width={30} height={10} fill="#939aa6" />
+        <rect x={956} y={JIB_Y + 24} width={30} height={2} fill="#5a606b" />
       </g>
       {/* red light */}
-      <circle cx={CRANE_X} cy={apexY - 4} r={3} fill="var(--house-accent)" stroke="none" />
+      <circle cx={CRANE_X} cy={apexY - 4} r={3} fill="#ff4d4d" stroke="none" />
       {/* base */}
       <g stroke="none">
-        <rect x={CRANE_X - 30} y={G - 12} width={60} height={12} fill="var(--house-stone-mid)" />
-        <rect x={CRANE_X - 30} y={G - 12} width={60} height={3} fill="var(--house-stone-light)" />
+        <rect x={CRANE_X - 30} y={G - 12} width={60} height={12} fill="#7a808c" />
+        <rect x={CRANE_X - 30} y={G - 12} width={60} height={3} fill="#a0a7b3" />
       </g>
     </g>
   );
@@ -92,7 +92,7 @@ function Payload({ type, hanging }: { type: PayloadType; hanging: boolean }) {
   return (
     <g>
       {hanging && (
-        <g stroke="var(--house-stone-deep)" strokeWidth={1}>
+        <g stroke="#2d2f36" strokeWidth={1}>
           <line x1={0} y1={-8} x2={-15} y2={4} />
           <line x1={0} y1={-8} x2={15} y2={4} />
         </g>
@@ -100,35 +100,35 @@ function Payload({ type, hanging }: { type: PayloadType; hanging: boolean }) {
       {type === "rebar" && (
         <g>
           {[4, 8, 12, 16, 20].map((y) => (
-            <line key={y} x1={-18} y1={y} x2={18} y2={y} stroke="var(--house-accent)" strokeWidth={2.4} strokeLinecap="round" />
+            <line key={y} x1={-18} y1={y} x2={18} y2={y} stroke="#d9783a" strokeWidth={2.4} strokeLinecap="round" />
           ))}
-          <rect x={-9} y={2} width={2.4} height={20} fill="var(--house-stone-deep)" />
-          <rect x={7} y={2} width={2.4} height={20} fill="var(--house-stone-deep)" />
+          <rect x={-9} y={2} width={2.4} height={20} fill="#2d2f36" />
+          <rect x={7} y={2} width={2.4} height={20} fill="#2d2f36" />
         </g>
       )}
       {type === "bucket" && (
         <g>
-          <path d="M-15 2 L15 2 L8 20 L-8 20 Z" fill="var(--house-stone-mid)" />
-          <rect x={-15} y={2} width={30} height={5} fill="var(--house-metal-mid)" />
-          <rect x={-4} y={20} width={8} height={4} fill="var(--house-stone-deep)" />
+          <path d="M-15 2 L15 2 L8 20 L-8 20 Z" fill="#5b6270" />
+          <rect x={-15} y={2} width={30} height={5} fill="#f2b600" />
+          <rect x={-4} y={20} width={8} height={4} fill="#2d2f36" />
         </g>
       )}
       {type === "blocks" && (
         <g>
-          <rect x={-18} y={4} width={36} height={18} fill="url(#blk-small)" stroke="var(--house-stone-mid)" strokeWidth={0.8} />
-          <rect x={-20} y={22} width={40} height={4} fill="var(--house-timber-light)" />
+          <rect x={-18} y={4} width={36} height={18} fill="url(#blk-small)" stroke="#6f6d66" strokeWidth={0.8} />
+          <rect x={-20} y={22} width={40} height={4} fill="#b8864f" />
         </g>
       )}
       {type === "solar" && (
         <g>
-          <polygon points="-18,22 14,22 19,6 -13,6" fill="var(--house-glass-deep)" stroke="var(--house-stone-light)" strokeWidth={1.2} />
-          <path d="M-8 22 L-3 6 M2 22 L7 6 M-15.5 14 H16.5" stroke="var(--house-glass-mid)" strokeWidth={0.8} />
+          <polygon points="-18,22 14,22 19,6 -13,6" fill="#1d3557" stroke="#9aa3b0" strokeWidth={1.2} />
+          <path d="M-8 22 L-3 6 M2 22 L7 6 M-15.5 14 H16.5" stroke="#4a6fa5" strokeWidth={0.8} />
         </g>
       )}
       {type === "glass" && (
         <g>
-          <rect x={-15} y={2} width={30} height={22} fill="var(--house-glass-light)" stroke="var(--house-timber-light)" strokeWidth={2.4} />
-          <path d="M-8 22 L2 4 M0 22 L10 4" stroke="var(--house-stone-pale)" strokeWidth={2} opacity={0.6} />
+          <rect x={-15} y={2} width={30} height={22} fill="#b7dcea" stroke="#b8864f" strokeWidth={2.4} />
+          <path d="M-8 22 L2 4 M0 22 L10 4" stroke="#fff" strokeWidth={2} opacity={0.6} />
         </g>
       )}
     </g>
@@ -187,14 +187,14 @@ export function Crane({ p }: Props) {
       {showHook && (
         <g>
           {/* trolley */}
-          <rect x={trolleyX - 9} y={JIB_Y + 8} width={18} height={9} rx={2} fill="var(--house-stone-deep)" />
+          <rect x={trolleyX - 9} y={JIB_Y + 8} width={18} height={9} rx={2} fill="#2d2f36" />
           {/* cable */}
-          <line x1={trolleyX} y1={JIB_Y + 16} x2={trolleyX} y2={hookY} stroke="var(--house-stone-deep)" strokeWidth={1.3} />
+          <line x1={trolleyX} y1={JIB_Y + 16} x2={trolleyX} y2={hookY} stroke="#2d2f36" strokeWidth={1.3} />
           {/* hook block */}
-          <rect x={trolleyX - 5} y={hookY - 1} width={10} height={8} rx={1.5} fill="var(--house-metal-mid)" stroke="var(--house-stone-deep)" strokeWidth={1} />
+          <rect x={trolleyX - 5} y={hookY - 1} width={10} height={8} rx={1.5} fill="#f2b600" stroke="#2d2f36" strokeWidth={1} />
           <path
             d={`M${trolleyX} ${hookY + 7} v4 q0 5 -4 5 q-3 0 -3 -3`}
-            stroke="var(--house-stone-deep)"
+            stroke="#2d2f36"
             strokeWidth={1.6}
             fill="none"
             strokeLinecap="round"
@@ -210,7 +210,7 @@ export function Crane({ p }: Props) {
               y={hookY + 38}
               width={5}
               height={34}
-              fill="var(--house-stone-mid)"
+              fill="#8d8c87"
               opacity={0.9}
             />
           )}
