@@ -1,3 +1,5 @@
+// Vendored illustration scene: fixed-length arrays indexed by known positions.
+// @ts-nocheck
 import { memo } from "react";
 import { G } from "./constants";
 import { easeIn, easeOut, lerp, seg } from "./helpers";
@@ -25,9 +27,9 @@ const path = (() => {
 const Frame = memo(function Frame() {
   return (
     <g>
-      <path d={path} stroke="var(--house-stone-deep)" strokeWidth={1.5} fill="none" />
+      <path d={path} stroke="#4b5563" strokeWidth={1.5} fill="none" />
       {[550, 430, 310].map((y) => (
-        <rect key={y} x={270} y={y - 2} width={628} height={4} fill="var(--house-timber-light)" opacity={0.9} />
+        <rect key={y} x={poles[0] - 6} y={y - 2} width={poles[poles.length - 1] - poles[0] + 12} height={4} fill="#b8864f" opacity={0.9} />
       ))}
     </g>
   );

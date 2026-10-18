@@ -60,45 +60,45 @@ export function Excavator({ p, depth, pileH }: Props) {
   return (
     <g transform={`translate(${x} ${G})`}>
       {/* shadow */}
-      <ellipse cx={0} cy={1} rx={70} ry={3.5} fill="var(--house-ink)" opacity={0.18} />
+      <ellipse cx={0} cy={1} rx={70} ry={3.5} fill="#000" opacity={0.18} />
 
       {/* boom + stick (behind body) */}
-      <line x1={cylFrom.x} y1={cylFrom.y} x2={cylTo.x} y2={cylTo.y} stroke="var(--house-stone-light)" strokeWidth={5} strokeLinecap="round" />
-      <line x1={P0.x} y1={P0.y} x2={e.x} y2={e.y} stroke="var(--house-metal-deep)" strokeWidth={13} strokeLinecap="round" />
-      <line x1={P0.x} y1={P0.y} x2={e.x} y2={e.y} stroke="var(--house-metal-mid)" strokeWidth={9} strokeLinecap="round" />
-      <line x1={e.x} y1={e.y} x2={tip.x} y2={tip.y} stroke="var(--house-metal-deep)" strokeWidth={10} strokeLinecap="round" />
-      <line x1={e.x} y1={e.y} x2={tip.x} y2={tip.y} stroke="var(--house-metal-mid)" strokeWidth={6} strokeLinecap="round" />
-      <circle cx={e.x} cy={e.y} r={5} fill="var(--house-stone-deep)" />
+      <line x1={cylFrom.x} y1={cylFrom.y} x2={cylTo.x} y2={cylTo.y} stroke="#9aa0aa" strokeWidth={5} strokeLinecap="round" />
+      <line x1={P0.x} y1={P0.y} x2={e.x} y2={e.y} stroke="#d99c00" strokeWidth={13} strokeLinecap="round" />
+      <line x1={P0.x} y1={P0.y} x2={e.x} y2={e.y} stroke="#f2b600" strokeWidth={9} strokeLinecap="round" />
+      <line x1={e.x} y1={e.y} x2={tip.x} y2={tip.y} stroke="#d99c00" strokeWidth={10} strokeLinecap="round" />
+      <line x1={e.x} y1={e.y} x2={tip.x} y2={tip.y} stroke="#f2b600" strokeWidth={6} strokeLinecap="round" />
+      <circle cx={e.x} cy={e.y} r={5} fill="#3d424b" />
 
       {/* bucket */}
       <g transform={`translate(${tip.x} ${tip.y}) rotate(${a2 * DEG + curl})`}>
-        <path d="M-4 -5 L8 -5 Q28 -1 28 19 L19 19 Q15 8 -4 8 Z" fill="var(--house-stone-deep)" />
-        <path d="M19 19 L28 19 L29 24 L21 24 Z" fill="var(--house-stone-pale)" />
-        <circle cx={0} cy={0} r={3.2} fill="var(--house-stone-light)" />
+        <path d="M-4 -5 L8 -5 Q28 -1 28 19 L19 19 Q15 8 -4 8 Z" fill="#3d424b" />
+        <path d="M19 19 L28 19 L29 24 L21 24 Z" fill="#c9ccd2" />
+        <circle cx={0} cy={0} r={3.2} fill="#9aa0aa" />
       </g>
 
       {/* tracks */}
-      <rect x={-60} y={-24} width={120} height={24} rx={12} fill="var(--house-ink)" />
-      <rect x={-54} y={-20} width={108} height={16} rx={8} fill="var(--house-stone-deep)" />
+      <rect x={-60} y={-24} width={120} height={24} rx={12} fill="#23262c" />
+      <rect x={-54} y={-20} width={108} height={16} rx={8} fill="#343840" />
       {[-40, -14, 14, 40].map((cx) => (
         <g key={cx} transform={`translate(${cx} -12) rotate(${roll})`}>
-          <circle r={6.2} fill="var(--house-stone-deep)" />
-          <line x1={-5} y1={0} x2={5} y2={0} stroke="var(--house-ink)" strokeWidth={1.6} />
-          <line x1={0} y1={-5} x2={0} y2={5} stroke="var(--house-ink)" strokeWidth={1.6} />
+          <circle r={6.2} fill="#4a4f58" />
+          <line x1={-5} y1={0} x2={5} y2={0} stroke="#23262c" strokeWidth={1.6} />
+          <line x1={0} y1={-5} x2={0} y2={5} stroke="#23262c" strokeWidth={1.6} />
         </g>
       ))}
 
       {/* body */}
-      <rect x={-64} y={-54} width={18} height={26} rx={3} fill="var(--house-stone-deep)" />
-      <rect x={-52} y={-62} width={36} height={14} rx={4} fill="var(--house-metal-deep)" />
-      <rect x={-50} y={-50} width={96} height={27} rx={5} fill="var(--house-metal-mid)" />
-      <rect x={-50} y={-30} width={96} height={4} fill="var(--house-metal-deep)" />
+      <rect x={-64} y={-54} width={18} height={26} rx={3} fill="#3d424b" />
+      <rect x={-52} y={-62} width={36} height={14} rx={4} fill="#d99c00" />
+      <rect x={-50} y={-50} width={96} height={27} rx={5} fill="#f2b600" />
+      <rect x={-50} y={-30} width={96} height={4} fill="#d99c00" />
 
       {/* cab */}
-      <path d="M-8 -50 L-8 -80 Q-8 -88 0 -88 L30 -88 Q38 -88 40 -80 L46 -50 Z" fill="var(--house-metal-mid)" />
-      <path d="M-2 -54 L-2 -78 Q-2 -83 3 -83 L29 -83 Q34 -83 35 -78 L39 -54 Z" fill="var(--house-glass-light)" />
-      <path d="M4 -83 L14 -83 L4 -54 L-2 -54 Z" fill="var(--house-stone-pale)" opacity={0.35} />
-      <rect x={-6} y={-92} width={48} height={4} rx={2} fill="var(--house-metal-deep)" />
+      <path d="M-8 -50 L-8 -80 Q-8 -88 0 -88 L30 -88 Q38 -88 40 -80 L46 -50 Z" fill="#f2b600" />
+      <path d="M-2 -54 L-2 -78 Q-2 -83 3 -83 L29 -83 Q34 -83 35 -78 L39 -54 Z" fill="#9fd3e6" />
+      <path d="M4 -83 L14 -83 L4 -54 L-2 -54 Z" fill="#fff" opacity={0.35} />
+      <rect x={-6} y={-92} width={48} height={4} rx={2} fill="#d99c00" />
     </g>
   );
 }

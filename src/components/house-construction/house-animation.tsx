@@ -55,8 +55,10 @@ export function HouseAnimation() {
   };
 
   return (
-    <div ref={element} className="house-animation">
+    <div ref={element} className="house-animation" style={{ WebkitMaskImage: "linear-gradient(to right, transparent 0%, #000 22%, #000 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 85%, transparent 100%)", WebkitMaskComposite: "source-in", maskImage: "linear-gradient(to right, transparent 0%, #000 22%, #000 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 85%, transparent 100%)", maskComposite: "intersect" }}>
       <svg viewBox="0 50 1100 680" preserveAspectRatio="xMidYMax meet" className="h-full w-full" role="img" aria-label="House construction with Rizk Ghazaly’s name assembled above the rooftop">
+        <defs><linearGradient id="houseSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#f3e3cf" stopOpacity={0.55} /><stop offset="1" stopColor="#f6e6d2" stopOpacity={0.85} /></linearGradient></defs>
+        <rect x={-200} y={0} width={1500} height={620} fill="url(#houseSky)" />
         <BuildScene p={time} />
       </svg>
       {!reduced && (
