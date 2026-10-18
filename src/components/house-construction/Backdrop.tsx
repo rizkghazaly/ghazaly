@@ -35,12 +35,27 @@ function Cloud({ x, y, s, fill }: { x: number; y: number; s: number; fill: strin
   );
 }
 
+export function SceneSun({ p }: { p: number }) {
+  const progress = seg(p, 0, DURATION);
+  const gold = seg(p, 24, DURATION);
+  const sx = lerp(50, 1060, progress);
+  const sy = lerp(550, 425, progress) - Math.sin(Math.PI * progress) * 365;
+  return (
+    <g data-scene-sun="true" aria-hidden="true">
+      <defs>
+        <radialGradient id="visibleSunGlow">
+          <stop offset="0" stopColor="var(--house-sun-day)" stopOpacity={0.5} />
+          <stop offset="1" stopColor="var(--house-sun-dusk)" stopOpacity={0} />
+        </radialGradient>
+      </defs>
+      <circle cx={sx} cy={sy} r={115} fill="url(#visibleSunGlow)" />
+      <circle cx={sx} cy={sy} r={29} fill={`color-mix(in oklab, var(--house-sun-day) ${(1 - gold) * 100}%, var(--house-sun-dusk))`} />
+    </g>
+  );
+}
+
 export function Backdrop({ p }: { p: number }) {
   const gold = seg(p, 20, DURATION);
-  const s = 0.05 + 0.92 * (p / DURATION);
-  const sx = lerp(30, 975, s);
-  const sy = 565 - Math.sin(Math.PI * s) * 450;
-  const sunColor = mixColor("#fff6cf", "#ffb065", gold);
   const cloudFill = mixColor("#ffffff", "#ffe2c2", gold);
   const farC = mixColor("#b8c7ce", "#d9aa90", gold);
   const nearC = mixColor("#9db28f", "#a99565", gold);
@@ -48,10 +63,6 @@ export function Backdrop({ p }: { p: number }) {
 
   return (
     <g>
-      {/* sun glow */}
-      <circle cx={sx} cy={sy} r={190} fill="url(#sunGlow)" opacity={0.55 + gold * 0.3} />
-      <circle cx={sx} cy={sy} r={34} fill={sunColor} />
-
       {/* clouds */}
       <g opacity={0.85}>
         {clouds.map((c, i) => {

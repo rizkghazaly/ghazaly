@@ -3,6 +3,8 @@ import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BuildScene } from "./BuildScene";
 import { DURATION } from "./phases";
+import { SceneSun } from "./Backdrop";
+import { seg } from "./helpers";
 
 export function HouseAnimation() {
   const element = useRef<HTMLDivElement>(null);
@@ -54,13 +56,20 @@ export function HouseAnimation() {
     setPlaying(true);
   };
 
+  const dawn = 1 - seg(time, 0, 14);
+  const sunset = seg(time, 24, DURATION);
+  const skyTop = `color-mix(in oklab, var(--house-sky-day) ${(1 - sunset) * 100}%, var(--house-sky-dusk))`;
+  const skyHorizon = `color-mix(in oklab, var(--house-sky-horizon) ${(1 - dawn) * 100}%, var(--house-sky-dawn))`;
+
   return (
-    <div ref={element} className="house-animation" style={{ WebkitMaskImage: "linear-gradient(to right, transparent 0%, #000 22%, #000 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 85%, transparent 100%)", WebkitMaskComposite: "source-in", maskImage: "linear-gradient(to right, transparent 0%, #000 22%, #000 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 85%, transparent 100%)", maskComposite: "intersect" }}>
-      <svg viewBox="0 50 1100 680" preserveAspectRatio="xMidYMax meet" className="h-full w-full" role="img" aria-label="House construction with Rizk Ghazaly’s name assembled above the rooftop">
-        <defs><linearGradient id="houseSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#f3e3cf" stopOpacity={0.55} /><stop offset="1" stopColor="#f6e6d2" stopOpacity={0.85} /></linearGradient></defs>
+    <div ref={element} className="house-animation">
+      <svg viewBox="0 50 1100 680" preserveAspectRatio="xMidYMax meet" className="house-scenery h-full w-full" role="img" aria-label="House construction with Rizk Ghazaly’s name assembled above the rooftop">
+        <defs><linearGradient id="houseSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={skyTop} stopOpacity={0.75} /><stop offset="1" stopColor={skyHorizon} stopOpacity={0.9} /></linearGradient></defs>
         <rect x={-200} y={0} width={1500} height={620} fill="url(#houseSky)" />
         <BuildScene p={time} />
+        <rect x={-200} y={0} width={1500} height={780} fill="var(--house-sky-dawn)" opacity={dawn * 0.14} pointerEvents="none" />
       </svg>
+      <svg viewBox="0 50 1100 680" preserveAspectRatio="xMidYMax meet" className="house-sun-layer" aria-hidden="true"><SceneSun p={time} /></svg>
       {!reduced && (
         <div className="absolute bottom-3 right-6 flex gap-1">
           <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground" aria-label={playing ? "Pause construction" : "Play construction"} title={playing ? "Pause construction" : "Play construction"} onClick={() => time >= DURATION ? replay() : setPlaying((value) => !value)}>
