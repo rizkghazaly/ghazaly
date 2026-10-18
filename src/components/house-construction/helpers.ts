@@ -48,14 +48,15 @@ export const rng = (seed: number) => {
 
 /** piecewise keyframe interpolation: keys = [[u, value], ...] */
 export const keyframes = (u: number, keys: [number, number][], ease = easeInOut) => {
-  if (u <= keys[0][0]) return keys[0][1];
+  const first = keys[0]!;
+  if (u <= first[0]) return first[1];
   for (let i = 1; i < keys.length; i++) {
-    if (u <= keys[i][0]) {
-      const [u0, v0] = keys[i - 1];
-      const [u1, v1] = keys[i];
+    if (u <= keys[i]![0]) {
+      const [u0, v0] = keys[i - 1]!;
+      const [u1, v1] = keys[i]!;
       const t = (u - u0) / (u1 - u0 || 1);
       return lerp(v0, v1, ease(t));
     }
   }
-  return keys[keys.length - 1][1];
+  return keys[keys.length - 1]![1];
 };
