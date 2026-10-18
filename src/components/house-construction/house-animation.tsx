@@ -56,7 +56,9 @@ export function HouseAnimation() {
 
   return (
     <div ref={element} className="house-animation">
-      <svg viewBox="0 50 1100 680" preserveAspectRatio="xMidYMax meet" className="h-full w-full" role="img" aria-label="House construction with Rizk Ghazaly’s name assembled above the rooftop">
+      <svg viewBox="0 50 1100 680" preserveAspectRatio="xMidYMax meet" className="h-full w-full" style={{ WebkitMaskImage: "radial-gradient(ellipse 85% 95% at 60% 70%, #000 55%, transparent 100%)", maskImage: "radial-gradient(ellipse 85% 95% at 60% 70%, #000 55%, transparent 100%)" }} role="img" aria-label="House construction with Rizk Ghazaly’s name assembled above the rooftop">
+        <defs><linearGradient id="houseSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#f3e3cf" stopOpacity={0.55} /><stop offset="1" stopColor="#f6e6d2" stopOpacity={0.85} /></linearGradient></defs>
+        <rect x={-200} y={0} width={1500} height={620} fill="url(#houseSky)" />
         <BuildScene p={time} />
       </svg>
       {!reduced && (
