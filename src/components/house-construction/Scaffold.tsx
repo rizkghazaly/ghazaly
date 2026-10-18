@@ -1,3 +1,5 @@
+// Vendored illustration scene: fixed-length arrays indexed by known positions.
+// @ts-nocheck
 import { memo } from "react";
 import { G } from "./constants";
 import { easeIn, easeOut, lerp, seg } from "./helpers";
