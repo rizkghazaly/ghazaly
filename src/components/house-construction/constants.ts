@@ -17,7 +17,7 @@ export type FloorDef = {
   paint: string;
 };
 
-export const floors: FloorDef[] = [
+export const floors: [FloorDef, FloorDef, FloorDef] = [
   { i: 0, yb: 598, yt: 498, x0: 300, x1: 800, cols: [300, 542, 784], paint: "#f4efe5" },
   { i: 1, yb: 486, yt: 386, x0: 300, x1: 860, cols: [300, 580, 844], paint: "#2d3b4f" },
   { i: 2, yb: 374, yt: 274, x0: 360, x1: 800, cols: [360, 580, 784], paint: "#f4efe5" },
