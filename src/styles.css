@@ -266,6 +266,7 @@
 .about-introduction { min-height: 730px; }
 .about-copy { pointer-events: none; }
 .about-copy a { pointer-events: auto; }
+.about-name { font-size: clamp(30px, 5.6vw, 60px); white-space: nowrap; }
 .house-animation { position: absolute; right: -30px; bottom: 0; width: 76%; height: 640px; }
 .house-scenery {
   mask-image: linear-gradient(to right, transparent 0%, black 22%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%);
@@ -280,7 +281,7 @@
 @media (max-width: 639px) {
   .house-animation { width: 115%; margin-left: -8%; margin-top: 8px; }
   .about-copy { padding-top: 32px; }
-  .about-copy h1 { font-size: 42px; }
+  .about-copy h1 { font-size: min(42px, 9vw); }
   .about-copy p { margin-top: 14px; line-height: 1.8; }
   .about-copy > div { margin-top: 16px; padding-top: 16px; }
   .site-shell > header > div { flex-wrap: wrap; gap: 10px; padding-top: 12px; padding-bottom: 12px; }
