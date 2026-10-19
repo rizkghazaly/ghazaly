@@ -266,9 +266,17 @@
 .about-introduction { min-height: 800px; }
 .about-copy { pointer-events: none; }
 .about-copy a { pointer-events: auto; }
+.about-copy::before {
+  content: "";
+  position: absolute;
+  inset: -70px -130px -90px -90px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(115% 100% at 0% 45%, var(--background) 0%, color-mix(in oklab, var(--background) 72%, transparent) 46%, transparent 80%);
+}
 .house-animation { position: absolute; right: -60px; bottom: 0; width: 88%; height: 730px; }
 .house-scenery {
-  mask-image: linear-gradient(to right, transparent 0%, black 22%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 28%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 18%, black 85%, transparent 100%);
   mask-composite: intersect;
 }
 .house-sun-layer { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
