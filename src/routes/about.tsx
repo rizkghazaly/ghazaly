@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Box, DraftingCompass, Layers3, Workflow } from "lucide-react";
+import { ArrowUpRight, Box, DraftingCompass, Layers3, Mail, Workflow } from "lucide-react";
 import { HouseAnimation } from "@/components/house-construction/house-animation";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -64,6 +64,31 @@ function AboutPage() {
               <p className="mt-3 max-w-lg text-[13px] leading-7 text-muted-foreground">{text}</p>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="relative border-t border-border px-6 py-20 sm:py-24">
+        <div className="mx-auto max-w-[720px] text-center">
+          <p className="flex items-center justify-center gap-3 text-[10px] tracking-[0.35em] text-muted-foreground uppercase">
+            <span className="h-px w-8 bg-border" aria-hidden="true" />
+            Get in touch
+            <span className="h-px w-8 bg-border" aria-hidden="true" />
+          </p>
+          <h2 className="mt-6 font-serif text-4xl font-light leading-[1.12] sm:text-5xl">
+            Let’s build something<br className="hidden sm:block" /> worth <em className="italic text-muted-foreground">rendering.</em>
+          </h2>
+          <p className="mx-auto mt-5 max-w-[420px] text-sm leading-7 text-muted-foreground">
+            Tell me about your project and I will reply with a clear direction, usually within 24 hours.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <a
+              href="mailto:rizk@metarizk.net"
+              className="group inline-flex items-center gap-2.5 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-transform duration-200 hover:scale-[1.03]"
+            >
+              <Mail size={15} strokeWidth={1.6} aria-hidden="true" />
+              rizk@metarizk.net
+            </a>
+          </div>
+          <p className="mt-7 text-[10px] tracking-[0.3em] text-muted-foreground uppercase">Available worldwide · Remote 3D delivery</p>
         </div>
       </section>
       <footer className="mx-auto flex max-w-[1200px] items-center justify-between border-t border-border px-6 py-7 text-xs text-muted-foreground"><Link to="/" className="font-serif text-lg text-foreground">Ghazaly</Link><Link to="/prizes" className="hover:text-foreground">Prizes <ArrowUpRight size={12} className="ml-1 inline" /></Link></footer>
