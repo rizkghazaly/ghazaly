@@ -45,7 +45,7 @@ function AboutPage() {
           <p className="section-index">About me</p>
           <h1 className="about-name mt-5 font-serif font-light leading-[1.08]">Rizk Ghazaly<span className="text-muted-foreground">.</span></h1>
           <p className="mt-5 max-w-[390px] text-sm leading-7 text-muted-foreground">Architect. Interior designer.<br />Spatial visualizer.</p>
-          <p className="mt-5 max-w-[390px] text-[14px] leading-7 text-muted-foreground">10+ years translating complex ideas into high-end physical spaces and interactive digital environments. Technical buildability, parametric thinking and cinematic visualization — in one practice.</p>
+          <p className="mt-5 max-w-[300px] text-[14px] leading-7 text-muted-foreground">10+ years translating complex ideas into high‑end physical spaces and interactive digital environments. Technical buildability, parametric thinking and cinematic visualization — in one practice.</p>
           <div className="mt-6 flex max-w-[390px] flex-wrap gap-x-5 gap-y-2 border-t border-border pt-5 text-xs text-foreground">
             <span>Master’s in Bio-Digital Architecture</span><span>PMP accredited</span>
           </div>
