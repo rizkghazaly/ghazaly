@@ -38,8 +38,8 @@ function Cloud({ x, y, s, fill }: { x: number; y: number; s: number; fill: strin
 export function SceneSun({ p }: { p: number }) {
   const progress = seg(p, 0, DURATION);
   const gold = seg(p, 24, DURATION);
-  const sx = lerp(50, 1060, progress);
-  const sy = lerp(550, 425, progress) - Math.sin(Math.PI * progress) * 365;
+  const sx = lerp(30, 1080, progress);
+  const sy = lerp(565, 470, progress) - Math.sin(Math.PI * Math.pow(progress, 2.2)) * 400;
   return (
     <g data-scene-sun="true" aria-hidden="true">
       <defs>
