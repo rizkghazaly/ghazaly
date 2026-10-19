@@ -40,11 +40,11 @@ export function HouseAnimation() {
     let frame = 0;
     let previous = performance.now();
     const advance = (now: number) => {
-      clock.current = Math.min(DURATION, clock.current + Math.min((now - previous) / 1000, 0.1) * 1.5);
+      clock.current += Math.min((now - previous) / 1000, 0.1) * 1.5;
       previous = now;
+      if (clock.current >= DURATION) clock.current = 3;
       setTime(clock.current);
-      if (clock.current >= DURATION) setPlaying(false);
-      else frame = requestAnimationFrame(advance);
+      frame = requestAnimationFrame(advance);
     };
     frame = requestAnimationFrame(advance);
     return () => cancelAnimationFrame(frame);
