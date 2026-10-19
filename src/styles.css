@@ -269,10 +269,10 @@
 .about-copy::before {
   content: "";
   position: absolute;
-  inset: -70px -140px -110px -90px;
+  inset: -70px -140px -90px -90px;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(122% 108% at 0% 45%, var(--background) 0%, color-mix(in oklab, var(--background) 82%, transparent) 50%, transparent 82%);
+  background: radial-gradient(118% 92% at 0% 32%, var(--background) 0%, color-mix(in oklab, var(--background) 76%, transparent) 44%, transparent 76%);
 }
 .house-animation { position: absolute; right: -60px; bottom: 0; width: 88%; height: 730px; }
 .house-scenery {
