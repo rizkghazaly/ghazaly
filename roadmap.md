@@ -14,3 +14,4 @@
 - [x] Rework lightbox play button: small corner pill (not centered, not big)
 - [x] Add About Me navigation and a seamless supplied house-building animation with Rizk Ghazaly's name.
 - [x] Add concise credentials/services and verify the About page in both themes on desktop and mobile.
+- [x] Show the About page name on a single line at every screen width.
