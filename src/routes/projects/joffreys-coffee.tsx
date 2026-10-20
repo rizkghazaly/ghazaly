@@ -454,15 +454,26 @@ function JoffreysCoffee() {
                     >
                       {group.items.map((item, itemIndex) => (
                         <figure key={item.src} className="group glass rounded-[26px] p-2.5">
-                          <div className="overflow-hidden rounded-[18px]">
-                            <img
-                              src={item.src}
+                          {item.video ? (
+                            <MotionMedia
+                              image={item.src}
+                              video={item.video}
                               alt={item.alt}
-                              loading="lazy"
-                              onClick={() => setLightboxIndex(branchOffset + (branch.plan ? 1 : 0) + groupOffset + itemIndex)}
-                              className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                              onOpen={() =>
+                                setLightboxIndex(branchOffset + (branch.plan ? 1 : 0) + groupOffset + itemIndex)
+                              }
                             />
-                          </div>
+                          ) : (
+                            <div className="overflow-hidden rounded-[18px]">
+                              <img
+                                src={item.src}
+                                alt={item.alt}
+                                loading="lazy"
+                                onClick={() => setLightboxIndex(branchOffset + (branch.plan ? 1 : 0) + groupOffset + itemIndex)}
+                                className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain transition-transform duration-700 group-hover:scale-[1.01]"
+                              />
+                            </div>
+                          )}
                           {item.tag && (
                             <p className="px-3 pt-4 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{item.tag}</p>
                           )}
