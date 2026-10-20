@@ -23,6 +23,7 @@ import airportKioskOne from "@/assets/joffreys-airport-kiosk-one.jpg.asset.json"
 import airportKioskTwo from "@/assets/joffreys-airport-kiosk-two.jpg.asset.json";
 import airportKioskPlan from "@/assets/joffreys-airport-kiosk-plan.jpg.asset.json";
 import millenniumDiningWideMotion from "@/assets/millennium-dining-wide-motion.webm.asset.json";
+import millenniumBarLoungeMotion from "@/assets/millennium-bar-lounge-motion.webm.asset.json";
 import { Button } from "@/components/ui/button";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -292,6 +293,7 @@ const branches: Branch[] = [
             alt: "Interior render of the Millennium Business Centre café bar with brass counter, marble top and backlit wine cellar",
             caption:
               "Bar & lounge — a perforated brass column, marble-topped brass bar and backlit wine cellar anchor the seating hall.",
+            video: millenniumBarLoungeMotion.url,
           },
           {
             src: millenniumDiningHall.url,

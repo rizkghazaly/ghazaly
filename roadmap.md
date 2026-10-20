@@ -15,3 +15,4 @@
 - [x] Add About Me navigation and a seamless supplied house-building animation with Rizk Ghazaly's name.
 - [x] Add concise credentials/services and verify the About page in both themes on desktop and mobile.
 - [x] Show the About page name on a single line at every screen width.
+- [x] Add hover motion previews to the Millennium Business Centre bar and wide dining renders.
