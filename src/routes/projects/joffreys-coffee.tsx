@@ -51,6 +51,77 @@ export const Route = createFileRoute("/projects/joffreys-coffee")({
 
 type BranchItem = LightboxItem & { tag?: string };
 
+function MotionMedia({
+  image,
+  video,
+  alt,
+  onOpen,
+}: {
+  image: string;
+  video: string;
+  alt: string;
+  onOpen: () => void;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const play = () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  const pause = (reset = false) => {
+    const element = videoRef.current;
+    if (!element) return;
+    element.pause();
+    if (reset) element.currentTime = 0;
+    setPlaying(false);
+  };
+
+  const toggle = () => {
+    if (playing) pause();
+    else void videoRef.current?.play().then(() => setPlaying(true));
+  };
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-[18px]"
+      onMouseEnter={play}
+      onMouseLeave={() => pause(true)}
+      data-motion-preview
+    >
+      <video
+        ref={videoRef}
+        src={video}
+        poster={image}
+        aria-label={`${alt} — animated preview`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        onClick={onOpen}
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+        className="h-auto w-full cursor-zoom-in rounded-[18px] object-contain"
+      />
+      <Button
+        type="button"
+        variant="secondary"
+        size="icon"
+        aria-label={playing ? "Pause animation" : "Play animation"}
+        title={playing ? "Pause animation" : "Play animation"}
+        onClick={(event) => {
+          event.stopPropagation();
+          toggle();
+        }}
+        className="glass absolute bottom-3 right-3 z-10 rounded-full"
+      >
+        {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+      </Button>
+    </div>
+  );
+}
+
 type Branch = {
   number: string;
   title: string;
@@ -239,6 +310,7 @@ const branches: Branch[] = [
             alt: "Wide interior render of the renovated café with ring chandeliers and brass lattice screens",
             caption:
               "The room in full — concentric ring chandeliers and a field of brass lattice screens organize the dining floor.",
+            video: millenniumDiningWideMotion.url,
           },
         ],
       },
