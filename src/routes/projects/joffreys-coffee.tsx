@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowUpRight, Pause, Play } from "lucide-react";
 
 import townCenterPlan from "@/assets/joffreys-town-center-plan.jpg.asset.json";
 import townCenterDesignOne from "@/assets/joffreys-town-center-design-one.jpg.asset.json";
@@ -22,6 +22,8 @@ import millenniumPlan from "@/assets/joffreys-millennium-plan.jpg.asset.json";
 import airportKioskOne from "@/assets/joffreys-airport-kiosk-one.jpg.asset.json";
 import airportKioskTwo from "@/assets/joffreys-airport-kiosk-two.jpg.asset.json";
 import airportKioskPlan from "@/assets/joffreys-airport-kiosk-plan.jpg.asset.json";
+import millenniumDiningWideMotion from "@/assets/millennium-dining-wide-motion.webm.asset.json";
+import { Button } from "@/components/ui/button";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
 
