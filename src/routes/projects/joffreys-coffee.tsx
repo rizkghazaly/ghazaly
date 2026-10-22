@@ -24,6 +24,7 @@ import airportKioskTwo from "@/assets/joffreys-airport-kiosk-two.jpg.asset.json"
 import airportKioskPlan from "@/assets/joffreys-airport-kiosk-plan.jpg.asset.json";
 import millenniumDiningWideMotion from "@/assets/millennium-dining-wide-motion.webm.asset.json";
 import millenniumBarLoungeMotion from "@/assets/millennium-bar-lounge-motion.webm.asset.json";
+import townCenterDesignTwoMotion from "@/assets/joffreys-town-center-design-two-motion.webm.asset.json";
 import { Button } from "@/components/ui/button";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -172,6 +173,7 @@ const branches: Branch[] = [
             src: townCenterDesignTwo.url,
             alt: "Design render of the Town Center café counter and tall timber display wall",
             caption: "Design study — the service counter and full-height timber display establish the branch’s main identity.",
+            video: townCenterDesignTwoMotion.url,
             tag: "Before · Design phase",
           },
           {
