@@ -17,3 +17,4 @@
 - [x] Show the About page name on a single line at every screen width.
 - [x] Add hover motion previews to the Millennium Business Centre bar and wide dining renders.
 - [x] Replace the Town Center design-phase render with the new counter/timber-wall view and add its hover motion preview.
+- [x] Add hover motion previews to both Al Ehsa café interior renders.
