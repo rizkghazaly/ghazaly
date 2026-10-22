@@ -25,6 +25,8 @@ import airportKioskPlan from "@/assets/joffreys-airport-kiosk-plan.jpg.asset.jso
 import millenniumDiningWideMotion from "@/assets/millennium-dining-wide-motion.webm.asset.json";
 import millenniumBarLoungeMotion from "@/assets/millennium-bar-lounge-motion.webm.asset.json";
 import townCenterDesignTwoMotion from "@/assets/joffreys-town-center-design-two-motion.webm.asset.json";
+import alEhsaInteriorOneMotion from "@/assets/joffreys-al-ehsa-interior-one-motion.webm.asset.json";
+import alEhsaInteriorTwoMotion from "@/assets/joffreys-al-ehsa-interior-two-motion.webm.asset.json";
 import { Button } from "@/components/ui/button";
 import { Lightbox, type LightboxItem } from "@/components/lightbox";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -218,11 +220,13 @@ const branches: Branch[] = [
             src: alEhsaInteriorOne.url,
             alt: "Interior render of the Al Ehsa café with red feature wall and mixed lounge seating",
             caption: "Interior view — red vertical panels, warm timber and varied seating shape a comfortable social setting.",
+            video: alEhsaInteriorOneMotion.url,
           },
           {
             src: alEhsaInteriorTwo.url,
             alt: "Wide interior render of the Al Ehsa café dining space",
             caption: "Dining hall — layered ceiling lighting and an open seating field lead toward the coffee counter.",
+            video: alEhsaInteriorTwoMotion.url,
           },
         ],
       },
