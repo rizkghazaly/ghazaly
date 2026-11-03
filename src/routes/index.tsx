@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ResidentialCollection } from "@/components/exterior/residential-collection";
+import { SenegalTower } from "@/components/exterior/senegal-tower";
+import { CryptoBusinessCenter } from "@/components/exterior/crypto-business-center";
+import { DesertSimulation } from "@/components/exterior/desert-simulation";
 
 import petalTower from "@/assets/petal-tower.jpg.asset.json";
 import cbcHero from "@/assets/cbc-3.jpg.asset.json";
@@ -468,6 +472,14 @@ function Index() {
             </Button>
           </div>
         </div>
+        {projectCategory === "external" ? (
+          <div key="external" className="-mx-6">
+            <ResidentialCollection embedded />
+            <SenegalTower embedded />
+            <CryptoBusinessCenter embedded />
+            <DesertSimulation embedded />
+          </div>
+        ) : (
         <div key={projectCategory} className="grid gap-10 md:grid-cols-2 md:gap-8">
           {projects.map((project, index) => (
             <article className="project group" key={project.title}>
@@ -497,6 +509,7 @@ function Index() {
             </article>
           ))}
         </div>
+        )}
       </section>
 
       <section id="showreel" className="relative z-10 mx-auto max-w-[1200px] scroll-mt-8 px-6 pb-20 sm:pb-28">
